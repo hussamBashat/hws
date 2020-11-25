@@ -1,0 +1,380 @@
+/*
+    Template Designed By: ** Hussam Bashat ** (Front-End Developer)
+    Contact me => facebook.com/hussam.bashat
+    Designed in: 23/11/2020
+*/
+
+/* Template Style */
+/* Variables */
+:root {
+    --main-color: #7986cb;
+    --mian-dark: #3f51b5;
+    --second-color: #F44336;
+    --white: #fff;
+    --black: #000;
+    --gray: #777;
+    --white-gray: #f8f8f8;
+    --transition: all .3s ease-in-out;
+}
+
+/* Font Family */
+h1, h2, h3, h4, h5, h6, .heading-font {font-family: 'Montserrat', sans-serif; font-weight: bold;}
+body, .text-font {font-family: 'Open Sans', sans-serif;}
+
+/* Custom Elements Style */
+h1, h2 {
+    line-height: 118%;
+    margin: 1rem 0;
+}
+h1 {font-size: 3.5rem;}
+h2 {font-size: 3rem;}
+
+section {padding: 3rem 0;}
+
+a {text-decoration: none; color: inherit;}
+
+/*
+    Custom Classes Style
+    ********************
+*/
+/* padding margin */
+.p-0 {padding: 0 !important;}
+.m-0 {margin: 0 !important;}
+/* Flex Styles */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Custom Link */
+.custom-link {
+    color: var(--main-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+.custom-link:hover {color: var(--second-color);}
+/* Navbar */
+.nav-wrapper .brand-logo {font-size: 18px;}
+.nav-wrapper .brand-logo .material-icons {margin-right: 5px;}
+.dropdown-content {top: 65px !important;}
+.dropdown-content li a {color: var(--mian-dark);}
+/* Login Modal */
+.login-modal {overflow: unset !important; width: 30rem;}
+.login-modal form {
+    padding: 2rem;
+    margin: auto;
+    background: var(--white);
+    border-radius: .25rem;
+    box-shadow: 0 0 5px var(--gray) ;
+}
+.login-modal form .btn {
+    background-color: var(--mian-dark);
+    text-transform: capitalize;
+    width: 100px;
+}
+.login-modal .modal-close {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: var(--second-color);
+}
+/* Main Header */
+.main-header nav {margin-bottom: 3rem;}
+.header-text {transform: translateY(10rem);}
+/* Tabs Style */
+.tabs {background: none;}
+.tabs .tab a {color: var(--main-color); font-weight: bold;}
+.tabs .tab a {border-radius: .25rem .25rem 0 0;}
+.tabs .tab a:hover,
+.tabs .tab a.active {
+    color: var(--white);
+    border-color: var(--white);
+    background-color: var(--main-color) !important;
+}
+.tabs .indicator {background-color: var(--mian-dark);}
+.tab-content {
+    background-color: var(--main-color);
+    color: var(--white);
+    padding: 2rem !important;
+    border-radius: 0 .25rem .25rem;
+}
+/* Custom Input Style */
+.input-field.custom {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 0 0.5rem;
+    width: 30%;
+}
+.input-field.custom input {
+    margin: 0;
+    border: 0 !important;
+    margin-left: 2.5rem;
+    box-shadow: none;
+}
+.input-field.custom .dropdown-content li span {color: var(--mian-dark);}
+.select-wrapper input.select-dropdown {margin: 0;}
+.input-field.custom input:focus ~ label {opacity: 0;}
+.input-field.custom .prefix.active {color: var(--second-color);}
+.input-field.custom .prefix {color: var(--gray);}
+.btn-floating.circle{
+    background-color: var(--second-color);
+    width: 50px;
+    height: 50;
+    transform: translateY(-1px);
+}
+.btn-floating:hover {background-color: var(--second-color);}
+
+.main-header .filter {
+    margin: 1rem 0;
+    transform: translateY(-3rem);
+}
+
+
+/* Start Why Our Section */
+.why-our {background-color: var(--main-color);}
+.why-our .card {
+    border: 0;
+    background: none;
+    color: var(--white);
+    box-shadow: none;
+}
+.why-our .card:hover {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.why-our .card .icon {padding: 24px; padding-bottom: 0; display: flex; align-items: center;}
+.why-our .card .icon i {font-size: 50px; margin-right: .5rem;}
+.why-our .card h5 {margin: 0; font-weight: 400;}
+.why-our .card p {line-height: 1.7;}
+
+/* Start category Section */
+.category .row {margin: 3rem 0;}
+.category .cat-box {
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    transition: var(--transition);
+}
+.category .cat-box h6 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+.category .cat-box .badge {
+    float: none;
+    margin: 0;
+    background-color: var(--white-gray);
+    color: var(--second-color);
+    padding: .3rem 1rem;
+    border-radius: .25rem;
+}
+.category .cat-box span:not(.badge),
+.category .cat-box .prefix {color: var(--gray); transition: var(--transition);}
+
+.category .cat-box:hover {background-color: var(--mian-dark); transform: translateX(10px)}
+.category .cat-box:hover h6,
+.category .cat-box:hover .prefix {color: var(--white);}
+.category .cat-box:hover span:not(.badge) {color: #ccc;}
+
+/* Search Job Section */
+.search-job {
+    background-image: url('../images/bg1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+.search-job .card {
+    position: relative;
+    background-color: rgba(255, 255, 255, .9);
+    padding: 4rem;
+    border-radius: .25rem;
+}
+.search-job .card .prefix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12em;
+    color: var(--gray);
+    opacity: .125;
+    z-index: 0;
+}
+.search-job .card .content {
+    position: relative;
+    z-index: 1
+}
+.search-job .card .content h6 {
+    color: var(--mian-dark);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.search-job .card .content h2 {
+    font-size: 2rem;
+    margin: .5rem 0 1rem;
+}
+.search-job .card .content p {
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* Hot Jobs Section */
+.hot-jobs {background-color: var(--white-gray);}
+.hot-jobs h2 {font-size: 2rem;}
+.hot-jobs .job-box {border-bottom: 1px solid #ccc; padding: 1rem 0;}
+.hot-jobs .job-box .job-text > div {margin: .5rem 0;}
+.hot-jobs .badge {
+    background-color: var(--second-color);
+    opacity: .7;
+    color: var(--white);
+    padding: 2px .7rem;
+    border-radius: 1rem;
+    font-size: 10px;
+    font-weight: 600;
+    height: auto;
+    transform: translateY(1px);
+}
+.hot-jobs .info span {color: var(--gray);}
+.hot-jobs .info .prefix {transform: translateY(2px); font-size: 16px;}
+.hot-jobs .btn {background-color: var(--main-color);}
+.hot-jobs .icon {padding: 3rem 0; justify-content: center;}
+.hot-jobs .icon .prefix {font-size: 8rem; color: #3d5b9a;}
+.hot-jobs .card {margin-top: 2rem;}
+.hot-jobs .card:last-of-type .icon .prefix {color: #3d9a64;}
+.hot-jobs .card-footer {padding: 1rem; background-color: var(--white-gray);}
+.hot-jobs .card-footer .badge {
+    background-color: var(--second-color);
+    color: var(--white);
+    border-radius: .25rem;
+    opacity: .7;
+}
+.hot-jobs .card-footer span:not(.badge) {color: var(--gray);}
+
+/* Testimonial Section Style */
+.testimonial .carousel-item .img-container {
+    width: 70px;
+    height: 70px;
+    padding: 3px;
+    background-color: var(--white-gray);
+    border-radius: 50%;
+    margin: auto;
+}
+.testimonial .carousel-item .img-container img {border-radius: 50%;}
+.testimonial .carousel-item {
+    width: 18rem;
+    height: auto;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 1rem;
+    border-radius: .25rem;
+}
+.testimonial .carousel-item.active {
+    background-color: rgba(255, 255, 255, .7);
+    border-color:var(--white-gray);
+    box-shadow: 0 0 5px #f5f5f5;
+}
+.testimonial .carousel-item p {
+    text-align: justify;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* Subcribe Section Style */
+.subcribe {background-color: var(--main-color); color: var(--white);}
+.subcribe form {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+.subcribe form .input-field {flex-grow: 1;}
+.subcribe form .input-field input {
+    background-color: var(--white);
+    padding: 0 1rem;
+    box-sizing: border-box;
+    border-radius: .25rem 0 0 .25rem;
+    margin: 0;
+    border: none !important;
+    box-shadow: none !important;
+}
+.subcribe form .input-field input:focus ~ label {opacity: 0;}
+.subcribe form .input-field label {padding: 0 1rem;}
+.subcribe form .btn {
+    background-color: var(--second-color);
+    text-transform: capitalize;
+    height: 3rem;
+    box-shadow: none;
+    border-radius: 0 .25rem .25rem 0;
+}
+
+/* FAQ Page Style */
+.faq h1 {margin-bottom: 3rem;}
+.faq .collapsible .letter {
+    font-size: 30px;
+    font-weight: 900;
+    padding: 1rem;
+    margin-right: .5rem;
+    border-right: 1px solid var(--white-gray);
+}
+.faq .collapsible-header {align-items: center;}
+.faq .collapsible-header .q {color: var(--second-color);}
+.faq .collapsible-body .a {color: var(--main-color);}
+.faq .collapsible-body .answer {padding: 1rem;}
+.faq .collapsible li.active .collapsible-body {display: flex !important; align-items: center;}
+
+/* Footer Style */
+footer ul {line-height: 1.8 !important;}
+
+
+/*
+    *************************
+    *************************
+    ** Control Panel Style **
+    *************************
+    *************************
+*/
+
+/* My Breadcrumb */
+.my-breadcrumb .list-item {
+    display: flex;
+    background-color: var(--white-gray);
+    padding: 1rem;
+    border-radius: .25rem;
+}
+.my-breadcrumb .list-item li,
+.my-breadcrumb .list-item li a {margin-right: 1rem; font-weight: bold;}
+.my-breadcrumb .list-item li a {color: var(--mian-dark); transition: var(--transition);}
+.my-breadcrumb .list-item li.active {color: var(--gray);}
+.my-breadcrumb .list-item li a:hover {color: var(--second-color);}
+
+/* Start Top Bar */
+.top-bar {
+    align-items: baseline;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.top-bar h1 {font-size: 2rem; margin: 0}
+.top-bar p {
+    flex-basis: 100%;
+    margin-top: 3px;
+    font-style: italic;
+    color: var(--gray);
+}
+.top-bar .btn {background-color: var(--mian-dark);}
+.top-bar .material-icons {margin: -1px 4px 0 0;}
+
+.users, .add-user, .faq-manage, .add-faq {padding: 1rem 0;}
+/* Users Page Style */
+table.highlight>tbody>tr:hover {background-color: #ddd;}
+table td.flex-between {justify-content: unset;}
+table td .btn:first-child {background-color: var(--second-color); margin-right: .5rem;}
+table td .btn:last-child {background-color: var(--gray);}
+/* Add User Style */
+.add-user form {
+    padding: 1rem;
+    background: #fefefe;
+    border-radius: .25rem;
+    border: 1px solid #f1f1f1;
+    width: 35rem;
+}
+.add-user form .btn,
+.add-faq form .btn {background-color: var(--mian-dark); text-transform: capitalize; width: 100px;}
+
+/* FAQ Page */
+.faq-manage table td .btn:first-child {background-color: #26a69a;}
+.faq-manage table td .btn:last-child {background-color: var(--second-color);}
