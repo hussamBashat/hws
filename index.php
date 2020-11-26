@@ -1,4 +1,8 @@
-<?php include "include/header.php"; ?>
+<?php
+session_start(); 
+$Title = "الصفحة الرئيسية";
+include "include/Functions.php";
+include "include/header.php"; ?>
     <!-- Start Hrader -->
     <header class="main-header">
       <!-- Start Navbar -->

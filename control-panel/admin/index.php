@@ -1,4 +1,7 @@
 <?php
+session_start();
+$Title = "لوحة التحكم";
+include "../../include/Functions.php";
 include "../include/header.php";
 include "../../include/navbar.php";
 ?>
