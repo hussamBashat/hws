@@ -19,7 +19,7 @@
             
             if (isset($_POST['remmamber']) && $_POST['remmamber'] == 'on') {
                 $row = $_POST['username'] . "," . $data['password'];
-                setcookie("asdminlogin", $row, time() + (7 * 24 * 60 * 60), "/");
+                setcookie("adminlogin", $row, time() + (7 * 24 * 60 * 60), "/");
             }
             else if(isset($_COOKIE['adminlogin'])){
                 setcookie("adminlogin", "", time() - (7 * 24 * 60 * 60), "/");
