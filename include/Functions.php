@@ -9,6 +9,13 @@
 		}
 
     }
+
+    function countItems($item, $table){
+      global $con;
+        $stmt20 = $con->prepare("SELECT COUNT($item) FROM $table");
+        $stmt20->execute();
+        return $stmt20->fetchColumn();
+    }
     
     if (isset($_COOKIE['general'])) {
         $Rows = explode(",", $_COOKIE['general']);
@@ -17,3 +24,12 @@
         $_SESSION['email'] = $Rows[2];
         $_SESSION['password'] = $Rows[3];
     }
+
+    if (isset($_COOKIE['admingeneral'])) {
+      $Rows = explode(",", $_COOKIE['admingeneral']);
+      $_SESSION['admin'] = $Rows[0];
+      $_SESSION['username'] = $Rows[1];
+      $_SESSION['email'] = $Rows[2];
+      $_SESSION['password'] = $Rows[3];
+  }
+

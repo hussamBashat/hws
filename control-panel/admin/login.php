@@ -1,4 +1,11 @@
-<?php include "../include/header.php";?>
+<?php
+$Title = "تسجيل الدخول";
+include "../../include/Functions.php";
+include "../include/header.php";
+if (isset($_COOKIE['adminlogin'])) {
+    $Row = explode(",", $_COOKIE['adminlogin']);
+}
+?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb" style="margin-top: 1rem;">
     <div class="container">
@@ -17,30 +24,30 @@
 <!-- Start Admin Login -->
 <section class="admin-login">
     <div class="container">
-        <form method="post" action="">
+        <form method="post" action="../include/login.php">
             <div class="row m-0">
                 <div class="input-field col s12">
-                <input id="username" type="text" class="validate" required>
+                <input id="username" name="username" type="text" value="<?php echo (isset($Row) ? $Row[0] : ""); ?>" class="validate" required>
                 <label for="username">Username</label>
                 </div>
             </div>
             <div class="row m-0">
                 <div class="input-field col s12">
-                <input id="password" type="password" class="validate" required>
+                <input id="password" name="password" type="password" value="<?php echo (isset($Row) ? $Row[1] : ""); ?>" class="validate" required>
                 <label for="password">Password</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s12 left-align">
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" name="remmamber" <?php echo (isset($Row) ? "checked" : "");?>>
                         <span>Remmamber me</span>
                     </label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s12 left-align">
-                    <button class="waves-effect waves-light btn">Login</button>
+                    <button type="submit" name="login" class="waves-effect waves-light btn">Login</button>
                 </div>
             </div>
         </form>

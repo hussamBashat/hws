@@ -28,7 +28,7 @@ include "../../include/navbar.php";
         <div class="stat-box one z-depth-2">
           <div class="header">
             <i class="material-icons">person_outline</i>
-            <span>3 Users</span>
+            <span><?php echo countItems("id", "users"); ?> Users</span>
           </div>
           <div class="footer flex-between">
             <a href="users.php" class="custom-link flex-between"><i class="material-icons">table</i> Show Table</a>
@@ -40,7 +40,7 @@ include "../../include/navbar.php";
         <div class="stat-box tow z-depth-2">
           <div class="header">
             <i class="material-icons">question_answer</i>
-            <span>12 FAQ</span>
+            <span><?php echo countItems("id", "frequently_asked_questions"); ?> FAQ</span>
           </div>
           <div class="footer flex-between">
             <a href="faq-manage.php" class="custom-link flex-between"><i class="material-icons">table</i> Show Table</a>

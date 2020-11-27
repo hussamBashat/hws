@@ -2,6 +2,9 @@
     if (isset($_COOKIE['general'])) {
         setcookie("general", "", time() - (30 * 24 * 60 * 60), "/");
     }
+    if (isset($_COOKIE['admingeneral'])) {
+        setcookie("admingeneral", "", time() - (30 * 24 * 60 * 60), "/");
+    }
     session_start();
     
     session_unset();
