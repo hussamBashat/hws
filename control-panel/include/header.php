@@ -7,6 +7,6 @@
     <link rel="stylesheet" href="../../css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../../css/style.css">
-    <title>HWS</title>
+    <title><?php getTitle() ?></title>
   </head>
   <body>
