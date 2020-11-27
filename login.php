@@ -1,7 +1,7 @@
 <?php 
     ob_start();
     session_start();
-    $Title = "error";
+    $Title = "خطأ";
     include "include/Functions.php";
     include "include/header.php";
     
@@ -53,6 +53,6 @@
     else {
         header("Location: /hws/index.php");
     }
-    ob_end_flush();
     include "include/footer.php";
+    ob_end_flush();
 ?>
