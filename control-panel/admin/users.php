@@ -41,7 +41,7 @@ if ($do == "users") {       // Users Page
                     <td>25-11-2020</td>
                     <td class="flex-between">
                         <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Delete"><i class="material-icons">delete</i></button>
-                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">remove_circle</i></button>
+                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">block</i></button>
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@ if ($do == "users") {       // Users Page
                     <td>25-11-2020</td>
                     <td class="flex-between">
                         <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Delete"><i class="material-icons">delete</i></button>
-                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">remove_circle</i></button>
+                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">block</i></button>
                     </td>
                 </tr>
                 <tr>
@@ -61,7 +61,7 @@ if ($do == "users") {       // Users Page
                     <td>25-11-2020</td>
                     <td class="flex-between">
                         <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Delete"><i class="material-icons">delete</i></button>
-                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">remove_circle</i></button>
+                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">block</i></button>
                     </td>
                 </tr>
             </tbody>

@@ -4,8 +4,8 @@
       <!-- Start Navbar -->
       <?php include "include/navbar.php"; ?>
       <div class="container">
-        <div class="row">
-          <div class="col s6 p-0">
+        <div class="row row-header">
+          <div class="col s12 m6 p-0">
             <div class="header-box">
               <div class="header-text">
                 <p>We have <span class="red-text lighten-2">2,000</span> great job offers you deserve!</p>
@@ -13,7 +13,7 @@
               </div>
             </div>
           </div>
-          <div class="col s6 p-0">
+          <div class="col s12 m6 p-0">
             <img src="images/header-img.svg" alt="Header image" class="responsive-img">
           </div>
         </div>
@@ -31,7 +31,7 @@
                 <div class="input-field custom">
                   <i class="material-icons prefix">work</i>
                   <input id="icon_work" type="text" class="validate">
-                  <label for="icon_work">eg. Garphic. Web Developer</label>
+                  <label for="icon_work">eg. Web Developer</label>
                 </div>
                 <div class="input-field custom">
                   <select>
@@ -86,7 +86,7 @@
     <section class="why-our">
       <div class="container">
         <div class="row m-0">
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <div class="card m-0">
               <div class="icon">
                 <i class="material-icons prefix">assignment</i>
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <div class="card m-0">
               <div class="icon">
                 <i class="material-icons prefix">touch_app</i>
@@ -108,7 +108,7 @@
               </div>
             </div>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <div class="card m-0">
               <div class="icon">
                 <i class="material-icons prefix">trending_up</i>
@@ -127,7 +127,7 @@
       <div class="container">
         <h2 class="center-align">Top Category</h2>
         <div class="row">
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -138,7 +138,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -149,7 +149,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -160,7 +160,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -171,7 +171,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -182,7 +182,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -193,7 +193,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -204,7 +204,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -215,7 +215,7 @@
               </div>
             </a>
           </div>
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="#">
               <div class="cat-box flex-between">
                 <div class="cat-text">
@@ -233,7 +233,7 @@
     <section class="search-job">
       <div class="container">
         <div class="row m-0">
-          <div class="col s7">
+          <div class="col s12 m10 l7">
             <div class="card">
               <i class="material-icons prefix">search</i>
               <div class="content">
@@ -250,7 +250,7 @@
     <section class="hot-jobs">
       <div class="container">
         <div class="row">
-          <div class="col s8">
+          <div class="col s12 m8">
             <h2>Hot Jobs</h2>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -263,7 +263,7 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -276,7 +276,7 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -289,7 +289,7 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -302,7 +302,7 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -315,7 +315,7 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
             <div class="job-box flex-between">
               <div class="job-text">
@@ -328,10 +328,10 @@
                   <span><i class="material-icons prefix">gps_fixed</i> WESTERN CITY, UK</span>
                 </div>
               </div>
-              <a href="#" class="btn waves-effect waves-light">Apply Job</a>
+              <a href="#" class="btn waves-effect waves-light">Apply</a>
             </div>
           </div>
-          <div class="col s3 offset-s1">
+          <div class="col s12 m4">
             <h2>Top Agencies</h2>
             <div class="card">
               <a href="#">

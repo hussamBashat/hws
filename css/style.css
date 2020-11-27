@@ -20,6 +20,7 @@
 /* Font Family */
 h1, h2, h3, h4, h5, h6, .heading-font {font-family: 'Montserrat', sans-serif; font-weight: bold;}
 body, .text-font {font-family: 'Open Sans', sans-serif;}
+body.flow {overflow: hidden;}
 
 /* Custom Elements Style */
 h1, h2 {
@@ -56,18 +57,38 @@ a {text-decoration: none; color: inherit;}
 /* Navbar */
 .nav-wrapper .brand-logo {font-size: 18px;}
 .nav-wrapper .brand-logo .material-icons {margin-right: 5px;}
-.dropdown-content {top: 65px !important;}
+.nav-wrapper .dropdown-content {top: 65px !important;}
+.nav-wrapper .hide-on-med-and-up {
+    position: absolute;
+    display: block;
+    text-align: center;
+    margin: 0;
+}
+.nav-wrapper .hide-on-med-and-up.active,
+.nav-wrapper .hide-on-med-and-up:hover {background-color: rgba(0,0,0,0.1);}
+.nav-wrapper .hide-on-med-and-up.user-menu {right: 50px;}
+.nav-wrapper .hide-on-med-and-up.nav-menu {right: 0;}
+.nav-wrapper .hide-on-med-and-up a {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 56px;
+    margin: 0 18px;
+}
 .dropdown-content li a {color: var(--mian-dark);}
-/* Login Modal */
-.login-modal {overflow: unset !important; width: 30rem;}
-.login-modal form {
+/* Login Modal and Admin Login */
+.login-modal,
+.admin-login form {overflow: unset !important; width: 30rem;}
+.login-modal form,
+.admin-login form {
     padding: 2rem;
     margin: auto;
     background: var(--white);
     border-radius: .25rem;
     box-shadow: 0 0 5px var(--gray) ;
 }
-.login-modal form .btn {
+.login-modal form .btn,
+.admin-login form .btn {
     background-color: var(--mian-dark);
     text-transform: capitalize;
     width: 100px;
@@ -229,6 +250,7 @@ a {text-decoration: none; color: inherit;}
     height: auto;
     transform: translateY(1px);
 }
+.hot-jobs .job-box .badge {margin-right: 5px;}
 .hot-jobs .info span {color: var(--gray);}
 .hot-jobs .info .prefix {transform: translateY(2px); font-size: 16px;}
 .hot-jobs .btn {background-color: var(--main-color);}
@@ -358,7 +380,37 @@ footer ul {line-height: 1.8 !important;}
 .top-bar .btn {background-color: var(--mian-dark);}
 .top-bar .material-icons {margin: -1px 4px 0 0;}
 
-.users, .add-user, .faq-manage, .add-faq {padding: 1rem 0;}
+.dashboard, .users, .add-user, .faq-manage, .add-faq {padding: 1rem 0;}
+
+/* Dashboard Style */
+.stat-box {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    border-radius: .25rem;
+    text-align: center;
+    transition: var(--transition);
+}
+.stat-box.one {background-color: #00BCD4;}
+.stat-box.tow {background-color: #d46200;}
+.stat-box.three {background-color: #d40093;}
+.stat-box.one .header {box-shadow: 0 5px 5px #009aaf;}
+.stat-box.tow .header {box-shadow: 0 5px 5px #af5100;}
+.stat-box.three .header {box-shadow: 0 5px 5px #a50172;}
+.stat-box:hover {box-shadow: none;}
+.stat-box .header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: .5rem;
+}
+.stat-box .header .material-icons {font-size: 4rem;}
+.stat-box .header span {transform: translateY(-6px);}
+.stat-box .footer {padding: 1rem .5rem 0;}
+.stat-box .footer .material-icons {margin-right: 5px; width: 24px;}
+.stat-box .footer a {color: #eee;}
+.stat-box .footer a:hover {color: var(--white);}
+
 /* Users Page Style */
 table.highlight>tbody>tr:hover {background-color: #ddd;}
 table td.flex-between {justify-content: unset;}
@@ -378,3 +430,80 @@ table td .btn:last-child {background-color: var(--gray);}
 /* FAQ Page */
 .faq-manage table td .btn:first-child {background-color: #26a69a;}
 .faq-manage table td .btn:last-child {background-color: var(--second-color);}
+
+/*
+    *********************
+    *********************
+    ** Make Responsive **
+    *********************
+    *********************
+*/
+
+@media (max-width: 1199px) {
+    .header-text {transform: translateY(0);}
+}
+
+@media (max-width: 991px) {
+    nav .brand-logo {
+        left: 0;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    table td.flex-between {display: flex;}
+}
+
+@media (max-width: 767px) {
+    .search-job {background-position: center;}
+    .hot-jobs .job-box {flex-flow: column; align-items: flex-start;}
+    .row.filter form > div.flex-between {flex-flow: column;}
+    .row.filter form > div.flex-between .input-field.custom {width: 90%;}
+    .row.filter form > div.flex-between .btn-floating {border-radius: .25rem; width: 150px;}
+}
+
+@media (max-width :767px) and (min-width: 575px) {
+    .row-header {position: relative;}
+    .row-header .col:first-of-type {width: 100%; margin-bottom: 1rem;}
+    .row-header .col:last-of-type img {
+        position: absolute;
+        top: -15%;
+        left: 13%;
+        width: 80%;
+        opacity: .3;
+    }
+}
+
+@media (max-width: 600px) {
+    .remove-on-small-only {display: none;}
+    .nav-wrapper > ul {
+        float: none !important;
+        display: flex !important;
+        flex-flow: column;
+        width: 21.4rem;
+        height: 100vh;
+        padding: .5rem 1.5rem;
+        position: fixed;
+        left: -100%;
+        top: 56px;
+        z-index: 9999;
+        background-color: var(--main-color);
+        border-top: 1px solid #6d76a5;
+        transition: var(--transition);
+    }
+    .nav-wrapper > ul.slide-open {left: 0;}
+}
+
+@media (max-width: 575px) {
+    h1 {font-size: 3rem;}
+    h2 {font-size: 2.5rem;}
+    .login-modal, .admin-login form {width: 80%;}
+    .add-user form {width: 100%}
+    .top-bar h1 {flex: 0 0 100%;}
+    .top-bar .btn, .top-bar span, .top-bar a {order: 3;}
+}
+
+@media (max-width: 400px) {
+    .search-job {background-position: 92%;}
+    .search-job .card {padding: 2rem;}
+    .subcribe form {width: 100%;}
+    .row.filter form > div.flex-between .btn-floating {border-radius: 50%; width: 50px;}
+}

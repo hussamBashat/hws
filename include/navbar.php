@@ -3,16 +3,16 @@
     <div class="container">
         <div class="nav-wrapper">
           <a href="/hws" class="brand-logo"><i class="material-icons">flight_takeoff</i>HWS</a>
-          <ul class="right hide-on-med-and-down">
+          <ul class="right hide-on-small-only">
               <li><a class="dropdown-trigger" href="#" data-target="category">Category<i class="material-icons right">arrow_drop_down</i></a></li>
-              <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'faq.php')) ? 'active' : ''; ?>"><a href="faq.php" class="tooltipped" data-position="bottom" data-tooltip="Frequently Asked Questions">FAQ</a></li>
+              <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'faq.php')) ? 'active' : ''; ?>"><a href="/hws/faq.php" class="tooltipped" data-position="bottom" data-tooltip="Frequently Asked Questions">FAQ</a></li>
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
               <?php
               $logedin = true;
               if ($logedin) {
               ?>
-              <li><a href="#" data-target="slide-out" class="sidenav-trigger" style="
+              <li class="remove-on-small-only"><a href="#" data-target="slide-out" class="sidenav-trigger tooltipped" data-position="bottom" data-tooltip="User menu" style="
               display: block;
               margin: 0;
               text-align: center;
@@ -20,11 +20,23 @@
               <?php
               } else {
               ?>
-              <li><a href="#login" class="tooltipped modal-trigger" data-position="bottom" data-tooltip="Login"><i class="material-icons">person</i></a></li>
+              <li class="remove-on-small-only"><a href="#login" class="tooltipped modal-trigger" data-position="bottom" data-tooltip="Login"><i class="material-icons">person</i></a></li>
               <?php
               }
               ?>
           </ul>
+          <?php
+          if ($logedin) {
+          ?>
+          <li class="hide-on-med-and-up user-menu"><a href="#" data-target="slide-out" class="sidenav-trigger tooltipped" data-position="bottom" data-tooltip="User menu"><i class="material-icons">menu</i></a></li>
+          <?php
+          } else {
+          ?>
+          <li class="hide-on-med-and-up user-menu"><a href="#login" class="tooltipped modal-trigger" data-position="bottom" data-tooltip="Login"><i class="material-icons">person</i></a></li>
+          <?php
+          }
+          ?>
+          <li id="navMenu" class="hide-on-med-and-up nav-menu"><a href="#" class="tooltipped" data-position="bottom" data-tooltip="Nav menu"><i class="material-icons">more_vert</i></a></li>
         </div>
     </div>
 </nav>
