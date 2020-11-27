@@ -1,7 +1,9 @@
 <?php 
     ob_start();
     session_start();
-    include "Functions.php";
+    $Title = "error";
+    include "include/Functions.php";
+    include "include/header.php";
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
@@ -26,12 +28,31 @@
             header("refresh:0;url=/hws/index.php");
         }
         else {
-            echo "Invalid login";
-            header("refresh:2;url=/hws/index.php");
+            ?>
+            <div class="alert-message error-message">
+                <div class="message-box">
+                    <header class="header-message">
+                        <i class="material-icons">report_problem</i>
+                    </header>
+                    <div class="body-message">
+                        <h2>Exclamation!</h2>
+                        <p>
+                        <i class="material-icons">info</i>
+                            There is an error in the username or password.
+                        </p>
+                    </div>
+                    <footer class="footer-message">
+                        <button type="button" onclick="window.history.back()" class="waves-effect waves-light btn clasic-btn">Ok</button>
+                    </footer>
+                </div>
+            </div>
+            <?php
+            // header("refresh:2;url=/hws/index.php");
         }
     }
     else {
         header("Location: /hws/index.php");
     }
     ob_end_flush();
+    include "include/footer.php";
 ?>

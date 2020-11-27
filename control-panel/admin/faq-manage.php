@@ -150,7 +150,7 @@ if (isset($_SESSION['admin'])) {
                             </div>
                             <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" name="answer" class="materialize-textarea" required><?php echo $row['questions'] ?></textarea>
+                                <textarea id="textarea1" name="answer" class="materialize-textarea" required><?php echo $row['answer'] ?></textarea>
                                 <label for="textarea1">Edit Answer</label>
                             </div>
                             </div> 

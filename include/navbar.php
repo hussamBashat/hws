@@ -54,7 +54,7 @@
 <!-- Login Modal -->
 <div id="login" class="modal login-modal">
   <div class="modal-content p-0 center-align">
-    <form method="post" action="include/login.php">
+    <form method="post" action="login.php">
       <h5>Login Now</h5>
       <div class="row m-0">
         <div class="input-field col s12">
@@ -101,7 +101,7 @@
     <?php
       if (isset($_SESSION['admin'])) {?>
         <!-- Admin Link -->
-        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'index.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/index.php"><i class="material-icons">dashboard</i>Dashboard</a></li>
+        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], '/admin/index.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/index.php"><i class="material-icons">dashboard</i>Dashboard</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'users.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/users.php"><i class="material-icons">supervisor_account</i>Users</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'faq-manage.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/faq-manage.php"><i class="material-icons">question_answer</i>FAQ</a></li>
         <li><div class="divider"></div></li>
