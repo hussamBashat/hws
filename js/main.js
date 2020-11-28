@@ -19,6 +19,15 @@
         let elems = document.querySelectorAll('.sidenav'),
             instances = M.Sidenav.init(elems, {edge: "right"});
     });
-    
+
+    //
+    let btns = document.querySelectorAll(".select-id"),
+        inputHidden = document.querySelector("#btnId");
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+            let id = this.dataset.id;
+            inputHidden.value = id;
+        }
+    }
 
 })();

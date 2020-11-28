@@ -30,43 +30,46 @@ if (isset($_SESSION['admin'])) {
     <!-- Start Users -->
     <section class="users">
         <div class="container">
-            <table class="striped highlight responsive-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>اسم المستخدم</th>
-                        <th>البريد الإلكتروني</th>
-                        <th>أُضيف في</th>
-                        <th>عمليات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        if ($stmt->rowCount() > 0) {
-                            $data = $stmt->fetchAll();
-                            foreach ($data as $value) {?>
-                                <tr>
-                                    <td><?php echo $value['id']; ?></td>
-                                    <td><?php echo $value['username']; ?></td>
-                                    <td><?php echo $value['email']; ?></td>
-                                    <td><?php echo $value['added_in']; ?></td>
-                                    <td class="flex-between">
-                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حظر"><i class="material-icons">block</i></button>
-                                    </td>
-                                </tr>
-                                <?php
+            <form method="post" action="../include/display_user.php">
+                <input type="hidden" name="id" id="btnId">
+                <table class="striped highlight responsive-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>اسم المستخدم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>أُضيف في</th>
+                            <th>عمليات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            if ($stmt->rowCount() > 0) {
+                                $data = $stmt->fetchAll();
+                                foreach ($data as $value) {?>
+                                    <tr class="<?php echo ($value['Status'] == 0 ? "ban" : "") ?>">
+                                        <td><?php echo $value['id']; ?></td>
+                                        <td><?php echo $value['username']; ?></td>
+                                        <td><?php echo $value['email']; ?></td>
+                                        <td><?php echo $value['added_in']; ?></td>
+                                        <td class="flex-between">
+                                            <button name="del" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                            <button name="ben" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حظر"><i class="material-icons">block</i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
                             }
-                        }
-                        else {?>
-                            <tr>
-                                <td>لم يتم إضافة مستخدمين</td>
-                            </tr><?php
-                        }
-                    ?>
-                    
-                </tbody>
-            </table>
+                            else {?>
+                                <tr>
+                                    <td>لم يتم إضافة مستخدمين</td>
+                                </tr><?php
+                            }
+                        ?>
+                        
+                    </tbody>
+                </table>
+            </form>
         </div>
     </section>
 
