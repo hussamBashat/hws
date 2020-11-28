@@ -4,10 +4,10 @@
     Designed in: 23/11/2020
 */
 
-body {direction: rtl; text-align: right;}
+body {text-align: right;}
 
 /* Font Family */
-h1, h2, h3, h4, h5, h6, .heading-font {font-family: 'Cairo', sans-serif; font-weight: bold;}
+h1, h2, h3, h4, h5, h6, .heading-font {font-family: 'Cairo', sans-serif; font-weight: 600; letter-spacing: -1px;}
 body, .text-font {font-family: 'Tajawal', sans-serif;}
 
 /* Custom Elements Style */
@@ -21,14 +21,19 @@ body, .text-font {font-family: 'Tajawal', sans-serif;}
 .nav-wrapper .brand-logo .material-icons {margin-right: 0; margin-left: 5px;}
 .nav-wrapper .hide-on-med-and-up.user-menu {right: auto; left: 50px;}
 .nav-wrapper .hide-on-med-and-up.nav-menu {right: auto; left: 0;}
+nav ul li {float: right;}
+.sidenav li>a>i,
+.sidenav li>a>[class^="mdi-"],
+.sidenav li>a li>a>[class*="mdi-"],
+.sidenav li>a>i.material-icons {float: right; margin: 0 0 0 20px;}
 
 /* Login Modal and Admin Login */
 .login-modal .modal-close {left: auto; right: -15px;}
-
 .tab-content {border-radius: .25rem 0 .25rem .25rem;}
-/* Custom Input Style */
 
+/* Custom Input Style */
 .input-field.custom input {margin-left: 0; margin-right: 2.5rem;}
+.input-field.custom label {margin: 0; padding-right: 3rem;}
 
 /* Start Why Our Section */
 .why-our .card .icon i {margin-right: 0; margin-left: .5rem;}
@@ -37,9 +42,6 @@ body, .text-font {font-family: 'Tajawal', sans-serif;}
 .category .cat-box:hover {transform: translateX(-10px)}
 
 .search-job .card .prefix {left: auto; right: 0;}
-
-/* Hot Jobs Section */
-.hot-jobs .job-box .badge {margin-right: 0; margin-left: 5px;}
 
 /* Testimonial Section Style */
 
@@ -53,7 +55,10 @@ body, .text-font {font-family: 'Tajawal', sans-serif;}
     margin-left: .5rem;
     border-right: 0;
     border-left: 1px solid var(--white-gray);
+    width: 70px;
+    text-align: center;
 }
+
 
 /*
     *************************
@@ -63,6 +68,9 @@ body, .text-font {font-family: 'Tajawal', sans-serif;}
     *************************
 */
 
+.my-breadcrumb .list-item li,
+.my-breadcrumb .list-item li a {margin-right: 0; margin-left: 1rem;}
+
 .top-bar .material-icons {margin: -1px 0 0 4px;}
 
 /* Dashboard Style */
@@ -70,14 +78,20 @@ body, .text-font {font-family: 'Tajawal', sans-serif;}
 
 /* Users Page Style */
 table td .btn:first-child {margin-right: 0; margin-left: 5px;}
+table td, table th {text-align: right;}
 
-/*
+    /*
     *********************
     *********************
     ** Make Responsive **
     *********************
     *********************
 */
+
+@media (max-width: 991px) {
+    nav .brand-logo {left: auto; right: 0;}
+}
+
 @media (max-width :767px) and (min-width: 575px) {
     .row-header .col:last-of-type img {left: auto; right: 13%;}
 }

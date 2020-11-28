@@ -55,7 +55,7 @@ a {text-decoration: none; color: inherit;}
 }
 .custom-link:hover {color: var(--second-color);}
 /* Navbar */
-.nav-wrapper .brand-logo {font-size: 18px;}
+.nav-wrapper .brand-logo {top: 9px}
 .nav-wrapper .brand-logo .material-icons {margin-right: 5px;}
 .nav-wrapper .dropdown-content {top: 65px !important;}
 .nav-wrapper .hide-on-med-and-up {
@@ -563,6 +563,7 @@ table td .btn:last-child {background-color: var(--gray);}
 }
 
 @media (max-width: 600px) {
+    .nav-wrapper .brand-logo {top: 5px;}
     .remove-on-small-only {display: none;}
     .nav-wrapper > ul {
         float: none !important;

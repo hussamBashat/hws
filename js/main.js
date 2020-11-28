@@ -14,4 +14,11 @@
         this.previousElementSibling.classList.toggle("hide");
     }
 
+    // Make Sidenav form right
+    document.addEventListener('DOMContentLoaded', function() {
+        let elems = document.querySelectorAll('.sidenav'),
+            instances = M.Sidenav.init(elems, {edge: "right"});
+    });
+    
+
 })();

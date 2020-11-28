@@ -16,15 +16,15 @@ if (isset($_SESSION['admin'])) {
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between active"><i class="material-icons">supervisor_account</i> Users</li>
+                <li class="flex-between active"><i class="material-icons">supervisor_account</i> المستخدمين</li>
             </ul>
         </div>
     </div>
     <div class="container">
         <div class="top-bar flex-between">
-            <h1>Users management.</h1>
-            <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">person_add</i> Add New</a>
-            <p>This page displays all the user information, you can add or delete a user from here.</p>
+            <h1>إدارة المستخدمين.</h1>
+            <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">person_add</i> إضافة جديد</a>
+            <p>تعرض هذه الصفحة جميع معلومات المستخدم ، يمكنك إضافة أو حذف مستخدم من هنا.</p>
         </div>
     </div>
     <!-- Start Users -->
@@ -34,10 +34,10 @@ if (isset($_SESSION['admin'])) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Added in</th>
-                        <th>Operations</th>
+                        <th>اسم المستخدم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>أُضيف في</th>
+                        <th>عمليات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,8 +51,8 @@ if (isset($_SESSION['admin'])) {
                                     <td><?php echo $value['email']; ?></td>
                                     <td><?php echo $value['added_in']; ?></td>
                                     <td class="flex-between">
-                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Delete"><i class="material-icons">delete</i></button>
-                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="Ban"><i class="material-icons">block</i></button>
+                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حظر"><i class="material-icons">block</i></button>
                                     </td>
                                 </tr>
                                 <?php
@@ -77,16 +77,16 @@ if (isset($_SESSION['admin'])) {
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between"><a href="users.php" class="flex-between"><i class="material-icons">supervisor_account</i> Users</a> / </li>
-                <li class="flex-between active"><i class="material-icons">person_add</i> Add New</li>
+                <li class="flex-between"><a href="users.php" class="flex-between"><i class="material-icons">supervisor_account</i> المستخدمين</a> / </li>
+                <li class="flex-between active"><i class="material-icons">person_add</i> إضافة جديد</li>
             </ul>
         </div>
     </div>
     <div class="container">
     <div class="top-bar flex-between">
-        <h1>Add new user.</h1>
-        <span onclick="window.history.back()" class="custom-link flex-between"><i class="material-icons">keyboard_arrow_left</i> Back</span>
-        <p>You can add a new user from here, all of the following fields are required</p>
+        <h1>إضافة مستخدم جديد</h1>
+        <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
+        <p>يمكنك إضافة مستخدم جديد من هنا ، جميع الحقول التالية مطلوبة.</p>
     </div>
     </div>
     <!-- Start User Add Form -->
@@ -97,24 +97,24 @@ if (isset($_SESSION['admin'])) {
                     <div class="row m-0">
                         <div class="input-field col s12">
                             <input id="username" name="username" type="text" class="validate" required>
-                            <label for="username">Username</label>
+                            <label for="username">اسم المستخدم</label>
                         </div>
                     </div>
                     <div class="row m-0">
                         <div class="input-field col s12">
                             <input id="email" name="email" type="email" class="validate" required>
-                            <label for="email">Email</label>
+                            <label for="email">البريد الإلكتروني</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="password" name="password" type="password" class="validate" required>
-                            <label for="password">Password</label>
+                            <label for="password">كلمة المرور</label>
                         </div>
                     </div>        
                     <div class="row">
                         <div class="col s12">
-                            <button type="submit" name="add_user" class="btn waves-effect waves-light"> Add User</button>
+                            <button type="submit" name="add_user" class="btn waves-effect waves-light"> إضافة المستخدم</button>
                         </div>
                     </div>
                 </div>
