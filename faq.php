@@ -24,8 +24,8 @@ $stmt->execute();
           }
         }
         else {?>
-            <li>
-              لم يتم إضافة أسئلة شائعة
+            <li class="no-data">
+              <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد اسئلة شائعة حتى الآن
             </li><?php
         }
       ?>

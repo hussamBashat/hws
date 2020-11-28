@@ -47,14 +47,14 @@ if (isset($_SESSION['admin'])) {
                             if ($stmt->rowCount() > 0) {
                                 $data = $stmt->fetchAll();
                                 foreach ($data as $value) {?>
-                                    <tr class="<?php echo ($value['Status'] == 0 ? "ban" : "") ?>">
+                                    <tr class="<?php echo ($value['Status'] == 0 ? "ban tooltipped" : "") ?>" data-position="bottom" data-tooltip="محظور">
                                         <td><?php echo $value['id']; ?></td>
                                         <td><?php echo $value['username']; ?></td>
                                         <td><?php echo $value['email']; ?></td>
                                         <td><?php echo $value['added_in']; ?></td>
                                         <td class="flex-between">
                                             <button name="del" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                            <button name="ben" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حظر"><i class="material-icons">block</i></button>
+                                            <button name="ben" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حظر / فك الحظر"><i class="material-icons">block</i></button>
                                         </td>
                                     </tr>
                                     <?php
@@ -62,7 +62,9 @@ if (isset($_SESSION['admin'])) {
                             }
                             else {?>
                                 <tr>
-                                    <td>لم يتم إضافة مستخدمين</td>
+                                <td colspan="5" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لم تتم إضافة مستخدمين حتى الآن
+                                </td>
                                 </tr><?php
                             }
                         ?>

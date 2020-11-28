@@ -20,7 +20,7 @@
             instances = M.Sidenav.init(elems, {edge: "right"});
     });
 
-    //
+    // Get Row id When Click Delete Button
     let btns = document.querySelectorAll(".select-id"),
         inputHidden = document.querySelector("#btnId");
     for (let i = 0; i < btns.length; i++) {

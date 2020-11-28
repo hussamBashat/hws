@@ -30,40 +30,45 @@ if (isset($_SESSION['admin'])) {
     <!-- Start FAQ -->
     <section class="faq-manage">
         <div class="container">
-            <table class="striped highlight responsive-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>السؤال</th>
-                        <th>الجواب</th>
-                        <th>عمليات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        if ($stmt->rowCount() > 0) {
-                            $data = $stmt->fetchAll();
-                            foreach ($data as $value) {?>
-                                <tr>
-                                    <td><?php echo $value['id']; ?></td>
-                                    <td><?php echo $value['questions']; ?></td>
-                                    <td><?php echo $value['answer']; ?></td>
-                                    <td class="flex-between">
-                                        <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                                        <button class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                    </td>
-                                </tr>
-                                <?php
+            <form method="post" action="../include/">
+                <input type="hidden" name="id" id="btnId">
+                <table class="striped highlight responsive-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>السؤال</th>
+                            <th>الجواب</th>
+                            <th>عمليات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            if ($stmt->rowCount() > 0) {
+                                $data = $stmt->fetchAll();
+                                foreach ($data as $value) {?>
+                                    <tr>
+                                        <td><?php echo $value['id']; ?></td>
+                                        <td><?php echo $value['questions']; ?></td>
+                                        <td><?php echo $value['answer']; ?></td>
+                                        <td class="flex-between">
+                                            <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
+                                            <button data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
                             }
-                        }
-                        else {?>
-                            <tr>
-                                <td>لم يتم إضافة أسئلة شائعة</td>
-                            </tr><?php
-                        }
-                    ?>
-                </tbody>
-            </table>
+                            else {?>
+                                <tr>
+                                    <td colspan="4" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                        <i class="material-icons" style="transform: translateY(8px);">info</i> لم تتم إضافة أسئلة شائعة حتى الآن
+                                    </td>
+                                </tr><?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </section>
     
