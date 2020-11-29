@@ -30,7 +30,7 @@ if (isset($_SESSION['admin'])) {
     <!-- Start Users -->
     <section class="users">
         <div class="container">
-            <form method="post" action="../include/display_user.php">
+            <form method="post" action="../include/user_operation.php">
                 <input type="hidden" name="id" id="btnId">
                 <table class="striped highlight responsive-table">
                     <thead>

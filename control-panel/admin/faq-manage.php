@@ -30,7 +30,7 @@ if (isset($_SESSION['admin'])) {
     <!-- Start FAQ -->
     <section class="faq-manage">
         <div class="container">
-            <form method="post" action="../include/">
+            <form method="post" action="../include/delete_faq.php">
                 <input type="hidden" name="id" id="btnId">
                 <table class="striped highlight responsive-table">
                     <thead>
@@ -52,7 +52,7 @@ if (isset($_SESSION['admin'])) {
                                         <td><?php echo $value['answer']; ?></td>
                                         <td class="flex-between">
                                             <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                                            <button data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                            <button name="faqdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
                                         </td>
                                     </tr>
                                     <?php
