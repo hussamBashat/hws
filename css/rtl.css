@@ -3,101 +3,37 @@
     Contact me => facebook.com/hussam.bashat
     Designed in: 23/11/2020
 */
-
-body {text-align: right;}
-
-/* Font Family */
-h1, h2, h3, h4, h5, h6, .heading-font {font-family: 'Cairo', sans-serif; font-weight: 600; letter-spacing: -1px;}
-body, .text-font {font-family: 'Tajawal', sans-serif;}
-
-/* Custom Elements Style */
-
-/*
-    Custom Classes Style
-    ********************
-*/
-
-/* Navbar */
-.nav-wrapper .brand-logo .material-icons {margin-right: 0; margin-left: 5px;}
-.nav-wrapper .hide-on-med-and-up.user-menu {right: auto; left: 50px;}
-.nav-wrapper .hide-on-med-and-up.nav-menu {right: auto; left: 0;}
-nav ul li {float: right;}
-.sidenav li>a>i,
-.sidenav li>a>[class^="mdi-"],
-.sidenav li>a li>a>[class*="mdi-"],
-.sidenav li>a>i.material-icons {float: right; margin: 0 0 0 20px;}
-
-/* Login Modal and Admin Login */
-.login-modal .modal-close {left: auto; right: -15px;}
-.tab-content {border-radius: .25rem 0 .25rem .25rem;}
-
-/* Custom Input Style */
-.input-field.custom input {margin-left: 0; margin-right: 2.5rem;}
-.input-field.custom label {margin: 0; padding-right: 3rem;}
-
-/* Start Why Our Section */
-.why-our .card .icon i {margin-right: 0; margin-left: .5rem;}
-
-/* Start category Section */
-.category .cat-box:hover {transform: translateX(-10px)}
-
-.search-job .card .prefix {left: auto; right: 0;}
-
-/* Testimonial Section Style */
-
-/* Subcribe Section Style */
-.subcribe form .input-field input {border-radius: 0 .25rem .25rem 0;}
-.subcribe form .btn {border-radius: .25rem 0 0 .25rem;}
-
-/* FAQ Page Style */
-.faq .collapsible .letter {
-    margin-right: 0;
-    margin-left: .5rem;
-    border-right: 0;
-    border-left: 1px solid var(--white-gray);
-    width: 70px;
-    text-align: center;
+body{text-align:right}
+.heading-font,h1,h2,h3,h4,h5,h6{font-family:Cairo,sans-serif;font-weight:600;letter-spacing:-1px}
+.text-font,body{font-family:Tajawal,sans-serif}
+.nav-wrapper .brand-logo .material-icons{margin-right:0;margin-left:5px}
+.nav-wrapper .hide-on-med-and-up.user-menu{right:auto;left:50px}
+.nav-wrapper .hide-on-med-and-up.nav-menu{right:auto;left:0}
+nav ul li{float:right}
+.sidenav li>a li>a>[class*=mdi-],.sidenav li>a>[class^=mdi-],.sidenav li>a>i,.sidenav li>a>i.material-icons{float:right;margin:0 0 0 20px}
+.login-modal .modal-close{left:auto;right:-15px}
+.tab-content{border-radius:.25rem 0 .25rem .25rem}
+.input-field.custom input{margin-left:0;margin-right:2.5rem}
+.input-field.custom label{margin:0;padding-right:3rem}
+.why-our .card .icon i{margin-right:0;margin-left:.5rem}
+.category .cat-box:hover{transform:translateX(-10px)}
+.search-job .card .prefix{left:auto;right:0}
+.subcribe form .input-field input{border-radius:0 .25rem .25rem 0}
+.subcribe form .btn{border-radius:.25rem 0 0 .25rem}
+.faq .collapsible .letter{margin-right:0;margin-left:.5rem;border-right:0;border-left:1px solid var(--white-gray);width:70px;text-align:center}
+.faq .collapsible .letter.a{padding-right:2rem}
+.my-breadcrumb .list-item li,.my-breadcrumb .list-item li a{margin-right:0;margin-left:1rem}
+.top-bar .material-icons{margin:-1px 0 0 4px}
+.stat-box .footer .material-icons{margin-right:0;margin-left:5px}
+table td .btn:first-child{margin-right:0;margin-left:5px}
+table td,table th{text-align:right}
+@media (max-width:991px){
+nav .brand-logo{left:auto;right:0}
 }
-.faq .collapsible .letter.a {padding-right: 2rem;}
-
-
-/*
-    *************************
-    *************************
-    ** Control Panel Style **
-    *************************
-    *************************
-*/
-
-.my-breadcrumb .list-item li,
-.my-breadcrumb .list-item li a {margin-right: 0; margin-left: 1rem;}
-
-.top-bar .material-icons {margin: -1px 0 0 4px;}
-
-/* Dashboard Style */
-.stat-box .footer .material-icons {margin-right: 0; margin-left: 5px;}
-
-/* Users Page Style */
-table td .btn:first-child {margin-right: 0; margin-left: 5px;}
-table td, table th {text-align: right;}
-
-    /*
-    *********************
-    *********************
-    ** Make Responsive **
-    *********************
-    *********************
-*/
-
-@media (max-width: 991px) {
-    nav .brand-logo {left: auto; right: 0;}
+@media (max-width :767px) and (min-width:575px){
+.row-header .col:last-of-type img{left:auto;right:13%}
 }
-
-@media (max-width :767px) and (min-width: 575px) {
-    .row-header .col:last-of-type img {left: auto; right: 13%;}
-}
-
-@media (max-width: 600px) {
-    .nav-wrapper > ul {left: auto; right: -100%;}
-    .nav-wrapper > ul.slide-open {left: auto; right: 0;}
+@media (max-width:600px){
+.nav-wrapper>ul{left:auto;right:-100%}
+.nav-wrapper>ul.slide-open{left:auto;right:0}
 }

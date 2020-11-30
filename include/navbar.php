@@ -91,9 +91,9 @@
     <li>
       <div class="user-view">
         <div class="background">
-          <img src="https://lorempixel.com/250/250/nature/2" width="100%" class="responsive-img">
+          <img src="/hws/images/bg2.jpg" alt="Background" width="100%" class="responsive-img">
         </div>
-        <a href="#user"><img class="circle" src="https://lorempixel.com/250/250/nature/1"></a>
+        <a href="#user"><img class="circle" src="/hws/images/admin.jpg" width="64" height="64" alt="User Image"></a>
         <a href="#"><span class="white-text name"><?php echo $_SESSION['username']; ?></span></a>
         <a href="#"><span class="white-text email"><?php echo $_SESSION['email']; ?></span></a>
       </div>

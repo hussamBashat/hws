@@ -370,35 +370,35 @@ include "include/header.php"; ?>
         <div class="container">
           <div class="carousel-item">
             <div class="img-container">
-              <img src="https://lorempixel.com/250/250/nature/1" class="responsive-img">
+              <img src="images/person/1.jpg" width="70" height="70" alt="Person" class="responsive-img">
             </div>
             <h6>ناظم أبو الخل</h6>
             <p>من أفضل التجارب التي خضتها في حياتي و كانت نقطة فصل بين حياتي بلا عمل إلى حياة جديدة بعمل مناسب و براتب مناسب، كم جعلت الحياة أبسط مما أتخيل.</p>
           </div>
           <div class="carousel-item">
             <div class="img-container">
-              <img src="https://lorempixel.com/250/250/nature/2" class="responsive-img">
+              <img src="images/person/2.jpg" width="70" height="70" alt="Person" class="responsive-img">
             </div>
             <h6>محمد وليد</h6>
             <p> لم أكن أتخيل وجود مثل هذه الخدمة التي سارعت و التسجيل فيها فور معرفتي بوجودها و كانت النتيجة أن تحقق حلمي و العمل كممرض في مشفى الرياض في السعودية.</p>
           </div>
           <div class="carousel-item">
             <div class="img-container">
-              <img src="https://lorempixel.com/250/250/nature/3" class="responsive-img">
+              <img src="images/person/3.jpg" width="70" height="70" alt="Person" class="responsive-img">
             </div>
             <h6>شمس الصباح</h6>
             <p>الحمدلله الذي منحني بعد عناء بحث لمدة سنين أن أحظى بوظيفة براتب جيد و كل هذا بفضل الله ثم هذه الخدمة.</p>
           </div>
           <div class="carousel-item">
             <div class="img-container">
-              <img src="https://lorempixel.com/250/250/nature/4" class="responsive-img">
+              <img src="images/person/4.jpg" width="70" height="70" alt="Person" class="responsive-img">
             </div>
             <h6>احمد الاحمد</h6>
             <p> خدمة رائعة بالفعل ، و الأروع من ذلك المعاملة الطيبة لمختلف موظفي الشركة المقدمة للخدمة ، كل التوفيق لهم.</p>
           </div>
           <div class="carousel-item">
             <div class="img-container">
-              <img src="https://lorempixel.com/250/250/nature/5" class="responsive-img">
+              <img src="images/person/5.jpg" width="70" height="70" alt="Person" class="responsive-img">
             </div>
             <h6>قمر المساء</h6>
             <p> أنصح و بشدة لكل من لا يجد عمل المسارعة و التسجيل في الخدمة و إن شاء الله ستجد نفسك في المكان المناسب.</p>
