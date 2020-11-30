@@ -35,14 +35,14 @@
                         <i class="material-icons">report_problem</i>
                     </header>
                     <div class="body-message">
-                        <h2>Exclamation!</h2>
+                        <h2>انتبه!</h2>
                         <p>
                         <i class="material-icons">info</i>
-                            There is an error in the username or password.
+                            هناك خطأ في اسم المستخدم أو كلمة المرور.
                         </p>
                     </div>
                     <footer class="footer-message">
-                        <button type="button" onclick="window.history.back()" class="waves-effect waves-light btn clasic-btn">Ok</button>
+                        <button type="button" onclick="window.history.back()" class="waves-effect waves-light btn clasic-btn">حسناً</button>
                     </footer>
                 </div>
             </div>

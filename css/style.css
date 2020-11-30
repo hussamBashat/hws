@@ -441,6 +441,30 @@ a {text-decoration: none; color: inherit;}
 /* Footer Style */
 footer ul {line-height: 1.8 !important;}
 
+/* Go Up Button */
+.go-up {
+    position: fixed;
+    bottom: 2.5rem;
+    left: 1.5rem;
+    background-color: var(--second-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 10;
+    cursor: pointer;
+    transition: var(--transition);
+    display: none;
+}
+.go-up.showing {display: flex !important;}
+.go-up.hideing {display: none !important;}
+.go-up i {color: var(--white);}
+.go-up:hover {opacity: .7;}
+
 
 /*
     *************************
@@ -530,6 +554,25 @@ table td .btn:last-child {background-color: var(--gray);}
 /* FAQ Page */
 .faq-manage table td .btn:first-child {background-color: #26a69a;}
 .faq-manage table td .btn:last-child {background-color: var(--second-color);}
+
+/* Loading Page Style */
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: var(--main-color);
+    z-index: 999999;
+    direction: ltr;
+}
+.loading-page .circle-clipper .circle {border-width: 5px;}  
 
 /*
     *********************

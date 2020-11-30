@@ -20,3 +20,8 @@
     <div class="container">Copyright MAYSAN 2020 &copy;</div>
     </div>
 </footer>
+
+<!-- Start Go Up Button -->
+<div class="go-up" id="goUp">
+    <i class="material-icons">keyboard_arrow_up</i>
+</div>
