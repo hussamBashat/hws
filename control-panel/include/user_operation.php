@@ -21,6 +21,6 @@
             }
         }
     }
-    header("refresh:0;url=../admin/users.php");
+    header("refresh:0;url=../admin/marketers.php");
     ob_end_flush();
 ?>

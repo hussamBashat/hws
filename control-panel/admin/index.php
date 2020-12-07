@@ -30,7 +30,7 @@ if (isset($_SESSION['admin'])) {
           <div class="stat-box one z-depth-2">
             <div class="header">
               <i class="material-icons">person_outline</i>
-              <span><?php echo countItems("id", "users"); ?> مستخدم</span>
+              <span><?php echo countItems("id", "users"); ?> مسوق</span>
             </div>
             <div class="footer flex-between">
               <a href="users.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
@@ -41,12 +41,12 @@ if (isset($_SESSION['admin'])) {
         <div class="col s12 m6 l4">
           <div class="stat-box tow z-depth-2">
             <div class="header">
-              <i class="material-icons">question_answer</i>
-              <span><?php echo countItems("id", "frequently_asked_questions"); ?> سؤال شائع</span>
+              <i class="material-icons">book</i>
+              <span><?php echo countItems("id", "frequently_asked_questions"); ?> سؤال في المرجع</span>
             </div>
             <div class="footer flex-between">
-              <a href="faq-manage.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
-              <a href="faq-manage.php?do=add" class="custom-link flex-between"><i class="material-icons">add</i> إضافة جديد</a>
+              <a href="ref.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
+              <a href="ref.php?do=add" class="custom-link flex-between"><i class="material-icons">add</i> إضافة جديد</a>
             </div>
           </div>
         </div>
@@ -54,11 +54,11 @@ if (isset($_SESSION['admin'])) {
           <div class="stat-box three z-depth-2">
             <div class="header">
               <i class="material-icons">library_books</i>
-              <span>26 تدوينة</span>
+              <span>26 معاملة</span>
             </div>
             <div class="footer flex-between">
-              <a href="#" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
-              <a href="#" class="custom-link flex-between"><i class="material-icons">add</i> إضافة جديد</a>
+              <a href="transactions.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
+              <a href="transactions.php?do=add" class="custom-link flex-between"><i class="material-icons">add</i> إضافة جديد</a>
             </div>
           </div>
         </div>

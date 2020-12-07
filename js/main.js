@@ -30,21 +30,23 @@
 
   // Go Up Button Scroll
   let upButton = document.querySelector("#goUp");
-  upButton.onclick = function () {
-    document.body.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  window.onscroll = function () {
-    if (this.pageYOffset >= 710) {
-      upButton.classList.add("showing");
-      upButton.classList.remove("hideing");
-    } else {
-      upButton.classList.add("hideing");
-      upButton.classList.remove("showing");
-    }
-  };
+  if (upButton) {
+    upButton.onclick = function () {
+      document.body.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+    window.onscroll = function () {
+      if (this.pageYOffset >= 710) {
+        upButton.classList.add("showing");
+        upButton.classList.remove("hideing");
+      } else {
+        upButton.classList.add("hideing");
+        upButton.classList.remove("showing");
+      }
+    };
+  }
 
   // Get Row id When Click Delete Button
   let btns = document.querySelectorAll(".select-id"),
@@ -55,6 +57,17 @@
       inputHidden.value = id;
     };
   }
+
+  // Show Visa Price After Select
+  let visaList = document.querySelector("#visaList"),
+      priceInput = document.querySelector("#price");
+  visaList.onchange = function () {
+    let option = this.options[this.selectedIndex];
+    priceInput.value = option.dataset.price;
+    priceInput.focus();
+  }
+
+
 })();
 
 /*

@@ -7,6 +7,6 @@
         $stmt = $con->prepare("INSERT INTO users(email, username, password, added_in)VALUES(:ze, :zu, :zp, now())");
         $stmt->execute(array("ze" => $_POST['email'], "zu" => $_POST['username'], "zp" => $_POST['password']));
     }
-    header("refresh:0;url=../admin/users.php");
+    header("refresh:0;url=../admin/marketers.php");
     ob_end_flush();
 ?>

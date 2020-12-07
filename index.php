@@ -66,13 +66,13 @@ include "include/header.php"; ?>
                 </div>
                 <div class="input-field custom">
                   <select>
-                  <option value="" disabled selected>الفئة</option>
-                    <option value="1">دوام كامل</option>
-                    <option value="2">دوام جزئى</option>
-                    <option value="3">عمل حر</option>
-                    <option value="4">فترة تدريب</option>
-                    <option value="5">مؤقت</option>
-                  </select>
+                    <option value="" disabled selected>الفئة</option>
+                      <option value="1">دوام كامل</option>
+                      <option value="2">دوام جزئى</option>
+                      <option value="3">عمل حر</option>
+                      <option value="4">فترة تدريب</option>
+                      <option value="5">مؤقت</option>
+                    </select>
                 </div>
                 <div class="input-field custom">
                   <i class="material-icons prefix">location_on</i>

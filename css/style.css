@@ -85,6 +85,8 @@ a{text-decoration:none;color:inherit}
 .input-field.custom input:focus~label{opacity:0}
 .input-field.custom .prefix.active{color:var(--second-color)}
 .input-field.custom .prefix{color:var(--gray)}
+.btn.main-dark {background-color: var(--mian-dark)!important;}
+.input-group-title {padding: .5rem;background-color: var(--white-gray);border-left: 3px solid var(--main-color);}
 .btn-floating.circle{background-color:var(--second-color);width:50px;height:50;transform:translateY(-1px)}
 .btn-floating:hover{background-color:var(--second-color)}
 .main-header .filter{margin:1rem 0;transform:translateY(-3rem)}
@@ -162,7 +164,7 @@ footer ul{line-height:1.8!important}
 .top-bar p{flex-basis:100%;margin-top:3px;font-style:italic;color:var(--gray)}
 .top-bar .btn{background-color:var(--mian-dark)}
 .top-bar .material-icons{margin:-1px 4px 0 0}
-.add-faq,.add-user,.dashboard,.faq-manage,.users{padding:1rem 0}
+.add-faq,.add-user,.dashboard,.faq-manage,.users,.transactions,.add-transactions{padding:1rem 0}
 .stat-box{padding:1rem;margin-bottom:2rem;color:#fff;border-radius:.25rem;text-align:center;transition:var(--transition)}
 .stat-box.one{background-color:#00bcd4}
 .stat-box.tow{background-color:#d46200}
@@ -180,15 +182,17 @@ footer ul{line-height:1.8!important}
 .stat-box .footer a:hover{color:var(--white)}
 table.highlight>tbody>tr:hover{background-color:#ddd}
 table.highlight>tbody>tr.ban{background-color:var(--gray);color:var(--white)}
+table tbody th {font-weight: normal !important;}
 table td.flex-between{justify-content:unset}
 table td .btn:first-child{background-color:var(--second-color);margin-right:.5rem}
 table td .btn:last-child{background-color:var(--gray)}
 .add-user form{padding:1rem;background:#fefefe;border-radius:.25rem;border:1px solid #f1f1f1;width:35rem}
 .add-faq form .btn,.add-user form .btn{background-color:var(--mian-dark);text-transform:capitalize;width:100px}
-.faq-manage table td .btn:first-child{background-color:#26a69a}
-.faq-manage table td .btn:last-child{background-color:var(--second-color)}
+.faq-manage table td .btn:first-child,.transactions table td .btn:first-child{background-color:#26a69a}
+.faq-manage table td .btn:last-child,.transactions table td .btn:last-child{background-color:var(--second-color)}
 .loading-page{position:fixed;top:0;left:0;width:100%;height:100vh;display:flex;justify-content:center;align-items:center;background-color:var(--main-color);z-index:999999;direction:ltr}
 .loading-page .circle-clipper .circle{border-width:5px}
+.file-field .btn, .file-field .btn-large, .file-field .btn-small {background-color: var(--white-gray)!important;color: var(--main-color);}
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
 }

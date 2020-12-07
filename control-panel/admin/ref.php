@@ -2,13 +2,13 @@
 ob_start();
 session_start();
 if (isset($_SESSION['admin'])) {
-    $Title = "ضبط الأسئلة الشائعة";
+    $Title = "المرجع";
     include "../../include/Functions.php";
     include "../include/header.php";
     include "../../include/navbar.php";
-    $do = isset($_GET['do']) ? $_GET['do'] : 'faq';
+    $do = isset($_GET['do']) ? $_GET['do'] : 'ref';
     
-    if ($do == "faq") {       // FAQ Page
+    if ($do == "ref") {       // FAQ Page
         $stmt = $con->prepare("SELECT * FROM frequently_asked_questions ORDER BY id DESC");
         $stmt->execute();
     ?>
@@ -16,18 +16,18 @@ if (isset($_SESSION['admin'])) {
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between active"><i class="material-icons">question_answer</i> الأسئلةالشائعة</li>
+                <li class="flex-between active"><i class="material-icons">book</i> المرجع</li>
             </ul>
         </div>
     </div>
     <div class="container">
         <div class="top-bar flex-between">
-            <h1>إدارة الأسئلةالشائعة</h1>
+            <h1>إدارة المرجع</h1>
             <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">add</i> إضافة جديد</a>
-            <p>تعرض هذه الصفحة جميع الأسئلةالشائعة, يمكنك إضافة وتعديل وحذف الأسئلةالشائعةمن هنا..</p>
+            <p>تعرض هذه الصفحة جميع المعلومات التي يحتاجها المسوق, يمكنك إضافة وتعديل وحذف معلومات المرجع من هنا..</p>
         </div>
     </div>
-    <!-- Start FAQ -->
+    <!-- Start REF -->
     <section class="faq-manage">
         <div class="container">
             <form method="post" action="../include/delete_faq.php">
@@ -73,20 +73,20 @@ if (isset($_SESSION['admin'])) {
     </section>
     
     <?php
-    } elseif ($do == "add") {   // Add FAQ
+    } elseif ($do == "add") {   // Add REF
     ?>
     <!-- Breadcrumb -->
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between"><a href="?do=faq" class="flex-between"><i class="material-icons">question_answer</i> الأسئلةالشائعة</a> / </li>
+                <li class="flex-between"><a href="?do=ref" class="flex-between"><i class="material-icons">book</i> المرجع</a> / </li>
                 <li class="flex-between active"><i class="material-icons">add</i> إضافة جديد</li>
             </ul>
         </div>
     </div>
     <div class="container">
     <div class="top-bar flex-between">
-        <h1>إضافةسؤال جديد</h1>
+        <h1>إضافة سؤال جديد</h1>
         <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
         <p>يمكنك إضافة سؤال جديد من هنا, جميع الحقول التالية مطلوبة.</p>
     </div>
@@ -118,7 +118,7 @@ if (isset($_SESSION['admin'])) {
         </div>
     </section>
     <?php
-    } elseif ($do == "edit") {   // Edit FAQ
+    } elseif ($do == "edit") {   // Edit REF
         $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
         $stmt1 = $con->prepare("SELECT * FROM frequently_asked_questions WHERE id = ?");
         $stmt1->execute(array($id));
@@ -129,19 +129,19 @@ if (isset($_SESSION['admin'])) {
             <div class="my-breadcrumb">
                 <div class="container">
                     <ul class="list-item">
-                        <li class="flex-between"><a href="?do=faq" class="flex-between"><i class="material-icons">question_answer</i> الأسئلةالشائعة</a> / </li>
-                        <li class="flex-between active"><i class="material-icons">edit</i> تعديل الأسئلةالشائعة</li>
+                        <li class="flex-between"><a href="?do=ref" class="flex-between"><i class="material-icons">book</i> المرجع</a> / </li>
+                        <li class="flex-between active"><i class="material-icons">edit</i> تعديل المرجع</li>
                     </ul>
                 </div>
             </div>
             <div class="container">
-            <div class="top-bar flex-between">
-                <h1>تعديل الأسئلةالشائعة</h1>
-                <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
-                <p>يمكنك تعديل معلومات الأسئلةالشائعة من هنا, قم بتعديل البيانات بالشكل المناسب</p>
+                <div class="top-bar flex-between">
+                    <h1>تعديل المرجع</h1>
+                    <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
+                    <p>يمكنك تعديل معلومات المرجع من هنا, قم بتعديل البيانات بالشكل المناسب</p>
+                </div>
             </div>
-            </div>
-            <!-- Start FAQ Edit Form -->
+            <!-- Start REF Edit Form -->
             <section class="add-faq">
                 <div class="container">
                     <form method="post" action="../include/edit_faq.php">
@@ -171,7 +171,7 @@ if (isset($_SESSION['admin'])) {
             <?php
         }
         else {
-            header("refresh:0;url=?do=faq");
+            header("refresh:0;url=?do=ref");
         }
     }
     include "../include/footer.php";

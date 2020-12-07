@@ -6,9 +6,9 @@ if (isset($_SESSION['admin'])) {
     include "../../include/Functions.php";
     include "../include/header.php";
     include "../../include/navbar.php";
-    $do = isset($_GET['do']) ? $_GET['do'] : 'users';
+    $do = isset($_GET['do']) ? $_GET['do'] : 'marketers';
 
-    if ($do == "users") {       // Users Page
+    if ($do == "marketers") {       // Marketers Page
         $stmt = $con->prepare("SELECT * FROM users ORDER BY id DESC");
         $stmt->execute();
     ?>
@@ -16,15 +16,15 @@ if (isset($_SESSION['admin'])) {
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between active"><i class="material-icons">supervisor_account</i> المستخدمين</li>
+                <li class="flex-between active"><i class="material-icons">supervisor_account</i> المسوقين</li>
             </ul>
         </div>
     </div>
     <div class="container">
         <div class="top-bar flex-between">
-            <h1>إدارة المستخدمين.</h1>
+            <h1>إدارة المسوقين.</h1>
             <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">person_add</i> إضافة جديد</a>
-            <p>تعرض هذه الصفحة جميع معلومات المستخدم ، يمكنك إضافة أو حذف مستخدم من هنا.</p>
+            <p>تعرض هذه الصفحة جميع معلومات المسوقين ، يمكنك إضافة أو حذف مسوق من هنا.</p>
         </div>
     </div>
     <!-- Start Users -->
@@ -36,7 +36,7 @@ if (isset($_SESSION['admin'])) {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>اسم المستخدم</th>
+                            <th>اسم المسوق</th>
                             <th>البريد الإلكتروني</th>
                             <th>أُضيف في</th>
                             <th>عمليات</th>
@@ -63,7 +63,7 @@ if (isset($_SESSION['admin'])) {
                             else {?>
                                 <tr>
                                 <td colspan="5" class="center-align" style="color: var(--second-color); font-weight: 600;">
-                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لم تتم إضافة مستخدمين حتى الآن
+                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لم تتم إضافة مسوقين حتى الآن
                                 </td>
                                 </tr><?php
                             }
@@ -82,16 +82,16 @@ if (isset($_SESSION['admin'])) {
     <div class="my-breadcrumb">
         <div class="container">
             <ul class="list-item">
-                <li class="flex-between"><a href="users.php" class="flex-between"><i class="material-icons">supervisor_account</i> المستخدمين</a> / </li>
+                <li class="flex-between"><a href="marketers.php" class="flex-between"><i class="material-icons">supervisor_account</i> المسوقين</a> / </li>
                 <li class="flex-between active"><i class="material-icons">person_add</i> إضافة جديد</li>
             </ul>
         </div>
     </div>
     <div class="container">
     <div class="top-bar flex-between">
-        <h1>إضافة مستخدم جديد</h1>
+        <h1>إضافة مسوق جديد</h1>
         <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
-        <p>يمكنك إضافة مستخدم جديد من هنا ، جميع الحقول التالية مطلوبة.</p>
+        <p>يمكنك إضافة مسوق جديد من هنا ، جميع الحقول التالية مطلوبة.</p>
     </div>
     </div>
     <!-- Start User Add Form -->
@@ -119,7 +119,7 @@ if (isset($_SESSION['admin'])) {
                     </div>        
                     <div class="row">
                         <div class="col s12">
-                            <button type="submit" name="add_user" class="btn waves-effect waves-light"> إضافة المستخدم</button>
+                            <button type="submit" name="add_user" class="btn waves-effect waves-light"> إضافة المسوق</button>
                         </div>
                     </div>
                 </div>
