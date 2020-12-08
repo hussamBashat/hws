@@ -85,7 +85,7 @@ a{text-decoration:none;color:inherit}
 .input-field.custom input:focus~label{opacity:0}
 .input-field.custom .prefix.active{color:var(--second-color)}
 .input-field.custom .prefix{color:var(--gray)}
-.btn.main-dark {background-color: var(--mian-dark)!important;}
+.main-dark {background-color: var(--mian-dark)!important;}
 .input-group-title {padding: .5rem;background-color: var(--white-gray);border-left: 3px solid var(--main-color);}
 .btn-floating.circle{background-color:var(--second-color);width:50px;height:50;transform:translateY(-1px)}
 .btn-floating:hover{background-color:var(--second-color)}
@@ -193,6 +193,31 @@ table td .btn:last-child{background-color:var(--gray)}
 .loading-page{position:fixed;top:0;left:0;width:100%;height:100vh;display:flex;justify-content:center;align-items:center;background-color:var(--main-color);z-index:999999;direction:ltr}
 .loading-page .circle-clipper .circle{border-width:5px}
 .file-field .btn, .file-field .btn-large, .file-field .btn-small {background-color: var(--white-gray)!important;color: var(--main-color);}
+.label-check {margin-top: 12px;}
+.cart-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+}
+.cart-modal {
+    overflow: unset;
+    max-height: 100%;
+    width: 36rem;
+    top: 5% !important;
+}
+.modal-header {
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: var(--white);
+    border-radius: .25rem;
+}
+.cart-modal .modal-line {
+    padding: .8rem 1rem;
+    background-color: var(--white-gray);
+}
+.cart-modal .modal-line:nth-child(odd) {
+    background-color: var(--white);
+}
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
 }

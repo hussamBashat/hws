@@ -60,11 +60,13 @@
 
   // Show Visa Price After Select
   let visaList = document.querySelector("#visaList"),
-      priceInput = document.querySelector("#price");
+      priceInput = document.querySelector("#price"),
+      orginlPrice = document.querySelector("#orginlPrice");
   visaList.onchange = function () {
     let option = this.options[this.selectedIndex];
-    priceInput.value = option.dataset.price;
     priceInput.focus();
+    priceInput.value = option.dataset.price;
+    orginlPrice.value = option.dataset.price;
   }
 
 

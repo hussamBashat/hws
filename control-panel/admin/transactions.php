@@ -226,14 +226,9 @@ if ($do == "transactions") {       // Transactions Page
                             <input class="file-path validate" name="fingerprint" type="text" placeholder="صورة بصمة">
                         </div>
                     </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="work" type="text" placeholder="عقد عمل">
-                        </div>
+                    <div class="input-field col l6">
+                        <input type="text" id="work" name="work" class="materialize-textarea">
+                        <label for="work">عقد عمل (المسمى الوظيفي)</label>
                     </div>
                 </div> 
                 <div class="row">
@@ -245,11 +240,187 @@ if ($do == "transactions") {       // Transactions Page
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12">
-                        <button type="submit" name="publish" class="btn main-dark waves-effect waves-light">إضافة</button>
+                    <h5>خدمات التوثيق</h5>
+                    <p class="input-group-title">اختر الخدمات التي تريد توثيقها عن طريق تفعيل الخيار بجانب كل خدمة.</p>
+                    <div class="col l6">
+                        <div class="row">
+                            <div class="input-field col l5">
+                                <label class="label-check">
+                                    <input type="checkbox" name="qualifications_s">
+                                    <span>المؤهلات العلمية</span>
+                                </label>
+                            </div>
+                            <div class="input-field col l7">
+                                <input type="text" id="qualifications_p" name="qualifications_p" value="5000" class="materialize-textarea">
+                                <label for="qualifications_p">سعر الخدمة</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l6">
+                        <div class="row">
+                            <div class="input-field col l5">
+                                <label class="label-check">
+                                    <input type="checkbox" name="hospetal_s">
+                                    <span>حجز مستشفى</span>
+                                </label>
+                            </div>
+                            <div class="input-field col l7">
+                                <input type="text" id="hospetal_p" name="hospetal_p" value="350" class="materialize-textarea">
+                                <label for="hospetal_p">سعر الخدمة</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l6">
+                        <div class="row">
+                            <div class="input-field col l5">
+                                <label class="label-check">
+                                    <input type="checkbox" name="work_S">
+                                    <span>عقد عمل (المهنة)</span>
+                                </label>
+                            </div>
+                            <div class="input-field col l7">
+                                <input type="text" id="work_p" name="work_p" value="1500" class="materialize-textarea">
+                                <label for="work_p">سعر الخدمة</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l6">
+                        <div class="row">
+                            <div class="input-field col l5">
+                                <label class="label-check">
+                                    <input type="checkbox" name="fingerprint_s">
+                                    <span>حجز بصمة</span>
+                                </label>
+                            </div>
+                            <div class="input-field col l3">
+                                <input type="text" id="fingerprint_p" name="fingerprint_p" value="100" class="materialize-textarea">
+                                <label for="fingerprint_p">سعر الخدمة</label>
+                            </div>
+                            <div class="input-field col l4">
+                                <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d">
+                                <label for="fingerprint_d">تاريخ الحجز</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="input-group-title">أدخل المبلغ المدفوع</p>
+                    <div class="col l6">
+                        <div class="input-field col l6">
+                            <input type="text" id="amount_paid" name="amount_paid" class="materialize-textarea">
+                            <label for="amount_paid">المبلغ المدفوع</label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="orginal_price" id="orginlPrice">
+            
+            <!-- Modal Trigger -->
+            <button data-target="invoice" class="modal-trigger btn-floating btn-large waves-effect waves-light main-dark cart-btn"><i class="material-icons">add_shopping_cart</i></button>
+            <!-- Modal Structure -->
+            <div id="invoice" class="modal cart-modal">
+                <div class="modal-content">
+                    <div class="modal-header flex-between">
+                        <h5 class="m-0">الفاتورة النهائية</h5>
+                        <img src="../../images/logo.png" alt="Maysan Logo">
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>أجرةالمكتب</span></div>
+                            <div class="col l2">
+                                <span><b>1400</b></span>
+                                <input type="hidden" value="1400" name="office_fare">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>سعر التأشيرة</span> <strong>(اسم التأشيرة)</strong></div>
+                            <div class="col l2">
+                                <span><b>7500</b></span>
+                                <input type="hidden" value="7500" name="visa_price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>حجز المستشفى</span></div>
+                            <div class="col l2">
+                                <span><b>350</b></span>
+                                <input type="hidden" value="350" name="hospital_price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>حجز بصمة</span></div>
+                            <div class="col l2">
+                                <span>100</span>
+                                <input type="hidden" value="100" name="fingerprint_price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>ورقة النت</span></div>
+                            <div class="col l2">
+                                <span>600</span>
+                                <input type="hidden" value="600" name="net_paper">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>عقد عمل</span></div>
+                            <div class="col l2">
+                                <span>1500</span>
+                                <input type="hidden" value="1500" name="work_papr">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>تصديق المؤهلات العلمية</span></div>
+                            <div class="col l2">
+                                <span>300</span>
+                                <input type="hidden" value="300" name="qualifications_i">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><strong>المجموع</strong></span></div>
+                            <div class="col l2">
+                                <span><b>11750</b></span>
+                                <input type="hidden" value="11750" name="total">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>المبلغ المدفوع</span></div>
+                            <div class="col l2">
+                                <span>2000</span>
+                                <input type="hidden" value="2000" name="amounts_paid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>المبلغ المتبقي</span></div>
+                            <div class="col l2">
+                                <span>9750</span>
+                                <input type="hidden" value="9750" name="remaining_amount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <button type="submit" name="publish" class="btn main-dark waves-effect waves-light">إتمام العملية</button>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
 </section>
@@ -395,14 +566,9 @@ if ($do == "transactions") {       // Transactions Page
                             <input class="file-path validate" name="fingerprint" type="text" placeholder="صورة بصمة">
                         </div>
                     </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="work" type="text" placeholder="عقد عمل">
-                        </div>
+                    <div class="input-field col l6">
+                        <input type="text" id="work" name="work" class="materialize-textarea">
+                        <label for="work">عقد عمل</label>
                     </div>
                 </div> 
                 <h5 class="m-0">ملاحظات عامة</h5>
