@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-// if (isset($_SESSION['admin'])) {
+if (isset($_SESSION['admin'])) {
     $Title = "إدارة الحجوزات";
     include "../../include/Functions.php";
     include "../include/header.php";
@@ -80,4 +80,9 @@ if ($do == "services") {       // Transactions Page
 <?php
 }
 include "../include/footer.php";
+}
+else {
+    header("Location: hws/index.php");
+}
+ob_end_flush();
 ?>

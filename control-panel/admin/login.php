@@ -1,7 +1,12 @@
 <?php
+ob_start();
+session_start();
 $Title = "تسجيل الدخول";
 include "../../include/Functions.php";
 include "../include/header.php";
+if (isset($_SESSION['admin'])) {
+    header('Location: index.php');
+}
 if (isset($_COOKIE['adminlogin'])) {
     $Row = explode(",", $_COOKIE['adminlogin']);
 }
@@ -56,4 +61,5 @@ if (isset($_COOKIE['adminlogin'])) {
 
 <?php
 include "../include/footer.php";
+ob_end_flush();
 ?>

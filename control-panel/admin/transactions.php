@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-// if (isset($_SESSION['admin'])) {
+if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
     $Title = "المعاملات";
     include "../../include/Functions.php";
     include "../include/header.php";
@@ -9,6 +9,14 @@ session_start();
     $do = isset($_GET['do']) ? $_GET['do'] : 'transactions';
     
 if ($do == "transactions") {       // Transactions Page
+    if (isset($_SESSION['admin'])) {
+        $stmt = $con->prepare("SELECT * FROM transactions ORDER BY id DESC");
+        $stmt->execute();
+    }
+    else {
+        $stmt = $con->prepare("SELECT * FROM transactions WHERE marketer_id = ? ORDER BY id DESC");
+        $stmt->execute(array($_SESSION['user']));
+    }
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -43,35 +51,34 @@ if ($do == "transactions") {       // Transactions Page
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>محمد علي</th>
-                        <th><a class="custom-link" href="tel:0999 999 999">0999 999 999</a></th>
-                        <th>0999 999 999</th>
-                        <th>مصر</th>
-                        <th>السعودية</th>
-                        <td class="flex-between">
-                            <a href="?do=edit&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                            <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <th>محمد علي</th>
-                        <th><a class="custom-link" href="tel:0999 999 999">0999 999 999</a></th>
-                        <th>0999 999 999</th>
-                        <th>مصر</th>
-                        <th>السعودية</th>
-                        <td class="flex-between">
-                            <a href="?do=edit&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                            <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                        </td>
-                    </tr>
-                    <!-- <tr>
-                        <td colspan="4" class="center-align" style="color: var(--second-color); font-weight: 600;">
-                            <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات حتى الآن
-                        </td>
-                    </tr> -->
+                    <?php 
+                        if ($stmt->rowCount() > 0) {
+                            $data = $stmt->fetchAll();
+                            foreach ($data as $value) {?>
+                                <tr>
+                                    <th><?php echo $value['id']; ?></th>
+                                    <th><?php echo $value['fullname']; ?></th>
+                                    <th><a class="custom-link" href="tel:0999 999 999"><?php echo $value['phone']; ?></a></th>
+                                    <th><?php echo $value['whatsapp']; ?></th>
+                                    <th><?php echo $value['address']; ?></th>
+                                    <th><?php echo $value['visa']; ?></th>
+                                    <td class="flex-between">
+                                        <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
+                                        <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        else {?>
+                            <tr>
+                                <td colspan="7" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات حتى الآن
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </form>
@@ -419,4 +426,9 @@ if ($do == "transactions") {       // Transactions Page
 <?php
 }
 include "../include/footer.php";
+}
+else {
+    header("Location: hws/index.php");
+}
+ob_end_flush();
 ?>

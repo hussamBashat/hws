@@ -33,8 +33,8 @@ if (isset($_SESSION['admin'])) {
               <span><?php echo countItems("id", "users"); ?> مسوق</span>
             </div>
             <div class="footer flex-between">
-              <a href="users.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
-              <a href="users.php?do=add" class="custom-link flex-between"><i class="material-icons">person_add</i> إضافة جديد</a>
+              <a href="marketers.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
+              <a href="marketers.php?do=add" class="custom-link flex-between"><i class="material-icons">person_add</i> إضافة جديد</a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ if (isset($_SESSION['admin'])) {
           <div class="stat-box three z-depth-2">
             <div class="header">
               <i class="material-icons">library_books</i>
-              <span>26 معاملة</span>
+              <span><?php echo countItems("id", "transactions"); ?> معاملة</span>
             </div>
             <div class="footer flex-between">
               <a href="transactions.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>
