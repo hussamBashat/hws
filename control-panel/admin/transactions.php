@@ -87,6 +87,12 @@ if ($do == "transactions") {       // Transactions Page
 
 <?php
 } elseif ($do == "add") {   // Add Transactions
+    $stmt = $con->prepare("SELECT * FROM static_price");
+    $stmt->execute();
+    $prices = $stmt->fetch();
+    $stmt1 = $con->prepare("SELECT * FROM visas");
+    $stmt1->execute();
+    $visas = $stmt1->fetchAll();
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -107,7 +113,7 @@ if ($do == "transactions") {       // Transactions Page
 <!-- Start Transactions Add Form -->
 <section class="add-transactions">
     <div class="container">
-        <form method="post" action="">
+        <form method="post" action="../include/add_transaction.php" enctype="multipart/form-data">
             <div class="row m-0">
                 <h5>معلومات أساسية</h5>
                 <div class="row">
@@ -136,11 +142,11 @@ if ($do == "transactions") {       // Transactions Page
                         <label for="mobile">رقم الموبايل</label>
                     </div>
                     <div class="input-field col l4">
-                        <input type="tel" id="whatsapp" name="whatsapp" class="materialize-textarea" required>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="materialize-textarea" >
                         <label for="whatsapp">رقم الواتساب</label>
                     </div>
                     <div class="input-field col l4">
-                        <input type="text" id="address" name="address" class="materialize-textarea" required>
+                        <input type="text" id="address" name="address" class="materialize-textarea" >
                         <label for="address">العنوان الحالي</label>
                     </div>
                 </div> 
@@ -148,12 +154,13 @@ if ($do == "transactions") {       // Transactions Page
                     <p class="input-group-title">معلومات التأشيرة</p>
                     <div class="input-field col l6">
                         <select name="visa" id="visaList">
-                            <option value="" disabled selected>اختر التأشيرة</option>
-                            <option value="" data-price="3000">الخيار الأول</option>
-                            <option value="" data-price="5500">الخيار الثاني</option>
-                            <option value="" data-price="1500">الخيار الثالث</option>
-                            <option value="" data-price="2000">الخيار الرابع</option>
-                            <option value="" data-price="3500">الخيار الخامس</option>
+                            <option value=""  selected>اختر التأشيرة</option>
+                            <?php
+                                foreach ($visas as $visa) {?>
+                                    <option value="<?php echo $visa['visaname']; ?>" data-price="<?php echo $visa['price']; ?>"><?php echo $visa['visaname']; ?></option>
+                                    <?php
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="input-field col l6">
@@ -166,79 +173,84 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">payment</i></span>
-                            <input type="file" multiple>
+                            <input type="file" name="file0">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="idcard" type="text" placeholder="صورة عن البطاقة الشخصية">
+                            <input class="file-path validate"  type="text" placeholder="صورة عن البطاقة الشخصية">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">person_outline</i></span>
-                            <input type="file">
+                            <input type="file" name="file1">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="personimage" type="text" placeholder="صورة شخصية">
+                            <input class="file-path validate"  type="text" placeholder="صورة شخصية">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">picture_as_pdf</i></span>
-                            <input type="file">
+                            <input type="file" name="file2">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="qualifications" type="text" placeholder="ملف المؤهلات العلمية">
+                            <input class="file-path validate"  type="text" placeholder="ملف المؤهلات العلمية">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file">
+                            <input type="file" name="file3">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="notdoomed" type="text" placeholder="صورة عن الفيش الجنائي">
+                            <input class="file-path validate"  type="text" placeholder="صورة عن الفيش الجنائي">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file">
+                            <input type="file" name="file4">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="netpaper" type="text" placeholder="صورة عن ورقة النت">
+                            <input class="file-path validate"  type="text" placeholder="صورة عن ورقة النت">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file">
+                            <input type="file" name="file5">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="hospetal" type="text" placeholder="صورة عن حجز مستشفى">
+                            <input class="file-path validate"  type="text" placeholder="صورة عن حجز مستشفى">
                         </div>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file">
+                            <input type="file" name="file6">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="fingerprint" type="text" placeholder="صورة بصمة">
+                            <input class="file-path validate"  type="text" placeholder="صورة بصمة">
+                        </div>
+                    </div>
+                    <div class="input-field file-field col l6">
+                        <div class="btn">
+                            <span><i class="material-icons">image</i></span>
+                            <input type="file" name="file7">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
                         </div>
                     </div>
                     <div class="input-field col l6">
                         <input type="text" id="work" name="work" class="materialize-textarea">
                         <label for="work">عقد عمل (المسمى الوظيفي)</label>
                     </div>
-                </div> 
-                <div class="row">
-                    <div class="col s12">
-                        <div class="input-field col s12">
-                            <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
-                            <label for="notes">ملاحظات ..</label>
-                        </div>
+                    <div class="input-field col l6">
+                        <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                        <label for="notes">ملاحظات ..</label>
                     </div>
-                </div>
+                </div> 
                 <div class="row">
                     <h5>خدمات التوثيق</h5>
                     <p class="input-group-title">اختر الخدمات التي تريد توثيقها عن طريق تفعيل الخيار بجانب كل خدمة.</p>
@@ -328,8 +340,8 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span>أجرةالمكتب</span></div>
                             <div class="col l2">
-                                <span><b>1400</b></span>
-                                <input type="hidden" value="1400" name="office_fare">
+                                <span><b><?php echo $prices['office_fare']; ?></b></span>
+                                <input type="hidden" value="<?php echo $prices['office_fare']; ?>" name="office_fare">
                             </div>
                         </div>
                     </div>
@@ -338,7 +350,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>سعر التأشيرة</span> <strong>(اسم التأشيرة)</strong></div>
                             <div class="col l2">
                                 <span><b>7500</b></span>
-                                <input type="hidden" value="7500" name="visa_price">
+                                <!-- <input type="hidden" value="7500" name="visa_price"> -->
                             </div>
                         </div>
                     </div>
@@ -347,7 +359,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>حجز المستشفى</span></div>
                             <div class="col l2">
                                 <span><b>350</b></span>
-                                <input type="hidden" value="350" name="hospital_price">
+                                <!-- <input type="hidden" value="350" name="hospital_price"> -->
                             </div>
                         </div>
                     </div>
@@ -356,7 +368,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>حجز بصمة</span></div>
                             <div class="col l2">
                                 <span>100</span>
-                                <input type="hidden" value="100" name="fingerprint_price">
+                                <!-- <input type="hidden" value="100" name="fingerprint_price"> -->
                             </div>
                         </div>
                     </div>
@@ -364,8 +376,8 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span>ورقة النت</span></div>
                             <div class="col l2">
-                                <span>600</span>
-                                <input type="hidden" value="600" name="net_paper">
+                                <span><?php echo $prices['netbook_paper']; ?></span>
+                                <input type="hidden" value="<?php echo $prices['netbook_paper']; ?>" name="net_paper">
                             </div>
                         </div>
                     </div>
@@ -374,7 +386,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>عقد عمل</span></div>
                             <div class="col l2">
                                 <span>1500</span>
-                                <input type="hidden" value="1500" name="work_papr">
+                                <!-- <input type="hidden" value="1500" name="work_papr"> -->
                             </div>
                         </div>
                     </div>
@@ -383,7 +395,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>تصديق المؤهلات العلمية</span></div>
                             <div class="col l2">
                                 <span>300</span>
-                                <input type="hidden" value="300" name="qualifications_i">
+                                <!-- <input type="hidden" value="300" name="qualifications_i"> -->
                             </div>
                         </div>
                     </div>
@@ -402,7 +414,7 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>المبلغ المدفوع</span></div>
                             <div class="col l2">
                                 <span>2000</span>
-                                <input type="hidden" value="2000" name="amounts_paid">
+                                <!-- <input type="hidden" value="2000" name="amounts_paid"> -->
                             </div>
                         </div>
                     </div>
@@ -411,12 +423,11 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>المبلغ المتبقي</span></div>
                             <div class="col l2">
                                 <span>9750</span>
-                                <input type="hidden" value="9750" name="remaining_amount">
                             </div>
                         </div>
                     </div>
                     <div class="row center-align">
-                        <button type="submit" name="publish" class="btn main-dark waves-effect waves-light">إتمام العملية</button>
+                        <button type="submit" name="add_trans" class="btn main-dark waves-effect waves-light">إتمام العملية</button>
                     </div>
                 </div>
             </div>
@@ -582,7 +593,7 @@ if ($do == "transactions") {       // Transactions Page
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <button type="submit" name="publish" class="btn main-dark waves-effect waves-light">إضافة</button>
+                        <button type="submit" name="add_trans" class="btn main-dark waves-effect waves-light">إضافة</button>
                     </div>
                 </div>
             </div>
