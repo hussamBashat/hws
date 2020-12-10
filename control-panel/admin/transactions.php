@@ -149,7 +149,8 @@ if ($do == "transactions") {       // Transactions Page
                         <input type="text" id="address" name="address" class="materialize-textarea" >
                         <label for="address">العنوان الحالي</label>
                     </div>
-                </div> 
+                </div>
+                <h5 class="m-0">معلومات التأشيرة</h5>
                 <div class="row">
                     <p class="input-group-title">معلومات التأشيرة</p>
                     <div class="input-field col l6">

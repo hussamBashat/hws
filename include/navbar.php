@@ -104,7 +104,7 @@
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], '/admin/index.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/index.php"><i class="material-icons">dashboard</i>لوحة التحكم</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'marketers.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/marketers.php"><i class="material-icons">supervisor_account</i>المسوقين</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'transactions.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/transactions.php"><i class="material-icons">library_books</i>المعاملات</a></li>
-        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'services.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/services.php"><i class="material-icons">settings</i>إدارة الحجوزات</a></li>
+        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'pricelist.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/pricelist.php"><i class="material-icons">monetization_on</i>قائمة الأسعار</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'ref.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/ref.php"><i class="material-icons">book</i>المرجع</a></li>
         <li><div class="divider"></div></li>
         <li><a href="/hws/include/logout.php"><i class="material-icons">weekend</i>خروج</a></li>
