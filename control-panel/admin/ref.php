@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if (isset($_SESSION['admin'])) {
+if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
     $Title = "المرجع";
     include "../../include/Functions.php";
     include "../include/header.php";
@@ -23,7 +23,12 @@ if (isset($_SESSION['admin'])) {
     <div class="container">
         <div class="top-bar flex-between">
             <h1>إدارة المرجع</h1>
-            <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">add</i> إضافة جديد</a>
+            <?php 
+                if (isset($_SESSION['admin'])) {?>
+                    <a href="?do=add" class="btn waves-effect waves-light flex-between"><i class="material-icons">add</i> إضافة جديد</a>
+                    <?php
+                }
+            ?>
             <p>تعرض هذه الصفحة جميع المعلومات التي يحتاجها المسوق, يمكنك إضافة وتعديل وحذف معلومات المرجع من هنا..</p>
         </div>
     </div>
@@ -38,7 +43,12 @@ if (isset($_SESSION['admin'])) {
                             <th>#</th>
                             <th>السؤال</th>
                             <th>الجواب</th>
-                            <th>عمليات</th>
+                            <?php
+                                if (isset($_SESSION['admin'])) {?>
+                                    <th>عمليات</th>
+                                    <?php
+                                }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,10 +60,15 @@ if (isset($_SESSION['admin'])) {
                                         <td><?php echo $value['id']; ?></td>
                                         <td><?php echo $value['questions']; ?></td>
                                         <td><?php echo $value['answer']; ?></td>
-                                        <td class="flex-between">
-                                            <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                                            <button name="faqdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                        </td>
+                                        <?php
+                                            if (isset($_SESSION['admin'])) {?>
+                                                <td class="flex-between">
+                                                    <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
+                                                    <button name="faqdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                </td>
+                                                <?php
+                                            }
+                                        ?>
                                     </tr>
                                     <?php
                                 }
@@ -73,7 +88,7 @@ if (isset($_SESSION['admin'])) {
     </section>
     
     <?php
-    } elseif ($do == "add") {   // Add REF
+    } elseif ($do == "add" && isset($_SESSION['admin'])) {   // Add REF
     ?>
     <!-- Breadcrumb -->
     <div class="my-breadcrumb">
@@ -118,7 +133,7 @@ if (isset($_SESSION['admin'])) {
         </div>
     </section>
     <?php
-    } elseif ($do == "edit") {   // Edit REF
+    } elseif ($do == "edit" && isset($_SESSION['admin'])) {   // Edit REF
         $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
         $stmt1 = $con->prepare("SELECT * FROM frequently_asked_questions WHERE id = ?");
         $stmt1->execute(array($id));
@@ -173,6 +188,9 @@ if (isset($_SESSION['admin'])) {
         else {
             header("refresh:0;url=?do=ref");
         }
+    }
+    else {
+        header("refresh:0;url=?do=ref");
     }
     include "../include/footer.php";
     

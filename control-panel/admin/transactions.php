@@ -89,7 +89,7 @@ if ($do == "transactions") {       // Transactions Page
 } elseif ($do == "add") {   // Add Transactions
     $stmt = $con->prepare("SELECT * FROM static_price");
     $stmt->execute();
-    $prices = $stmt->fetch();
+    $prices = $stmt->fetchAll();
     $stmt1 = $con->prepare("SELECT * FROM visas");
     $stmt1->execute();
     $visas = $stmt1->fetchAll();
@@ -158,7 +158,7 @@ if ($do == "transactions") {       // Transactions Page
                             <option value=""  selected>اختر التأشيرة</option>
                             <?php
                                 foreach ($visas as $visa) {?>
-                                    <option value="<?php echo $visa['visaname']; ?>" data-price="<?php echo $visa['price']; ?>"><?php echo $visa['visaname']; ?></option>
+                                    <option value="<?php echo $visa['visaname']; ?>" data-price="<?php echo $visa['price']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
                                     <?php
                                 }
                             ?>
@@ -339,10 +339,10 @@ if ($do == "transactions") {       // Transactions Page
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>أجرةالمكتب</span></div>
+                            <div class="col l10"><span><?php echo $prices[0]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span><b><?php echo $prices['office_fare']; ?></b></span>
-                                <input type="hidden" value="<?php echo $prices['office_fare']; ?>" name="office_fare">
+                                <span><b><?php echo $prices[0]['price']; ?></b></span>
+                                <input type="hidden" value="<?php echo $prices[0]['price']; ?>" name="office_fare">
                             </div>
                         </div>
                     </div>
@@ -351,52 +351,47 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>سعر التأشيرة</span> <strong>(اسم التأشيرة)</strong></div>
                             <div class="col l2">
                                 <span><b>7500</b></span>
-                                <!-- <input type="hidden" value="7500" name="visa_price"> -->
                             </div>
                         </div>
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>حجز المستشفى</span></div>
+                            <div class="col l10"><span><?php echo $prices[1]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span><b>350</b></span>
-                                <!-- <input type="hidden" value="350" name="hospital_price"> -->
+                                <span><b><?php echo $prices[1]['price']; ?></b></span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>حجز بصمة</span></div>
+                            <div class="col l10"><span><?php echo $prices[2]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span>100</span>
-                                <!-- <input type="hidden" value="100" name="fingerprint_price"> -->
+                                <span><?php echo $prices[2]['price']; ?></span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>ورقة النت</span></div>
+                            <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span><?php echo $prices['netbook_paper']; ?></span>
-                                <input type="hidden" value="<?php echo $prices['netbook_paper']; ?>" name="net_paper">
+                                <span><?php echo $prices[3]['price']; ?></span>
+                                <input type="hidden" value="<?php echo $prices[3]['price']; ?>" name="net_paper">
                             </div>
                         </div>
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>عقد عمل</span></div>
+                            <div class="col l10"><span><?php echo $prices[5]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span>1500</span>
-                                <!-- <input type="hidden" value="1500" name="work_papr"> -->
+                                <span><?php echo $prices[5]['price']; ?></span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-line">
                         <div class="row m-0">
-                            <div class="col l10"><span>تصديق المؤهلات العلمية</span></div>
+                            <div class="col l10"><span><?php echo $prices[4]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span>300</span>
-                                <!-- <input type="hidden" value="300" name="qualifications_i"> -->
+                                <span><?php echo $prices[4]['price']; ?></span>
                             </div>
                         </div>
                     </div>
@@ -415,7 +410,6 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="col l10"><span>المبلغ المدفوع</span></div>
                             <div class="col l2">
                                 <span>2000</span>
-                                <!-- <input type="hidden" value="2000" name="amounts_paid"> -->
                             </div>
                         </div>
                     </div>

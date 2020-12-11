@@ -6,6 +6,16 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_trans'])) {
 
         $fullname = $_POST['firstname'] . " " . $_POST['fathername'] . " " . $_POST['grandname'] . " " . $_POST['lastname'];
+        $Files = array();
+        for ($i=0; $i < 8; $i++) { 
+            $file = "file" . $i;
+            if (!empty($_FILES[$file]['name'])) {
+                $Files[$i] = rand(0, 10000000) . "_" . $_FILES[$file]['name'];
+            }
+            else {
+                $Files[$i] = "";
+            }
+        }
         $stmt = $con->prepare("INSERT INTO transactions(fullname, address, phone, whatsapp, visa, visa_price, marketer_id, passport, card, photograph, qualification, criminal_fisheye, netbook_paper, hospital_reservation, fingerprint_reservation, fingerprint, note, work_contract) 
         VALUES (:zf, :za, :zphone, :zwhats, :zvisa, :zvprice, :zmi, :zpasspo, :zcard , :zphoto, :zqual, :zcf, :znp, :zhr, :zfr, :zfinger, :znote, :zwork)");
         $stmt->execute(array(
@@ -16,15 +26,15 @@
             "zvisa" => $_POST['visa'],
             "zvprice" => $_POST['orginal_price'],
             "zmi" => (isset($_SESSION['user']) ? $_SESSION['user'] : $_POST['marketer_id']),
-            "zpasspo" => (!empty($_FILES['file7']['name']) ? $_FILES['file7']['name'] : ''),
-            "zcard" => (!empty($_FILES['file0']['name']) ? $_FILES['file0']['name'] : ''),
-            "zphoto" => (!empty($_FILES['file1']['name']) ? $_FILES['file1']['name'] : ''),
-            "zqual" => (!empty($_FILES['file2']['name']) ? $_FILES['file2']['name'] : ''),
-            "zcf" => (!empty($_FILES['file3']['name']) ? $_FILES['file3']['name'] : ''),
-            "znp" => (!empty($_FILES['file4']['name']) ? $_FILES['file4']['name'] : ''),
-            "zhr" => (!empty($_FILES['file5']['name']) ? $_FILES['file5']['name'] : ''),
+            "zpasspo" => $Files[7],
+            "zcard" => $Files[0],
+            "zphoto" => $Files[1],
+            "zqual" => $Files[2],
+            "zcf" => $Files[3],
+            "znp" => $Files[4],
+            "zhr" => $Files[5],
             "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ''),
-            "zfinger" => (!empty($_FILES['file6']['name']) ? $_FILES['file6']['name'] : ''),
+            "zfinger" => $Files[6],
             "znote" => $_POST['notes'],
             "zwork" => $_POST['work']
         ));
@@ -36,7 +46,7 @@
         for ($i=0; $i < 8; $i++) { 
             $file = "file" . $i;
             if (!empty($_FILES[$file]['name'])) {
-                move_uploaded_file($_FILES[$file]['tmp_name'], "../../images/transactions/" . $trans_id . "/" . $_FILES[$file]['name']);
+                move_uploaded_file($_FILES[$file]['tmp_name'], "../../images/transactions/" . $trans_id . "/" . $Files[$i]);
             }
         }
         

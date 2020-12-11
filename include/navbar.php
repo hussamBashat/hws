@@ -111,10 +111,8 @@
         <?php
       }elseif (isset($_SESSION['user'])) {?>
         <!-- User Link -->
-        <!-- <li class="<?php // echo (stripos($_SERVER['REQUEST_URI'], 'index.php')) ? 'active' : ''; ?>"><a href="#"><i class="material-icons">dashboard</i>Dashboard</a></li>
-        <li class="<?php // echo (stripos($_SERVER['REQUEST_URI'], 'users.php')) ? 'active' : ''; ?>"><a href="#"><i class="material-icons">supervisor_account</i>Users</a></li>
-        <li class="<?php // echo (stripos($_SERVER['REQUEST_URI'], 'faq-manage.php')) ? 'active' : ''; ?>"><a href="#"><i class="material-icons">question_answer</i>FAQ</a></li>
-        <li><div class="divider"></div></li> -->
+        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'transactions.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/transactions.php"><i class="material-icons">library_books</i>المعاملات</a></li>
+        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'ref.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/ref.php"><i class="material-icons">book</i>المرجع</a></li>
         <li><a href="/hws/include/logout.php"><i class="material-icons">weekend</i>خروج</a></li>
         <?php
       }
