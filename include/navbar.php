@@ -107,13 +107,14 @@
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'pricelist.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/pricelist.php"><i class="material-icons">monetization_on</i>قائمة الأسعار</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'ref.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/ref.php"><i class="material-icons">book</i>المرجع</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="/hws/include/logout.php"><i class="material-icons">weekend</i>خروج</a></li>
+        <li><a href="/hws/include/logout.php"><i class="material-icons">logout</i>خروج</a></li>
         <?php
       }elseif (isset($_SESSION['user'])) {?>
         <!-- User Link -->
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'transactions.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/transactions.php"><i class="material-icons">library_books</i>المعاملات</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'ref.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/ref.php"><i class="material-icons">book</i>المرجع</a></li>
-        <li><a href="/hws/include/logout.php"><i class="material-icons">weekend</i>خروج</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="/hws/include/logout.php"><i class="material-icons">logout</i>خروج</a></li>
         <?php
       }
     ?>

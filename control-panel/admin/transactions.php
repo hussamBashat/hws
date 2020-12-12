@@ -58,12 +58,12 @@ if ($do == "transactions") {       // Transactions Page
                                 <tr>
                                     <th><?php echo $value['id']; ?></th>
                                     <th><?php echo $value['fullname']; ?></th>
-                                    <th><a class="custom-link" href="tel:0999 999 999"><?php echo $value['phone']; ?></a></th>
+                                    <th><a class="custom-link" href="tel:<?php echo $value['phone']; ?>"><?php echo $value['phone']; ?></a></th>
                                     <th><?php echo $value['whatsapp']; ?></th>
                                     <th><?php echo $value['address']; ?></th>
                                     <th><?php echo $value['visa']; ?></th>
                                     <td class="flex-between">
-                                        <a href="?do=edit&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
+                                    <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="عرض"><i class="material-icons">link</i></a>
                                         <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
                                     </td>
                                 </tr>
@@ -115,6 +115,17 @@ if ($do == "transactions") {       // Transactions Page
     <div class="container">
         <form method="post" action="../include/add_transaction.php" enctype="multipart/form-data">
             <div class="row m-0">
+                <div class="row">
+                    <div class="input-field col l12">
+                        <input type="text" name="marketer_id" list="marketer" id="marketerList" class="validate" required>
+                        <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                    </div>
+                    <datalist id="marketer">
+                        <option value="1 حسام" selected>
+                        <option value="2 وائل">
+                        <option value="3 سعيد">
+                    </datalist>
+                </div>
                 <h5>معلومات أساسية</h5>
                 <div class="row">
                     <p class="input-group-title">الاسم الكامل</p>
@@ -155,7 +166,7 @@ if ($do == "transactions") {       // Transactions Page
                     <p class="input-group-title">معلومات التأشيرة</p>
                     <div class="input-field col l6">
                         <select name="visa" id="visaList">
-                            <option value=""  selected>اختر التأشيرة</option>
+                            <option value="" selected>اختر التأشيرة</option>
                             <?php
                                 foreach ($visas as $visa) {?>
                                     <option value="<?php echo $visa['visaname']; ?>" data-price="<?php echo $visa['price']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
@@ -260,11 +271,11 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="input-field col l5">
                                 <label class="label-check">
                                     <input type="checkbox" name="qualifications_s">
-                                    <span>المؤهلات العلمية</span>
+                                    <span><?php echo $prices[4]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="qualifications_p" name="qualifications_p" value="5000" class="materialize-textarea">
+                                <input type="text" id="qualifications_p" name="qualifications_p" value="<?php echo $prices[4]['price']; ?>" class="materialize-textarea">
                                 <label for="qualifications_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -274,11 +285,11 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="input-field col l5">
                                 <label class="label-check">
                                     <input type="checkbox" name="hospetal_s">
-                                    <span>حجز مستشفى</span>
+                                    <span><?php echo $prices[1]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="hospetal_p" name="hospetal_p" value="350" class="materialize-textarea">
+                                <input type="text" id="hospetal_p" name="hospetal_p" value="<?php echo $prices[1]['price']; ?>" class="materialize-textarea">
                                 <label for="hospetal_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -288,11 +299,11 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="input-field col l5">
                                 <label class="label-check">
                                     <input type="checkbox" name="work_S">
-                                    <span>عقد عمل (المهنة)</span>
+                                    <span><?php echo $prices[5]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="work_p" name="work_p" value="1500" class="materialize-textarea">
+                                <input type="text" id="work_p" name="work_p" value="<?php echo $prices[5]['price']; ?>" class="materialize-textarea">
                                 <label for="work_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -302,11 +313,11 @@ if ($do == "transactions") {       // Transactions Page
                             <div class="input-field col l5">
                                 <label class="label-check">
                                     <input type="checkbox" name="fingerprint_s">
-                                    <span>حجز بصمة</span>
+                                    <span><?php echo $prices[2]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l3">
-                                <input type="text" id="fingerprint_p" name="fingerprint_p" value="100" class="materialize-textarea">
+                                <input type="text" id="fingerprint_p" name="fingerprint_p" value="<?php echo $prices[2]['price']; ?>" class="materialize-textarea">
                                 <label for="fingerprint_p">سعر الخدمة</label>
                             </div>
                             <div class="input-field col l4">
@@ -431,30 +442,99 @@ if ($do == "transactions") {       // Transactions Page
     </div>
 </section>
 <?php
-} elseif ($do == "edit") {   // Edit Transactions
+} elseif ($do == "show") {   // Show Transactions
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
     <div class="container">
         <ul class="list-item">
             <li class="flex-between"><a href="?do=transactions" class="flex-between"><i class="material-icons">library_books</i> المعاملات</a> / </li>
-            <li class="flex-between active"><i class="material-icons">edit</i> تعديل معاملة</li>
+            <li class="flex-between active"><i class="material-icons">person</i> معاملة اسم صاحب المعاملة</li>
         </ul>
     </div>
 </div>
 <div class="container">
 <div class="top-bar flex-between">
-    <h1>تعديل معاملة</h1>
+    <h1>عرض المعاملة</h1>
     <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
-    <p>يمكنك تعديل معلومات المعاملة من هنا, اختر ما تريد تعديله أولاً ثم قم بتعديل البيانات بالشكل المناسب</p>
+    <p>يمكنك من هنا عرض وتعديل معلومات المعاملة, اختر ما تريد تعديله أولاً ثم قم بتعديل البيانات بالشكل المناسب</p>
 </div>
 </div>
 <!-- Start Transactions Edit Form -->
-<section class="add-transactions">
+<section class="show-transactions p-1">
     <div class="container">
         <form method="post" action="">
             <div class="row m-0">
-                <h5 class="m-0">معلومات أساسية</h5>
+
+            <div class="col s12">
+                <div class="card-panel z-depth-1">
+                    <div class="row valign-wrapper m-0">
+                        <div class="col s1">
+                            <img src="../../images/person/1.jpg" data-target="personalImage" alt="Person Image" class="modal-trigger responsive-img tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
+                        </div>
+                        <!-- Modal Structure -->
+                        <div id="personalImage" class="modal">
+                            <div class="modal-content">
+                                <div class="row p-0 m-0">
+                                    <div class="col l4">
+                                        <img src="../../images/person/1.jpg" alt="Person Image" width="152" height="200" class="">
+                                    </div>
+                                    <div class="col l8 p-img">
+                                        <h6>ملاحظات:</h6>
+                                        <p>لا تنسى يجب أن تكون الصورة بأبعاد 200*152.</p>
+                                        <p>لا تنسى يجب أن تكون الصورة بخلفية بيضاء.</p>
+                                        <div class="flex-between" style="margin-bottom:0">
+                                            <div class="input-field file-field col l8 p-0">
+                                                <div class="btn">
+                                                    <span><i class="material-icons">person_outline</i></span>
+                                                    <input type="file" name="file1" class="img-input">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" placeholder="صورة شخصية">
+                                                </div>
+                                            </div>
+                                            <div class="col l4">
+                                                <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">تعديل الصورة</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s11">
+                            <div class="text-label flex-between">
+                                <span class="black-text">ناظم أحمد حمد أبو الخل </span>
+                                <button type="button" class="btn ed-btn btn-floating waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="تعديل الاسم"><i class="material-icons">edit</i></button>
+                            </div>
+                            <div class="input-group hide">
+                                <div class="input-field col l3">
+                                    <input id="firstname" name="firstname" type="text" class="validate" required>
+                                    <label for="firstname">الاسم الأول</label>
+                                </div>
+                                <div class="input-field col l3">
+                                    <input id="fathername" name="fathername" type="text" class="validate" required>
+                                    <label for="fathername">اسم الأب</label>
+                                </div>
+                                <div class="input-field col l3">
+                                    <input id="grandname" name="grandname" type="text" class="validate" required>
+                                    <label for="grandname">اسم الجد</label>
+                                </div>
+                                <div class="input-field col l3">
+                                    <input id="lastname" name="lastname" type="text" class="validate" required>
+                                    <label for="lastname">الكنية</label>
+                                </div>
+                                <div class="col s12">
+                                    <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">تعديل الاسم</button>
+                                    <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء الأمر</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- <h5 class="m-0">معلومات أساسية</h5>
                 <div class="row">
                     <p class="input-group-title">الاسم الكامل</p>
                     <div class="input-field col l3">
@@ -590,7 +670,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="col s12">
                         <button type="submit" name="add_trans" class="btn main-dark waves-effect waves-light">إضافة</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </form>
     </div>

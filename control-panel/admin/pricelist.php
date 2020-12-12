@@ -36,6 +36,20 @@ if ($do == "pricelist") {       // Price List Page
     <div class="container">
         <form method="post" action="../include/visa_operation.php">
             <input type="hidden" name="id" id="btnId">
+            <div class="row filter-table">
+                <div class="input-field col l2">
+                    <label class="label-check">
+                        <input type="checkbox" class="filter-item" checked data-type="service-tr">
+                        <span>عرض الخدمات</span>
+                    </label>
+                </div>
+                <div class="input-field col l2">
+                    <label class="label-check">
+                        <input type="checkbox" class="filter-item" checked data-type="visa-tr">
+                        <span>عرض التأشيرات</span>
+                    </label>
+                </div>
+            </div>
             <table class="striped highlight responsive-table">
                 <thead>
                     <tr>
@@ -46,10 +60,9 @@ if ($do == "pricelist") {       // Price List Page
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- This Row Outside Foreach -->
                     <?php
                         foreach ($prices as $price) {?>
-                            <tr>
+                            <tr class="service-tr">
                                 <td><?php echo $price['id']; ?></td>
                                 <td><?php echo $price['service_name']; ?></td>
                                 <td><?php echo $price['price']; ?></td>
@@ -60,10 +73,9 @@ if ($do == "pricelist") {       // Price List Page
                             <?php
                         }
                     ?>
-                    <!-- ------------------------ -->
                     <?php
                         foreach ($visas as $visa) {?>
-                            <tr class="<?php echo ($visa['status'] == 1 ? "ban tooltipped" : "") ?>" data-position="bottom" data-tooltip="محظور">
+                            <tr class="visa-tr <?php echo ($visa['status'] == 1 ? "ban tooltipped" : "") ?>" data-position="bottom" data-tooltip="متوقفة">
                                 <td><?php echo $visa['id']; ?></td>
                                 <td><?php echo $visa['visaname']; ?></td>
                                 <td><?php echo $visa['price']; ?></td>

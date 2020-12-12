@@ -62,13 +62,57 @@
   let visaList = document.querySelector("#visaList"),
       priceInput = document.querySelector("#price"),
       orginlPrice = document.querySelector("#orginlPrice");
-  visaList.onchange = function () {
-    let option = this.options[this.selectedIndex];
-    priceInput.focus();
-    priceInput.value = option.dataset.price;
-    orginlPrice.value = option.dataset.price;
+  if (visaList) {
+    visaList.onchange = function () {
+      let option = this.options[this.selectedIndex];
+      priceInput.focus();
+      priceInput.value = option.dataset.price;
+      orginlPrice.value = option.dataset.price;
+    }
   }
 
+  // Show Inputs Fields After Click Edit In Transactions Page
+  // let textLabel = document.querySelector(".show-transactions .text-label"),
+  let editBtn = document.querySelector(".show-transactions .text-label .btn"),
+      cancelBtn = document.querySelector(".show-transactions .input-group .cancel-btn"),
+      inputImg = document.querySelector(".show-transactions .img-input");
+  if (editBtn) {
+    editBtn.onclick = function () {
+      this.parentElement.nextElementSibling.classList.remove("hide");
+      this.parentElement.classList.add("hide");
+    }
+  }
+  // Hide Inputs Fields After Click Cancel In Transactions Page
+  if (cancelBtn) {
+    cancelBtn.onclick = function () {
+      this.parentElement.parentElement.previousElementSibling.classList.remove("hide");
+      this.parentElement.parentElement.classList.add("hide");
+    }
+  }
+  // Show New Image On Change
+  if (inputImg) {
+    inputImg.onchange = function () {
+      this.closest(".p-img").previousElementSibling.children[0].src = this.value;
+      console.log(this.closest(".p-img").previousElementSibling.children[0].src)
+    }
+  }
+
+  // Filter Table Show/Hide Visa || Services
+  let filterTable = document.querySelectorAll(".filter-table .filter-item");
+  for (let i = 0; i < filterTable.length; i++) {
+    filterTable[i].onclick = function () {
+      let tr = document.querySelectorAll(`.${filterTable[i].dataset.type}`);
+      if (!this.checked == true) {
+        for (let i = 0; i < tr.length; i++) {
+          tr[i].classList.add("hide");
+        }
+      } else {
+        for (let i = 0; i < tr.length; i++) {
+          tr[i].classList.remove("hide");
+        }
+      }
+    }
+  }
 
 })();
 

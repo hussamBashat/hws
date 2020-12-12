@@ -203,9 +203,8 @@ table td .btn:last-child{background-color:var(--gray)}
     bottom: 2rem;
     left: 2rem;
 }
+.modal {overflow: unset; max-height: 100%;}
 .cart-modal {
-    overflow: unset;
-    max-height: 100%;
     width: 36rem;
     top: 5% !important;
 }
@@ -228,6 +227,10 @@ table td .btn:last-child{background-color:var(--gray)}
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
     border: 2px solid var(--main-color);
 }
+.select-dropdown {color: var(--gray);}
+.select-dropdown li.selected {display: none;}
+.text-label {padding: 10px; background-color: var(--white-gray);}
+.filter-table {margin-bottom: 2rem;transform: translateY(-10px);}
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
 }
