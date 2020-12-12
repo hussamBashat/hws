@@ -230,6 +230,16 @@ table td .btn:last-child{background-color:var(--gray)}
 .select-dropdown {color: var(--gray);}
 .select-dropdown li.selected {display: none;}
 .text-label {padding: 10px; background-color: var(--white-gray);}
+.prwaz {padding: 2px; background-color: var(--white-gray); cursor: pointer; transition: var(--transition);}
+.prwaz:hover {background-color: var(--main-color);}
+.edit-text-btn {
+    all: unset;
+    background-color: transparent!important;
+    cursor: pointer;
+    color: #26a69a;
+    font-size: 12px;
+    padding: 5px
+}
 .filter-table {margin-bottom: 2rem;transform: translateY(-10px);}
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}

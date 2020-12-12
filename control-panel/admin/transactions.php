@@ -465,212 +465,135 @@ if ($do == "transactions") {       // Transactions Page
     <div class="container">
         <form method="post" action="">
             <div class="row m-0">
-
-            <div class="col s12">
-                <div class="card-panel z-depth-1">
-                    <div class="row valign-wrapper m-0">
-                        <div class="col s1">
-                            <img src="../../images/person/1.jpg" data-target="personalImage" alt="Person Image" class="modal-trigger responsive-img tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
-                        </div>
-                        <!-- Modal Structure -->
-                        <div id="personalImage" class="modal">
-                            <div class="modal-content">
-                                <div class="row p-0 m-0">
-                                    <div class="col l4">
-                                        <img src="../../images/person/1.jpg" alt="Person Image" width="152" height="200" class="">
-                                    </div>
-                                    <div class="col l8 p-img">
-                                        <h6>ملاحظات:</h6>
-                                        <p>لا تنسى يجب أن تكون الصورة بأبعاد 200*152.</p>
-                                        <p>لا تنسى يجب أن تكون الصورة بخلفية بيضاء.</p>
-                                        <div class="flex-between" style="margin-bottom:0">
-                                            <div class="input-field file-field col l8 p-0">
-                                                <div class="btn">
-                                                    <span><i class="material-icons">person_outline</i></span>
-                                                    <input type="file" name="file1" class="img-input">
+                
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <div class="col s1 p-0">
+                                <img src="../../images/person/1.jpg" data-target="personalImage" alt="Person Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
+                            </div>
+                            <!-- Modal Structure -->
+                            <div id="personalImage" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../../images/person/1.jpg" alt="Person Image" width="152" height="200" class="">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <h6>ملاحظات:</h6>
+                                            <p>لا تنسى يجب أن تكون الصورة بأبعاد 200*152.</p>
+                                            <p>لا تنسى يجب أن تكون الصورة بخلفية بيضاء.</p>
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">person_outline</i></span>
+                                                        <input type="file" name="file1" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة شخصية">
+                                                    </div>
                                                 </div>
-                                                <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" placeholder="صورة شخصية">
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                 </div>
-                                            </div>
-                                            <div class="col l4">
-                                                <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">تعديل الصورة</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col s11">
-                            <div class="text-label flex-between">
-                                <span class="black-text">ناظم أحمد حمد أبو الخل </span>
-                                <button type="button" class="btn ed-btn btn-floating waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="تعديل الاسم"><i class="material-icons">edit</i></button>
+                            <div class="col s11">
+                                <div class="text-label flex-between">
+                                    <p class="black-text">ناظم أحمد حمد أبو الخل </p>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الاسم" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group hide">
+                                    <div class="input-field col l3">
+                                        <input id="firstname" name="firstname" type="text" class="validate" required>
+                                        <label for="firstname">الاسم الأول</label>
+                                    </div>
+                                    <div class="input-field col l3">
+                                        <input id="fathername" name="fathername" type="text" class="validate" required>
+                                        <label for="fathername">اسم الأب</label>
+                                    </div>
+                                    <div class="input-field col l3">
+                                        <input id="grandname" name="grandname" type="text" class="validate" required>
+                                        <label for="grandname">اسم الجد</label>
+                                    </div>
+                                    <div class="input-field col l3">
+                                        <input id="lastname" name="lastname" type="text" class="validate" required>
+                                        <label for="lastname">الكنية</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group hide">
-                                <div class="input-field col l3">
-                                    <input id="firstname" name="firstname" type="text" class="validate" required>
-                                    <label for="firstname">الاسم الأول</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <div class="col s4">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>موبايل: <a href="tel:999999999" class="custom-link">999 999 999</a></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الرقم" data-position="bottom">تعديل</button>
                                 </div>
-                                <div class="input-field col l3">
-                                    <input id="fathername" name="fathername" type="text" class="validate" required>
-                                    <label for="fathername">اسم الأب</label>
+                                <div class="input-group hide">
+                                    <div class="input-field col s12">
+                                        <input type="tel" id="mobile" name="mobile" class="validate" required>
+                                        <label for="mobile">رقم الموبايل</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
                                 </div>
-                                <div class="input-field col l3">
-                                    <input id="grandname" name="grandname" type="text" class="validate" required>
-                                    <label for="grandname">اسم الجد</label>
+                            </div>
+                            <div class="col s4">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>واتساب: <a href="https://wa.me/999999999" class="custom-link">999 999 999</a></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الرقم" data-position="bottom">تعديل</button>
                                 </div>
-                                <div class="input-field col l3">
-                                    <input id="lastname" name="lastname" type="text" class="validate" required>
-                                    <label for="lastname">الكنية</label>
+                                <div class="input-group hide">
+                                    <div class="input-field col s12">
+                                        <input type="tel" id="whatsapp" name="whatsapp" class="validate">
+                                        <label for="whatsapp">رقم الواتساب</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
                                 </div>
-                                <div class="col s12">
-                                    <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">تعديل الاسم</button>
-                                    <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء الأمر</button>
+                            </div>
+                            <div class="col s4">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                    <p>العنوان: <span>حمص - سوريا</span></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل العنوان" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group hide">
+                                    <div class="input-field col s12">
+                                        <input type="text" id="address" name="address" class="validate">
+                                        <label for="address">العنوان الحالي</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-                <!-- <h5 class="m-0">معلومات أساسية</h5>
-                <div class="row">
-                    <p class="input-group-title">الاسم الكامل</p>
-                    <div class="input-field col l3">
-                        <input id="firstname" name="firstname" type="text" class="validate" required>
-                        <label for="firstname">الاسم الأول</label>
-                    </div>
-                    <div class="input-field col l3">
-                        <input id="fathername" name="fathername" type="text" class="validate" required>
-                        <label for="fathername">اسم الأب</label>
-                    </div>
-                    <div class="input-field col l3">
-                        <input id="grandname" name="grandname" type="text" class="validate" required>
-                        <label for="grandname">اسم الجد</label>
-                    </div>
-                    <div class="input-field col l3">
-                        <input id="lastname" name="lastname" type="text" class="validate" required>
-                        <label for="lastname">الكنية</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="input-group-title">معلومات التواصل</p>
-                    <div class="input-field col l4">
-                        <input type="tel" id="mobile" name="mobile" class="materialize-textarea" required>
-                        <label for="mobile">رقم الموبايل</label>
-                    </div>
-                    <div class="input-field col l4">
-                        <input type="tel" id="whatsapp" name="whatsapp" class="materialize-textarea" required>
-                        <label for="whatsapp">رقم الواتساب</label>
-                    </div>
-                    <div class="input-field col l4">
-                        <input type="text" id="address" name="address" class="materialize-textarea" required>
-                        <label for="address">العنوان الحالي</label>
-                    </div>
-                </div> 
-                <h5 class="m-0">معلومات التأشيرة</h5>
-                <div class="row" id="visaRow">
-                    <div class="input-field col l6">
-                        <select name="visa" id="visaList">
-                            <option value="" disabled selected>اختر التأشيرة</option>
-                            <option value="" data-price="3000">الخيار الأول</option>
-                            <option value="" data-price="5500">الخيار الثاني</option>
-                            <option value="" data-price="1500">الخيار الثالث</option>
-                            <option value="" data-price="2000">الخيار الرابع</option>
-                            <option value="" data-price="3500">الخيار الخامس</option>
-                        </select>
-                    </div>
-                    <div class="input-field col l6">
-                        <input type="number" id="price" name="price" value="" class="materialize-textarea">
-                        <label for="price">السعر المتفق عليه</label>
-                    </div>
-                </div> 
-                <h5 class="m-0">الملفات المطلوبة</h5>
-                <div class="row">
-                    <p class="input-group-title">جميع الملفات المطلوبة</p>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">payment</i></span>
-                            <input type="file" multiple>
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="idcard" type="text" placeholder="صورة عن البطاقة الشخصية">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">person_outline</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="personimage" type="text" placeholder="صورة شخصية">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">picture_as_pdf</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="qualifications" type="text" placeholder="ملف المؤهلات العلمية">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="notdoomed" type="text" placeholder="صورة عن الفيش الجنائي">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="netpaper" type="text" placeholder="صورة عن ورقة النت">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="hospetal" type="text" placeholder="صورة عن حجز مستشفى">
-                        </div>
-                    </div>
-                    <div class="input-field file-field col l6">
-                        <div class="btn">
-                            <span><i class="material-icons">image</i></span>
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" name="fingerprint" type="text" placeholder="صورة بصمة">
-                        </div>
-                    </div>
-                    <div class="input-field col l6">
-                        <input type="text" id="work" name="work" class="materialize-textarea">
-                        <label for="work">عقد عمل</label>
-                    </div>
-                </div> 
-                <h5 class="m-0">ملاحظات عامة</h5>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="input-field col s12">
-                            <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
-                            <label for="notes">ملاحظات ..</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <button type="submit" name="add_trans" class="btn main-dark waves-effect waves-light">إضافة</button>
-                    </div>
-                </div> -->
             </div>
         </form>
     </div>

@@ -73,20 +73,24 @@
 
   // Show Inputs Fields After Click Edit In Transactions Page
   // let textLabel = document.querySelector(".show-transactions .text-label"),
-  let editBtn = document.querySelector(".show-transactions .text-label .btn"),
-      cancelBtn = document.querySelector(".show-transactions .input-group .cancel-btn"),
+  let editBtn = document.querySelectorAll(".show-transactions .text-label .btn"),
+      cancelBtn = document.querySelectorAll(".show-transactions .input-group .cancel-btn"),
       inputImg = document.querySelector(".show-transactions .img-input");
   if (editBtn) {
-    editBtn.onclick = function () {
-      this.parentElement.nextElementSibling.classList.remove("hide");
-      this.parentElement.classList.add("hide");
+    for (let i = 0; i < editBtn.length; i++) {
+      editBtn[i].onclick = function () {
+        editBtn[i].parentElement.nextElementSibling.classList.remove("hide");
+        editBtn[i].parentElement.classList.add("hide");
+      }
     }
   }
   // Hide Inputs Fields After Click Cancel In Transactions Page
   if (cancelBtn) {
-    cancelBtn.onclick = function () {
-      this.parentElement.parentElement.previousElementSibling.classList.remove("hide");
-      this.parentElement.parentElement.classList.add("hide");
+    for (let i = 0; i < cancelBtn.length; i++) {
+      cancelBtn[i].onclick = function () {
+        cancelBtn[i].parentElement.parentElement.previousElementSibling.classList.remove("hide");
+        cancelBtn[i].parentElement.parentElement.classList.add("hide");
+      }
     }
   }
   // Show New Image On Change
