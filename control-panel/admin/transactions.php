@@ -36,7 +36,7 @@ if ($do == "transactions") {       // Transactions Page
 <!-- Start Transactions -->
 <section class="transactions">
     <div class="container">
-        <form method="post" action="">
+        <form method="post" action="../include/delete_transaction.php">
             <input type="hidden" name="id" id="btnId">
             <table class="striped highlight responsive-table">
                 <thead>
@@ -64,7 +64,12 @@ if ($do == "transactions") {       // Transactions Page
                                     <th><?php echo $value['visa']; ?></th>
                                     <td class="flex-between">
                                     <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="عرض"><i class="material-icons">link</i></a>
-                                        <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                        <?php
+                                            if (isset($_SESSION['admin'])) {?>
+                                                <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                <?php
+                                            }
+                                        ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -93,6 +98,9 @@ if ($do == "transactions") {       // Transactions Page
     $stmt1 = $con->prepare("SELECT * FROM visas");
     $stmt1->execute();
     $visas = $stmt1->fetchAll();
+    $stmt2 = $con->prepare("SELECT * FROM users");
+    $stmt2->execute();
+    $users = $stmt2->fetchAll();
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -117,13 +125,16 @@ if ($do == "transactions") {       // Transactions Page
             <div class="row m-0">
                 <div class="row">
                     <div class="input-field col l12">
-                        <input type="text" name="marketer_id" list="marketer" id="marketerList" class="validate" required>
+                        <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate" required>
                         <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
                     </div>
                     <datalist id="marketer">
-                        <option value="1 حسام" selected>
-                        <option value="2 وائل">
-                        <option value="3 سعيد">
+                    <?php
+                        foreach ($users as $user) {?>
+                            <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
+                            <?php
+                        }
+                    ?>
                     </datalist>
                 </div>
                 <h5>معلومات أساسية</h5>
