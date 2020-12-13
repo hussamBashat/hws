@@ -58,6 +58,23 @@
     };
   }
 
+  // Behavior After Write User Not Exist
+  let inputUserList = document.querySelector("#marketerList");
+  if (inputUserList) {
+    inputUserList.onkeyup = function () {
+      let myOptions = this.parentElement.nextElementSibling.options;
+      for (let i = 0; i < myOptions.length; i++) {
+        if (myOptions[i].value != this.value) {
+          this.classList.add("invalid");
+          document.querySelector(".cart-btn").disabled = true;
+        } else {
+          this.classList.remove("invalid");
+          document.querySelector(".cart-btn").disabled = false;
+        }
+      }
+    }
+  }
+
   // Show Visa Price After Select
   let visaList = document.querySelector("#visaList"),
       priceInput = document.querySelector("#price"),
