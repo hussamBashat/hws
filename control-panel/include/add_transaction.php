@@ -25,7 +25,7 @@
             "zwhats" => $_POST['whatsapp'],
             "zvisa" => $_POST['visa'],
             "zvprice" => $_POST['orginal_price'],
-            "zmi" => (isset($_SESSION['user']) ? $_SESSION['user'] : $_POST['marketer_id']),
+            "zmi" => (isset($_SESSION['user']) ? $_SESSION['user'] : substr($_POST['marketer_id'], 0, 1)),
             "zpasspo" => $Files[7],
             "zcard" => $Files[0],
             "zphoto" => $Files[1],
