@@ -465,23 +465,23 @@ if ($do == "transactions") {       // Transactions Page
     <div class="container">
         <form method="post" action="">
             <div class="row m-0">
-                
+                <!-- Full Name And Image -->
                 <div class="col s12">
                     <div class="card-panel z-depth-1">
                         <div class="row valign-wrapper m-0">
                             <div class="col s1 p-0">
-                                <img src="../../images/person/1.jpg" data-target="personalImage" alt="Person Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
+                                <img src="../images/default/manager.svg" data-target="personalImage" alt="Person Image" class="modal-trigger m-0 responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
                             </div>
-                            <!-- Modal Structure -->
+                            <!-- Personal Image Modal -->
                             <div id="personalImage" class="modal">
                                 <div class="modal-content">
                                     <div class="row p-0 m-0">
                                         <div class="col l4">
-                                            <img src="../../images/person/1.jpg" alt="Person Image" width="152" height="200" class="">
+                                            <img src="../images/default/manager.svg" alt="Person Image" class="modal-img" width="150" height="200">
                                         </div>
                                         <div class="col l8 p-img">
                                             <h6>ملاحظات:</h6>
-                                            <p>لا تنسى يجب أن تكون الصورة بأبعاد 200*152.</p>
+                                            <p>لا تنسى يجب أن تكون الصورة بأبعاد [200*150].</p>
                                             <p>لا تنسى يجب أن تكون الصورة بخلفية بيضاء.</p>
                                             <div class="flex-between" style="margin-bottom:0">
                                                 <div class="input-field file-field col l8 p-0">
@@ -494,7 +494,8 @@ if ($do == "transactions") {       // Transactions Page
                                                     </div>
                                                 </div>
                                                 <div class="col l4">
-                                                    <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="submit" name="edit_person_img" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -532,7 +533,7 @@ if ($do == "transactions") {       // Transactions Page
                         </div>
                     </div>
                 </div>
-
+                <!-- Contact Info And Location -->
                 <div class="col s12">
                     <div class="card-panel z-depth-1">
                         <div class="row valign-wrapper m-0">
@@ -549,7 +550,7 @@ if ($do == "transactions") {       // Transactions Page
                                         <label for="mobile">رقم الموبايل</label>
                                     </div>
                                     <div class="col s12">
-                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="submit" name="edit_phone" class="btn main-dark waves-effect waves-light">حفظ</button>
                                         <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                     </div>
                                 </div>
@@ -567,7 +568,7 @@ if ($do == "transactions") {       // Transactions Page
                                         <label for="whatsapp">رقم الواتساب</label>
                                     </div>
                                     <div class="col s12">
-                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="submit" name="edit_whatsapp" class="btn main-dark waves-effect waves-light">حفظ</button>
                                         <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                     </div>
                                 </div>
@@ -585,7 +586,7 @@ if ($do == "transactions") {       // Transactions Page
                                         <label for="address">العنوان الحالي</label>
                                     </div>
                                     <div class="col s12">
-                                        <button type="submit" name="edit_name" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="submit" name="edit_location" class="btn main-dark waves-effect waves-light">حفظ</button>
                                         <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                     </div>
                                 </div>
@@ -593,8 +594,605 @@ if ($do == "transactions") {       // Transactions Page
                         </div>
                     </div>
                 </div>
-
+                <!-- Select Visa  -->
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <div class="col s12">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>التأشيرة المختارة: <span>اسم التأشيرة</span> بسعر <span>6000</span></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل التأشيرة" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group hide">
+                                    <div class="input-field col l6">
+                                        <select name="visa" id="visaList">
+                                            <option value="" selected>اختر التأشيرة</option>
+                                            <?php
+                                                foreach ($visas as $visa) {?>
+                                                    <option value="<?php echo $visa['visaname']; ?>" data-price="<?php echo $visa['price']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col l6">
+                                        <input type="number" id="price" name="price" value="" class="validate">
+                                        <label for="price">السعر المتفق عليه</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_visa" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- All Files -->
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <!-- ID Card Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/card.svg" data-target="idPersonCard" alt="ID Card Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل صورة البطاقة">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- ID Card Modal -->
+                            <div id="idPersonCard" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/card.svg" alt="ID Card Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <h6>ملاحظات:</h6>
+                                            <p>يجب إدخال صورة واحدة فقط تحتوي على الجانبين للبطاقة الشخصية.</p>
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">payment</i></span>
+                                                        <input type="file" name="file0" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة عن البطاقة الشخصية">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_id_card" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Certifica File -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/certification.svg" data-target="certification" alt="certification File" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل ملف المؤهلات العلمية">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Certifica Modal -->
+                            <div id="certification" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <iframe src="" width="200" height="200" title="Certification File" style="
+                                            background-image: url('../images/default/certification.svg');
+                                            background-size: cover;
+                                            "></iframe>
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <h6>ملاحظات:</h6>
+                                            <ul>
+                                                <li>- يجب أن يكون هذا الملف من نوع PDF.</li>
+                                                <li>- يجب أن يحتوي هذا الملف  على الشهادات الحاصل عليها وبيان درجات للشهادة الجامعية.</li>
+                                            </ul>
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">picture_as_pdf</i></span>
+                                                        <input type="file" name="file2" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="ملف المؤهلات العلمية">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_certifica" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Criminal Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/warning.svg" data-target="criminal" alt="Criminal Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل صورة الفيش الجنائي">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Criminal Modal -->
+                            <div id="criminal" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/warning.svg" alt="Criminal Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <!-- <h6>ملاحظات:</h6> -->
+                                            <!-- <p></p> -->
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">image</i></span>
+                                                        <input type="file" name="file3" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة عن الفيش الجنائي">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_criminal" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Net Paper Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/document.svg" data-target="netPaper" alt="Net Paper Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل ورقة النت">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Net Paper Modal -->
+                            <div id="netPaper" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/document.svg" alt="Net Paper Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <!-- <h6>ملاحظات:</h6> -->
+                                            <!-- <p></p> -->
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">image</i></span>
+                                                        <input type="file" name="file4" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة عن ورقة النت">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_net_paper" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hospital Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/medical-report.svg" data-target="hospital" alt="hospital Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل  حجز المستشفى">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Hospital Modal -->
+                            <div id="hospital" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/medical-report.svg" alt="Hospital Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <!-- <h6>ملاحظات:</h6> -->
+                                            <!-- <p></p> -->
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">image</i></span>
+                                                        <input type="file" name="file5" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_hospital" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fingerprint Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/search.svg" data-target="fingerprint" alt="Fingerprint Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل صورة البصمة">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Fingerprint Modal -->
+                            <div id="fingerprint" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/search.svg" alt="Fingerprint Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <!-- <h6>ملاحظات:</h6> -->
+                                            <!-- <p></p> -->
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">image</i></span>
+                                                        <input type="file" name="file6" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate"  type="text" placeholder="صورة بصمة">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_fingerprint" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Passport Image -->
+                            <div class="col s1 p-0 file-type">
+                                <img src="../images/default/passport.svg" data-target="passport" alt="Passport Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل جواز السفر">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                            <!-- Passport Modal -->
+                            <div id="passport" class="modal">
+                                <div class="modal-content">
+                                    <div class="row p-0 m-0">
+                                        <div class="col l4">
+                                            <img src="../images/default/passport.svg" alt="Passport Image" class="responsive-img">
+                                        </div>
+                                        <div class="col l8 p-img">
+                                            <!-- <h6>ملاحظات:</h6> -->
+                                            <!-- <p></p> -->
+                                            <div class="flex-between" style="margin-bottom:0">
+                                                <div class="input-field file-field col l8 p-0">
+                                                    <div class="btn">
+                                                        <span><i class="material-icons">image</i></span>
+                                                        <input type="file" name="file7" class="img-input">
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
+                                                    </div>
+                                                </div>
+                                                <div class="col l4">
+                                                    <button type="submit" name="edit_passport" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                    <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Work And Notes -->
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <div class="col s6">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>عقد عمل(المسمى الوظيفي): <span>مهندس برمجيات</span></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل عقد العمل" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group hide">
+                                    <div class="input-field col s12">
+                                        <input type="text" id="work" name="work" class="validate">
+                                        <label for="work">عقد عمل (المسمى الوظيفي)</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_work" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>ملاحظات: <span>لا يوجد</span></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الملاحظات" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group hide">
+                                    <div class="input-field col s12">
+                                        <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                                        <label for="notes">ملاحظات ..</label>
+                                    </div>
+                                    <div class="col s12">
+                                        <button type="submit" name="edit_notes" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- All Services -->
+                <div class="col s12">
+                    <div class="my-wrapper">
+                        <div class="card-panel z-depth-1">
+                            <div class="row valign-wrapper m-0">
+                                <div class="col s6">
+                                    <div class="text-label flex-between">
+                                        <div class="black-text">
+                                            <p>
+                                                <i class="material-icons" style="vertical-align: middle;color: #26a69a;">check</i>
+                                                خدمة المؤهلات العلمية <span> / 1200</span>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الخدمة" data-position="bottom">تعديل</button>
+                                    </div>
+                                    <div class="input-group hide">
+                                        <div class="input-field col s12">
+                                            <div class="row">
+                                                <div class="input-field col l5">
+                                                    <label class="label-check">
+                                                        <input type="checkbox" name="qualifications_s">
+                                                        <span><?php echo $prices[4]['service_name']; ?></span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col l7">
+                                                    <input type="text" id="qualifications_p" name="qualifications_p" value="<?php echo $prices[4]['price']; ?>" class="validate">
+                                                    <label for="qualifications_p">سعر الخدمة</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <button type="submit" name="edit_qualifications_p" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                            <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="text-label flex-between">
+                                        <div class="black-text">
+                                            <p>
+                                                <i class="material-icons" style="vertical-align: middle;color: #26a69a;">check</i>
+                                                خدمة حجز المستشفى <span> / 350</span>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الخدمة" data-position="bottom">تعديل</button>
+                                    </div>
+                                    <div class="input-group hide">
+                                        <div class="input-field col s12">
+                                            <div class="row">
+                                                <div class="input-field col l5">
+                                                    <label class="label-check">
+                                                        <input type="checkbox" name="hospetal_s">
+                                                        <span><?php echo $prices[1]['service_name']; ?></span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col l7">
+                                                    <input type="text" id="hospetal_p" name="hospetal_p" value="<?php echo $prices[1]['price']; ?>" class="validate">
+                                                    <label for="hospetal_p">سعر الخدمة</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <button type="submit" name="edit_hospetal_p" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                            <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-panel z-depth-1">
+                            <div class="row valign-wrapper m-0">
+                                <div class="col s6">
+                                    <div class="text-label flex-between">
+                                        <div class="black-text">
+                                            <p>
+                                                <i class="material-icons" style="vertical-align: middle;color: #26a69a;">check</i>
+                                                خدمة عقد عمل (المهنة) <span> / 1500</span>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الخدمة" data-position="bottom">تعديل</button>
+                                    </div>
+                                    <div class="input-group hide">
+                                        <div class="input-field col s12">
+                                            <div class="row">
+                                                <div class="input-field col l5">
+                                                    <label class="label-check">
+                                                        <input type="checkbox" name="work_S">
+                                                        <span><?php echo $prices[5]['service_name']; ?></span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col l7">
+                                                    <input type="text" id="work_p" name="work_p" value="<?php echo $prices[5]['price']; ?>" class="validate">
+                                                    <label for="work_p">سعر الخدمة</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <button type="submit" name="edit_work_p" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                            <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="text-label flex-between">
+                                        <div class="black-text">
+                                            <p>
+                                                <i class="material-icons" style="vertical-align: middle;color: #26a69a;">check</i>
+                                                خدمة حجز بصمة <span> / 100</span> <span> / 12-12-2020</span>
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الخدمة" data-position="bottom">تعديل</button>
+                                    </div>
+                                    <div class="input-group hide">
+                                        <div class="input-field col s12">
+                                            <div class="row">
+                                                <div class="input-field col l5">
+                                                    <label class="label-check">
+                                                        <input type="checkbox" name="fingerprint_s">
+                                                        <span><?php echo $prices[2]['service_name']; ?></span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col l3">
+                                                    <input type="text" id="fingerprint_p" name="fingerprint_p" value="<?php echo $prices[2]['price']; ?>" class="validate">
+                                                    <label for="fingerprint_p">سعر الخدمة</label>
+                                                </div>
+                                                <div class="input-field col l4">
+                                                    <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d">
+                                                    <label for="fingerprint_d">تاريخ الحجز</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <button type="submit" name="edit_fingerprint_d" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                            <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Amount Paid  -->
+                <div class="col s12">
+                    <div class="card-panel z-depth-1">
+                        <div class="row valign-wrapper m-0">
+                            <div class="col s12">
+                                <div class="text-label flex-between">
+                                    <div class="black-text">
+                                        <p>المبلغ المدفوع: <span>6000</span></p>
+                                    </div>
+                                    <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل المبلغ" data-position="bottom">تعديل</button>
+                                </div>
+                                <div class="input-group flex-between hide">
+                                    <div class="input-field col l6">
+                                        <input type="text" id="amount_paid" name="amount_paid" class="validate">
+                                        <label for="amount_paid">المبلغ المدفوع</label>
+                                    </div>
+                                    <div class="col l6">
+                                        <button type="submit" name="edit_amount_paid" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                        <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <input type="hidden" name="orginal_price" id="orginlPrice">
+            
+            <!-- Modal Trigger -->
+            <button data-target="invoice" class="modal-trigger btn-floating btn-large waves-effect waves-light main-dark cart-btn"><i class="material-icons">add_shopping_cart</i></button>
+            <!-- Modal Structure -->
+            <div id="invoice" class="modal cart-modal">
+                <div class="modal-content">
+                    <div class="modal-header flex-between">
+                        <h5 class="m-0">الفاتورة النهائية</h5>
+                        <img src="../../images/logo.png" alt="Maysan Logo">
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[0]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><b><?php echo $prices[0]['price']; ?></b></span>
+                                <input type="hidden" value="<?php echo $prices[0]['price']; ?>" name="office_fare">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>سعر التأشيرة</span> <strong>(اسم التأشيرة)</strong></div>
+                            <div class="col l2">
+                                <span><b>7500</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[1]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><b><?php echo $prices[1]['price']; ?></b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[2]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><?php echo $prices[2]['price']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><?php echo $prices[3]['price']; ?></span>
+                                <input type="hidden" value="<?php echo $prices[3]['price']; ?>" name="net_paper">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[5]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><?php echo $prices[5]['price']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[4]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span><?php echo $prices[4]['price']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span><strong>المجموع</strong></span></div>
+                            <div class="col l2">
+                                <span><b>11750</b></span>
+                                <input type="hidden" value="11750" name="total">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>المبلغ المدفوع</span></div>
+                            <div class="col l2">
+                                <span>2000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line">
+                        <div class="row m-0">
+                            <div class="col l10"><span>المبلغ المتبقي</span></div>
+                            <div class="col l2">
+                                <span>9750</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <button type="submit" name="add_trans" class="btn main-dark waves-effect waves-light">إتمام العملية</button>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
 </section>

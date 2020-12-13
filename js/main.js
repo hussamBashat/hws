@@ -72,10 +72,9 @@
   }
 
   // Show Inputs Fields After Click Edit In Transactions Page
-  // let textLabel = document.querySelector(".show-transactions .text-label"),
   let editBtn = document.querySelectorAll(".show-transactions .text-label .btn"),
       cancelBtn = document.querySelectorAll(".show-transactions .input-group .cancel-btn"),
-      inputImg = document.querySelector(".show-transactions .img-input");
+      inputImg = document.querySelectorAll(".show-transactions .img-input");
   if (editBtn) {
     for (let i = 0; i < editBtn.length; i++) {
       editBtn[i].onclick = function () {
@@ -95,9 +94,10 @@
   }
   // Show New Image On Change
   if (inputImg) {
-    inputImg.onchange = function () {
-      this.closest(".p-img").previousElementSibling.children[0].src = this.value;
-      console.log(this.closest(".p-img").previousElementSibling.children[0].src)
+    for (let i = 0; i < inputImg.length; i++) {
+      inputImg[i].onchange = function () {
+        inputImg[i].closest(".p-img").previousElementSibling.children[0].src = window.URL.createObjectURL(inputImg[i].files[0]);
+      }
     }
   }
 

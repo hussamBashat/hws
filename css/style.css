@@ -228,10 +228,11 @@ table td .btn:last-child{background-color:var(--gray)}
     border: 2px solid var(--main-color);
 }
 .select-dropdown {color: var(--gray);}
-.select-dropdown li.selected {display: none;}
+.select-dropdown li:first-of-type {display: none;}
 .text-label {padding: 10px; background-color: var(--white-gray);}
-.prwaz {padding: 2px; background-color: var(--white-gray); cursor: pointer; transition: var(--transition);}
-.prwaz:hover {background-color: var(--main-color);}
+.prwaz {padding: 2px; border: 3px solid var(--white-gray); cursor: pointer; transition: var(--transition);}
+.prwaz:hover {border-color: var(--main-color);}
+.modal-img {border: 3px solid #eee; object-fit: contain; object-position: bottom;}
 .edit-text-btn {
     all: unset;
     background-color: transparent!important;
@@ -241,6 +242,31 @@ table td .btn:last-child{background-color:var(--gray)}
     padding: 5px
 }
 .filter-table {margin-bottom: 2rem;transform: translateY(-10px);}
+.modal-content iframe {border: 0;}
+.modal-content iframe img {
+    max-width: 100%;
+    height: auto;
+}
+.valign-wrapper > .col img {margin-right: 1.5rem;}
+.file-type {position: relative;}
+.file-type .material-icons {
+    position: absolute;
+    top: -9px;
+    left: -32px;
+    color: #26a69a;
+}
+.my-wrapper {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    padding: 24px;
+    margin: .5rem 0 1rem 0;
+}
+.my-wrapper .card-panel {
+    box-shadow: none;
+    padding: 0;
+}
+
+
+
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
 }
