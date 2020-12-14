@@ -117,6 +117,29 @@
       }
     }
   }
+  
+  // Validation File On Change Input
+  let inputFile = document.querySelectorAll(".input-file"),
+      extinsion = ["image/png", "image/jpg","image/jpeg"];
+  if (inputFile) {
+    for (let i = 0; i < inputFile.length; i++) {
+      inputFile[i].onchange = function () {
+        if (!inputFile[i].classList.contains("pdf")) {
+          if (!extinsion.includes(inputFile[i].files[0].type)) {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+          } else {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+          }
+        } else {
+          if (inputFile[i].files[0].type != "application/pdf") {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+          } else {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+          }
+        }
+      }
+    }
+  }
 
   // Filter Table Show/Hide Visa || Services
   let filterTable = document.querySelectorAll(".filter-table .filter-item");

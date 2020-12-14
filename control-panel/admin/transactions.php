@@ -205,74 +205,82 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">payment</i></span>
-                            <input type="file" name="file0">
+                            <input type="file" name="file0" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate"  type="text" placeholder="صورة عن البطاقة الشخصية">
+                            <input class="file-path validate" type="text" placeholder="صورة عن البطاقة الشخصية">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">person_outline</i></span>
-                            <input type="file" name="file1">
+                            <input type="file" name="file1" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="صورة شخصية">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">picture_as_pdf</i></span>
-                            <input type="file" name="file2">
+                            <input type="file" name="file2" class="input-file pdf">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="ملف المؤهلات العلمية">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> يجب أن ينتهي هذا الملف بإمتداد 'PDF' حصراً</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file3">
+                            <input type="file" name="file3" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="صورة عن الفيش الجنائي">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file4">
+                            <input type="file" name="file4" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="صورة عن ورقة النت">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file5">
+                            <input type="file" name="file5" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="صورة عن حجز مستشفى">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file6">
+                            <input type="file" name="file6" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate"  type="text" placeholder="صورة بصمة">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file7">
+                            <input type="file" name="file7" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
                         </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field col l6">
                         <input type="text" id="work" name="work" class="materialize-textarea">
