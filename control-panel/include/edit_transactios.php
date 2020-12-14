@@ -4,8 +4,14 @@
     include "../../include/Functions.php";
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $fullname = $_POST['firstname'] . " -" . $_POST['fathername'] . " -" . $_POST['grandname'] . " -" . $_POST['lastname'];
+        if (isset($_POST['edit_name'])) {
+            $fullname = $_POST['firstname'] . " -" . $_POST['fathername'] . " -" . $_POST['grandname'] . " -" . $_POST['lastname'];
+            $stmt = $con->prepare("UPDATE transactions SET fullname = ? WHERE id = ?");
+            $stmt->execute(array($fullname, $_POST['id']));
+        }
+        elseif (isset($_POST['edit_person_img'])) {
+            # code...
+        }
         $Files = array();
         for ($i=0; $i < 8; $i++) { 
             $file = "file" . $i;
