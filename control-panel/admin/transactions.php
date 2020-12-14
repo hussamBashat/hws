@@ -125,7 +125,7 @@ if ($do == "transactions") {       // Transactions Page
 <!-- Start Transactions Add Form -->
 <section class="add-transactions">
     <div class="container">
-        <form method="post" action="../include/add_transaction.php" enctype="multipart/form-data">
+        <form method="post" action="../include/add_transaction.php" enctype="multipart/form-data" id="addTrans">
             <div class="row m-0">
                 <?php
                     if (isset($_SESSION['admin'])) {?>

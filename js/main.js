@@ -119,7 +119,8 @@
   }
   
   // Validation File On Change Input
-  let inputFile = document.querySelectorAll(".input-file"),
+  let myform = document.querySelector("#addTrans"),
+      inputFile = document.querySelectorAll(".input-file"),
       extinsion = ["image/png", "image/jpg","image/jpeg"];
   if (inputFile) {
     for (let i = 0; i < inputFile.length; i++) {
@@ -127,14 +128,26 @@
         if (!inputFile[i].classList.contains("pdf")) {
           if (!extinsion.includes(inputFile[i].files[0].type)) {
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+            inputFile[i].classList.remove("is-success");
           } else {
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+            inputFile[i].classList.add("is-success");
           }
         } else {
           if (inputFile[i].files[0].type != "application/pdf") {
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+            inputFile[i].classList.remove("is-success");
           } else {
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+            inputFile[i].classList.add("is-success");
+          }
+        }
+        // Submit Form If Allthings it's OK
+        myform.onsubmit = function (e) {
+          if (inputFile[i].classList.contains("is-success")) {
+            return
+          } else {
+            e.preventDefault();
           }
         }
       }
