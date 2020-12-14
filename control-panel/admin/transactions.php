@@ -225,10 +225,10 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">picture_as_pdf</i></span>
-                            <input type="file" name="file2" class="input-file pdf">
+                            <input type="file" name="file2" class="input-file pdf" data-select="qualifications">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate"  type="text" placeholder="ملف المؤهلات العلمية">
+                            <input class="file-path validate" type="text" placeholder="ملف المؤهلات العلمية">
                         </div>
                         <p class="invalied-file hide"><i class="material-icons">error</i> يجب أن ينتهي هذا الملف بإمتداد 'PDF' حصراً</p>
                     </div>
@@ -255,20 +255,20 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file5" class="input-file">
+                            <input type="file" name="file5" class="input-file" data-select="hospital">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate"  type="text" placeholder="صورة عن حجز مستشفى">
+                            <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
                         </div>
                         <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file6" class="input-file">
+                            <input type="file" name="file6" class="input-file finger-input-file" data-select="fingerprint">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate"  type="text" placeholder="صورة بصمة">
+                            <input class="file-path validate" type="text" placeholder="صورة بصمة">
                         </div>
                         <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
@@ -283,7 +283,7 @@ if ($do == "transactions") {       // Transactions Page
                         <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field col l6">
-                        <input type="text" id="work" name="work" class="materialize-textarea">
+                        <input type="text" id="work" name="work" class="materialize-textarea" data-select="work-chekbox">
                         <label for="work">عقد عمل (المسمى الوظيفي)</label>
                     </div>
                     <div class="input-field col l6">
@@ -298,12 +298,12 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="qualifications_s">
+                                    <input type="checkbox" name="qualifications_s" class="qualifications" disabled>
                                     <span><?php echo $prices[4]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="qualifications_p" name="qualifications_p" value="<?php echo $prices[4]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="qualifications_p" name="qualifications_p" disabled value="<?php echo $prices[4]['price']; ?>" class="materialize-textarea">
                                 <label for="qualifications_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -312,12 +312,12 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="hospetal_s">
+                                    <input type="checkbox" name="hospetal_s" class="hospital" disabled>
                                     <span><?php echo $prices[1]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="hospetal_p" name="hospetal_p" value="<?php echo $prices[1]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="hospetal_p" name="hospetal_p" disabled value="<?php echo $prices[1]['price']; ?>" class="materialize-textarea">
                                 <label for="hospetal_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -326,30 +326,30 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="work_S">
+                                    <input type="checkbox" name="work_S" class="work-chekbox">
                                     <span><?php echo $prices[5]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="text" id="work_p" name="work_p" value="<?php echo $prices[5]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="work_p" name="work_p" data-file="work-input-file" disabled value="<?php echo $prices[5]['price']; ?>" class="materialize-textarea">
                                 <label for="work_p">سعر الخدمة</label>
                             </div>
                         </div>
                     </div>
                     <div class="col l6">
                         <div class="row">
-                            <div class="input-field col l5">
+                            <div class="input-field and-date col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="fingerprint_s">
+                                    <input type="checkbox" name="fingerprint_s" class="fingerprint" data-file="finger-input-file">
                                     <span><?php echo $prices[2]['service_name']; ?></span>
                                 </label>
                             </div>
                             <div class="input-field col l3">
-                                <input type="text" id="fingerprint_p" name="fingerprint_p" value="<?php echo $prices[2]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="fingerprint_p" name="fingerprint_p" disabled value="<?php echo $prices[2]['price']; ?>" class="materialize-textarea">
                                 <label for="fingerprint_p">سعر الخدمة</label>
                             </div>
                             <div class="input-field col l4">
-                                <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d">
+                                <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d" disabled>
                                 <label for="fingerprint_d">تاريخ الحجز</label>
                             </div>
                         </div>
@@ -359,7 +359,7 @@ if ($do == "transactions") {       // Transactions Page
                     <p class="input-group-title">أدخل المبلغ المدفوع</p>
                     <div class="col l6">
                         <div class="input-field col l6">
-                            <input type="text" id="amount_paid" name="amount_paid" class="materialize-textarea">
+                            <input type="number" id="amount_paid" name="amount_paid" class="materialize-textarea">
                             <label for="amount_paid">المبلغ المدفوع</label>
                         </div>
                     </div>
