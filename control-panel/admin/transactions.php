@@ -497,7 +497,7 @@ if ($do == "transactions") {       // Transactions Page
         <!-- Start Transactions Edit Form -->
         <section class="show-transactions p-1">
             <div class="container">
-                <form method="post" action="../include/edit_transactios.php">
+                <form method="post" action="../include/edit_transactios.php" enctype="multipart/form-data">
                     <input type="hidden" value="<?php echo $id; ?>" name="id">
                     <div class="row m-0">
                         <!-- Full Name And Image -->
@@ -1093,7 +1093,7 @@ if ($do == "transactions") {       // Transactions Page
                                                             <label for="fingerprint_p">سعر الخدمة</label>
                                                         </div>
                                                         <div class="input-field col l4">
-                                                            <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d">
+                                                            <input type="text" class="datepicker" id="fingerprint_d" value="<?php echo $trans['fingerprint_reservation_date']; ?>" name="fingerprint_d">
                                                             <label for="fingerprint_d">تاريخ الحجز</label>
                                                         </div>
                                                     </div>
@@ -1209,7 +1209,7 @@ if ($do == "transactions") {       // Transactions Page
                                 <div class="row m-0">
                                     <div class="col l10"><span><strong>المجموع</strong></span></div>
                                     <div class="col l2">
-                                        <span><b>11750</b></span>
+                                        <span><b><?php echo $trans['total']; ?></b></span>
                                         <input type="hidden" value="11750" name="total">
                                     </div>
                                 </div>

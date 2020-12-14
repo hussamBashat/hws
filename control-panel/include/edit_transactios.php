@@ -8,69 +8,163 @@
             $fullname = $_POST['firstname'] . " -" . $_POST['fathername'] . " -" . $_POST['grandname'] . " -" . $_POST['lastname'];
             $stmt = $con->prepare("UPDATE transactions SET fullname = ? WHERE id = ?");
             $stmt->execute(array($fullname, $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         elseif (isset($_POST['edit_person_img'])) {
-            # code...
+            if (!empty($_FILES['file1']['name'])) {
+                if (!empty($_POST['photograph_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['photograph_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file1']['name'];
+                move_uploaded_file($_FILES['file1']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET photograph_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
-        $Files = array();
-        for ($i=0; $i < 8; $i++) { 
-            $file = "file" . $i;
-            if (!empty($_FILES[$file]['name'])) {
-                $Files[$i] = rand(0, 10000000) . "_" . $_FILES[$file]['name'];
+        elseif (isset($_POST['edit_id_card'])) {
+            if (!empty($_FILES['file0']['name'])) {
+                if (!empty($_POST['card_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['card_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file0']['name'];
+                move_uploaded_file($_FILES['file0']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET card_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
             }
-            else {
-                $Files[$i] = "";
-            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
-        $stmt = $con->prepare("INSERT INTO transactions(fullname, address, phone, whatsapp, visa, visa_price, marketer_id, passport_img, card_img, photograph_img, qualification_img, criminal_fisheye_img, netbook_paper_img, hospital_reservation_img, fingerprint_reservation_date, fingerprint_img, note, work_contract) 
-        VALUES (:zf, :za, :zphone, :zwhats, :zvisa, :zvprice, :zmi, :zpasspo, :zcard , :zphoto, :zqual, :zcf, :znp, :zhr, :zfr, :zfinger, :znote, :zwork)");
-        $stmt->execute(array(
-            "zf" => $fullname,
-            "za" => $_POST['address'],
-            "zphone" => $_POST['mobile'],
-            "zwhats" => $_POST['whatsapp'],
-            "zvisa" => $_POST['visa'],
-            "zvprice" => $_POST['orginal_price'],
-            "zmi" => (isset($_SESSION['user']) ? $_SESSION['user'] : substr($_POST['marketer_id'], 0, 1)),
-            "zpasspo" => $Files[7],
-            "zcard" => $Files[0],
-            "zphoto" => $Files[1],
-            "zqual" => $Files[2],
-            "zcf" => $Files[3],
-            "znp" => $Files[4],
-            "zhr" => $Files[5],
-            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ''),
-            "zfinger" => $Files[6],
-            "znote" => $_POST['notes'],
-            "zwork" => $_POST['work']
-        ));
-
-        $stmt2 = $con->prepare("SELECT id FROM transactions ORDER BY id DESC LIMIT 1");
-        $stmt2->execute();
-        $trans_id = $stmt2->fetchColumn();
-        mkdir("../../images/transactions/" . $trans_id);
-        for ($i=0; $i < 8; $i++) { 
-            $file = "file" . $i;
-            if (!empty($_FILES[$file]['name'])) {
-                move_uploaded_file($_FILES[$file]['tmp_name'], "../../images/transactions/" . $trans_id . "/" . $Files[$i]);
+        elseif (isset($_POST['edit_certifica'])) {
+            if (!empty($_FILES['file2']['name'])) {
+                if (!empty($_POST['qualification_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['qualification_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file2']['name'];
+                move_uploaded_file($_FILES['file2']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET qualification_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
             }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_criminal'])) {
+            if (!empty($_FILES['file3']['name'])) {
+                if (!empty($_POST['criminal_fisheye_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['criminal_fisheye_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file3']['name'];
+                move_uploaded_file($_FILES['file3']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET criminal_fisheye_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_net_paper'])) {
+            if (!empty($_FILES['file4']['name'])) {
+                if (!empty($_POST['netbook_paper_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['netbook_paper_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file4']['name'];
+                move_uploaded_file($_FILES['file4']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET netbook_paper_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_hospital'])) {
+            if (!empty($_FILES['file5']['name'])) {
+                if (!empty($_POST['hospital_reservation_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['hospital_reservation_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file5']['name'];
+                move_uploaded_file($_FILES['file5']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET hospital_reservation_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_fingerprint'])) {
+            if (!empty($_FILES['file6']['name'])) {
+                if (!empty($_POST['fingerprint_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['fingerprint_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file6']['name'];
+                move_uploaded_file($_FILES['file6']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET fingerprint_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_passport'])) {
+            if (!empty($_FILES['file7']['name'])) {
+                if (!empty($_POST['passport_img'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['passport_img']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file7']['name'];
+                move_uploaded_file($_FILES['file7']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET passport_img = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_phone'])) {
+            $stmt = $con->prepare("UPDATE transactions SET phone = ? WHERE id = ?");
+            $stmt->execute(array($_POST['mobile'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_whatsapp'])) {
+            $stmt = $con->prepare("UPDATE transactions SET whatsapp = ? WHERE id = ?");
+            $stmt->execute(array($_POST['whatsapp'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_location'])) {
+            $stmt = $con->prepare("UPDATE transactions SET address = ? WHERE id = ?");
+            $stmt->execute(array($_POST['address'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_visa'])) {
+            $stmt = $con->prepare("UPDATE transactions, invoices SET visa = ?, agreed_price = ?, total = ? WHERE transactions.id = ? AND trans_id = ?");
+            $stmt->execute(array($_POST['visa'], $_POST['price'], $_POST['total'], $_POST['id'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_work'])) {
+            $stmt = $con->prepare("UPDATE transactions SET work_contract = ? WHERE id = ?");
+            $stmt->execute(array($_POST['work'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_notes'])) {
+            $stmt = $con->prepare("UPDATE transactions SET note = ? WHERE id = ?");
+            $stmt->execute(array($_POST['notes'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_amount_paid'])) {
+            $stmt = $con->prepare("UPDATE invoices SET amount_paid = ? WHERE trans_id = ?");
+            $stmt->execute(array($_POST['amount_paid'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_qualifications_p'])) {
+            $stmt = $con->prepare("UPDATE invoices SET qualification = ? WHERE trans_id = ?");
+            $stmt->execute(array((isset($_POST['qualifications_s']) && $_POST['qualifications_s'] == 'on' ? $_POST['qualifications_p'] : 0), $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_hospetal_p'])) {
+            $stmt = $con->prepare("UPDATE invoices SET hospital_reservation = ? WHERE trans_id = ?");
+            $stmt->execute(array((isset($_POST['hospetal_s']) && $_POST['hospetal_s'] == 'on' ? $_POST['hospetal_p'] : 0), $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_work_p'])) {
+            $stmt = $con->prepare("UPDATE invoices SET work_contract_service = ? WHERE trans_id = ?");
+            $stmt->execute(array((isset($_POST['work_S']) && $_POST['work_S'] == 'on' ? $_POST['work_p'] : 0), $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['edit_fingerprint_d'])) {
+            $stmt = $con->prepare("UPDATE transactions, invoices SET fingerprint_reservation = ?, fingerprint_reservation_date = ? WHERE transactions.id = ? AND trans_id = ?");
+            $stmt->execute(array((isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : 0), (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ""), $_POST['id'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         
-        $stmt1 = $con->prepare("INSERT INTO invoices(trans_id, office_fare, netbook_paper, qualification, fingerprint_reservation, hospital_reservation, work_contract_service, agreed_price, total, amount_paid) 
-        VALUES (:zti , :zof, :znp, :zqual, :zfr, :zhr, :zwc, :zagp, :ztotal , :zap)");
-        $stmt1->execute(array(
-            "zti" => $trans_id,
-            "zof" => $_POST['office_fare'],
-            "znp" => $_POST['net_paper'],
-            "zqual" => (isset($_POST['qualifications_s']) && $_POST['qualifications_s'] == 'on' ? $_POST['qualifications_p'] : ''),
-            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : ''),
-            "zhr" => (isset($_POST['hospetal_s']) && $_POST['hospetal_s'] == 'on' ? $_POST['hospetal_p'] : ''),
-            "zwc" => (isset($_POST['work_S']) && $_POST['work_S'] == 'on' ? $_POST['work_p'] : ''),
-            "zagp" => $_POST['price'],
-            "ztotal" => $_POST['total'],
-            "zap" => $_POST['amount_paid']
-        ));
     }
-    header("refresh:0;url=../admin/transactions.php");
+    else{
+        header("refresh:0;url=../admin/transactions.php");
+    }
     ob_end_flush();
 ?>

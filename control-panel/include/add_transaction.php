@@ -33,7 +33,7 @@
             "zcf" => $Files[3],
             "znp" => $Files[4],
             "zhr" => $Files[5],
-            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ''),
+            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : 0),
             "zfinger" => $Files[6],
             "znote" => $_POST['notes'],
             "zwork" => $_POST['work']
@@ -56,10 +56,10 @@
             "zti" => $trans_id,
             "zof" => $_POST['office_fare'],
             "znp" => $_POST['net_paper'],
-            "zqual" => (isset($_POST['qualifications_s']) && $_POST['qualifications_s'] == 'on' ? $_POST['qualifications_p'] : ''),
-            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : ''),
-            "zhr" => (isset($_POST['hospetal_s']) && $_POST['hospetal_s'] == 'on' ? $_POST['hospetal_p'] : ''),
-            "zwc" => (isset($_POST['work_S']) && $_POST['work_S'] == 'on' ? $_POST['work_p'] : ''),
+            "zqual" => (isset($_POST['qualifications_s']) && $_POST['qualifications_s'] == 'on' ? $_POST['qualifications_p'] : 0),
+            "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : 0),
+            "zhr" => (isset($_POST['hospetal_s']) && $_POST['hospetal_s'] == 'on' ? $_POST['hospetal_p'] : 0),
+            "zwc" => (isset($_POST['work_S']) && $_POST['work_S'] == 'on' ? $_POST['work_p'] : 0),
             "zagp" => $_POST['price'],
             "ztotal" => $_POST['total'],
             "zap" => $_POST['amount_paid']
