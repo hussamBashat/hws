@@ -3,7 +3,7 @@
     session_start();
     include "../../include/Functions.php";
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_trans'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $fullname = $_POST['firstname'] . " -" . $_POST['fathername'] . " -" . $_POST['grandname'] . " -" . $_POST['lastname'];
         $Files = array();
