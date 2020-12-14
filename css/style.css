@@ -264,6 +264,20 @@ table td .btn:last-child{background-color:var(--gray)}
     box-shadow: none;
     padding: 0;
 }
+.file-field {position: relative;}
+.invalied-file {
+    position: absolute;
+    top: -11px;
+    right: 73px;
+    width: calc(100% - 17.5%);
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: var(--white-gray);
+    color: var(--second-color);
+    border-bottom: 2px solid var(--second-color);
+}
+.invalied-file i {vertical-align: bottom;transform: translateY(3px);}
 
 
 
