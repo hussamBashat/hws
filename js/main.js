@@ -139,27 +139,35 @@
           if (!extinsion.includes(inputFile[i].files[0].type)) { // If Error File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
-            myCheck.disabled = true;
-            if (inputFile[i].dataset.select == "fingerprint") { // To Fingerprint File Only
-              myCheck.disabled = false;
+            if (inputFile[i].dataset.select) {
+              myCheck.disabled = true;
+              if (inputFile[i].dataset.select == "fingerprint") { // To Fingerprint File Only
+                myCheck.disabled = false;
+              }
             }
           } else {  // If Success File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
-            myCheck.disabled = false;
-            if (inputFile[i].dataset.select == "fingerprint") {
-              myCheck.disabled = true;
+            if (inputFile[i].dataset.select) {
+              myCheck.disabled = false;
+              if (inputFile[i].dataset.select == "fingerprint") {
+                myCheck.disabled = true;
+              }
             }
           }
         } else {
           if (inputFile[i].files[0].type != "application/pdf") {  // If Not PDF File  -- Erorr -- 
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
-            myCheck.disabled = true;
+            if (inputFile[i].dataset.select) {
+              myCheck.disabled = true;
+            }
           } else {  // Success File It's PDF
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
-            myCheck.disabled = false;
+            if (inputFile[i].dataset.select) {
+              myCheck.disabled = false;
+            }
           }
         }
         // Submit Form If Allthings it's OK
@@ -175,23 +183,27 @@
   }
 
   // For Work Paper Only
-  let workInput = document.querySelector("#work"),
-      workCheckbox = document.querySelector(`.${workInput.dataset.select}`);
-  workInput.onkeyup = function () {
-    if (this.value != "") {
-      workCheckbox.disabled = true;
-    } else {
-      workCheckbox.disabled = false;
+  let workInput = document.querySelector("#work");
+  if (workInput) {
+    let workCheckbox = document.querySelector(`.${workInput.dataset.select}`);
+    workInput.onkeyup = function () {
+      if (this.value != "") {
+        workCheckbox.disabled = true;
+      } else {
+        workCheckbox.disabled = false;
+      }
     }
   }
   
   // For Amout Paid Only
-  let paidInput = document.querySelector("#amount_paid"),
-      paidInvoice = document.querySelector(`#${amount_paid.dataset.invoice}`);
-  paidInput.onkeyup = function () {
-    paidInvoice.innerHTML = this.value;
-    // Calc Invoice Items
-    totalInvice();
+  let paidInput = document.querySelector("#amount_paid");
+  if (paidInput) {
+    let paidInvoice = document.querySelector(`#${amount_paid.dataset.invoice}`);
+    paidInput.onkeyup = function () {
+      paidInvoice.innerHTML = this.value;
+      // Calc Invoice Items
+      totalInvice();
+    }
   }
 
   // Remove Disabled After Select Checkbox
@@ -254,13 +266,15 @@
         totlaElement = document.querySelector("#totalInvoice"),
         rest = document.querySelector("#restInvoice"),
         sum = 0;
-    for (let i = 0; i < itemPrices.length; i++) {
-      sum += parseInt(itemPrices[i].innerHTML);
-    }
-    totlaElement.innerHTML = sum;
-    totlaElement.parentElement.nextElementSibling.value = sum;
-    if (paidInput.value != 0) {
-      rest.innerHTML =  Math.abs(sum - parseInt(paidInput.value));
+    if (totlaElement) {
+      for (let i = 0; i < itemPrices.length; i++) {
+        sum += parseInt(itemPrices[i].innerHTML);
+      }
+      totlaElement.innerHTML = sum;
+      totlaElement.parentElement.nextElementSibling.value = sum;
+      if (paidInput.value != 0) {
+        rest.innerHTML =  Math.abs(sum - parseInt(paidInput.value));
+      }
     }
   }
   totalInvice();

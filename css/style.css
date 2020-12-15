@@ -169,9 +169,11 @@ footer ul{line-height:1.8!important}
 .stat-box.one{background-color:#00bcd4}
 .stat-box.tow{background-color:#d46200}
 .stat-box.three{background-color:#d40093}
+.stat-box.four{background-color: #00d410;}
 .stat-box.one .header{box-shadow:0 5px 5px #009aaf}
 .stat-box.tow .header{box-shadow:0 5px 5px #af5100}
 .stat-box.three .header{box-shadow:0 5px 5px #a50172}
+.stat-box.four .header{box-shadow:0 5px 5px #02a50e}
 .stat-box:hover{box-shadow:none}
 .stat-box .header{display:flex;justify-content:center;align-items:flex-end;padding-bottom:.5rem}
 .stat-box .header .material-icons{font-size:4rem}
@@ -217,9 +219,13 @@ table td .btn:last-child{background-color:var(--gray)}
 .cart-modal .modal-line {
     padding: .8rem 1rem;
     background-color: var(--white-gray);
+    transition: var(--transition);
 }
 .cart-modal .modal-line:nth-child(odd) {
     background-color: var(--white);
+}
+.cart-modal .modal-line:hover {
+    background-color: #eee;
 }
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
     background-color: var(--main-color);
@@ -277,6 +283,7 @@ table td .btn:last-child{background-color:var(--gray)}
     color: var(--second-color);
     border-bottom: 2px solid var(--second-color);
 }
+.invalied-file.show {top: -29px;right: 54px;}
 .invalied-file i {vertical-align: bottom;transform: translateY(3px);}
 
 

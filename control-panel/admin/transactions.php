@@ -65,14 +65,14 @@ if ($do == "transactions") {       // Transactions Page
                             foreach ($data as $value) {
                                 $fullname = explode("-", $value['fullname']);?>
                                 <tr>
-                                    <th><?php echo $value['id']; ?></th>
-                                    <th><?php echo $fullname[0] . $fullname[1] . $fullname[2] . $fullname[3]; ?></th>
-                                    <th><a class="custom-link" href="tel:<?php echo $value['phone']; ?>"><?php echo $value['phone']; ?></a></th>
-                                    <th><?php echo $value['whatsapp']; ?></th>
-                                    <th><?php echo $value['address']; ?></th>
-                                    <th><?php echo $value['visa']; ?></th>
+                                    <td><?php echo $value['id']; ?></td>
+                                    <td><?php echo $fullname[0] . $fullname[1] . $fullname[2] . $fullname[3]; ?></td>
+                                    <td><a class="custom-link" href="tel:<?php echo $value['phone']; ?>"><?php echo $value['phone']; ?></a></td>
+                                    <td><a href="https://wa.me/<?php echo $value['whatsapp']; ?>" class="custom-link" target="_blank"><?php echo $value['whatsapp']; ?></a></td>
+                                    <td><?php echo $value['address']; ?></td>
+                                    <td><?php echo $value['visa']; ?></td>
                                     <td class="flex-between">
-                                    <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض"><i class="material-icons">link</i></a>
+                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
                                                 <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
@@ -497,9 +497,28 @@ if ($do == "transactions") {       // Transactions Page
         <!-- Start Transactions Edit Form -->
         <section class="show-transactions p-1">
             <div class="container">
-                <form method="post" action="../include/edit_transactios.php" enctype="multipart/form-data">
+                <form method="post" action="../include/edit_transactios.php" id="addTrans" enctype="multipart/form-data">
                     <input type="hidden" value="<?php echo $id; ?>" name="id">
                     <div class="row m-0">
+                        <?php
+                        if (isset($_SESSION['admin'])) {?>
+                            <div class="row">
+                                <div class="input-field col l12">
+                                    <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate" required>
+                                    <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                                </div>
+                                <datalist id="marketer">
+                                <?php
+                                    foreach ($users as $user) {?>
+                                        <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
+                                        <?php
+                                    }
+                                ?>
+                                </datalist>
+                            </div>
+                            <?php
+                        }
+                        ?>
                         <!-- Full Name And Image -->
                         <div class="col s12">
                             <div class="card-panel z-depth-1">
@@ -522,12 +541,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">person_outline</i></span>
-                                                                <input type="file" name="file1" class="img-input">
+                                                                <input type="file" name="file1" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة شخصية">
                                                                 <input type="hidden" value="<?php echo $trans['photograph_img']; ?>" name="photograph_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_person_img" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -637,7 +657,7 @@ if ($do == "transactions") {       // Transactions Page
                                     <div class="col s12">
                                         <div class="text-label flex-between">
                                             <div class="black-text">
-                                                <p>التأشيرة المختارة: <span><?php echo $trans['visa']; ?></span> بسعر <span><?php echo $trans['agreed_price']; ?></span></p>
+                                                <p>التأشيرة المختارة: <span><?php echo $trans['visa']; ?></span> <span><?php echo ($trans['agreed_price'] > 0) ? ' بسعر '.$trans['agreed_price'] : ""; ?></span></p>
                                             </div>
                                             <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل التأشيرة" data-position="bottom">تعديل</button>
                                         </div>
@@ -689,12 +709,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">payment</i></span>
-                                                                <input type="file" name="file0" class="img-input">
+                                                                <input type="file" name="file0" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة عن البطاقة الشخصية">
                                                                 <input type="hidden" value="<?php echo $trans['card_img']; ?>" name="card_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_id_card" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -730,12 +751,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">picture_as_pdf</i></span>
-                                                                <input type="file" name="file2" class="img-input">
+                                                                <input type="file" name="file2" class="img-input input-file pdf">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="ملف المؤهلات العلمية">
                                                                 <input type="hidden" value="<?php echo $trans['qualification_img']; ?>" name="qualification_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> يجب أن ينتهي هذا الملف بإمتداد 'PDF' حصراً</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_certifica" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -765,12 +787,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file3" class="img-input">
+                                                                <input type="file" name="file3" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة عن الفيش الجنائي">
                                                                 <input type="hidden" value="<?php echo $trans['criminal_fisheye_img']; ?>" name="criminal_fisheye_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_criminal" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -800,12 +823,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file4" class="img-input">
+                                                                <input type="file" name="file4" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة عن ورقة النت">
                                                                 <input type="hidden" value="<?php echo $trans['netbook_paper_img']; ?>" name="netbook_paper_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_net_paper" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -835,12 +859,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file5" class="img-input">
+                                                                <input type="file" name="file5" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
                                                                 <input type="hidden" value="<?php echo $trans['hospital_reservation_img']; ?>" name="hospital_reservation_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_hospital" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -870,12 +895,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file6" class="img-input">
+                                                                <input type="file" name="file6" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate"  type="text" placeholder="صورة بصمة">
                                                                 <input type="hidden" value="<?php echo $trans['fingerprint_img']; ?>" name="fingerprint_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_fingerprint" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -905,12 +931,13 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file7" class="img-input">
+                                                                <input type="file" name="file7" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
                                                                 <input type="hidden" value="<?php echo $trans['passport_img']; ?>" name="passport_img">
                                                             </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
                                                             <button type="submit" name="edit_passport" class="btn main-dark waves-effect waves-light">حفظ</button>
