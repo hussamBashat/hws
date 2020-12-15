@@ -298,7 +298,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="qualifications_s" class="qualifications" disabled>
+                                    <input type="checkbox" name="qualifications_s" class="qualifications" disabled data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>">
                                     <span><?php echo $prices[4]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -312,7 +312,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="hospetal_s" class="hospital" disabled>
+                                    <input type="checkbox" name="hospetal_s" class="hospital" disabled data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>">
                                     <span><?php echo $prices[1]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -326,7 +326,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="work_S" class="work-chekbox">
+                                    <input type="checkbox" name="work_S" class="work-chekbox" data-invoice="workInvoice" data-orginalprice="<?php echo $prices[5]['price']; ?>">
                                     <span><?php echo $prices[5]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -340,7 +340,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field and-date col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="fingerprint_s" class="fingerprint" data-file="finger-input-file">
+                                    <input type="checkbox" name="fingerprint_s" class="fingerprint" data-file="finger-input-file" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>">
                                     <span><?php echo $prices[2]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -349,7 +349,7 @@ if ($do == "transactions") {       // Transactions Page
                                 <label for="fingerprint_p">سعر الخدمة</label>
                             </div>
                             <div class="input-field col l4">
-                                <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d" disabled>
+                                <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d" disabled required>
                                 <label for="fingerprint_d">تاريخ الحجز</label>
                             </div>
                         </div>
@@ -359,7 +359,7 @@ if ($do == "transactions") {       // Transactions Page
                     <p class="input-group-title">أدخل المبلغ المدفوع</p>
                     <div class="col l6">
                         <div class="input-field col l6">
-                            <input type="number" id="amount_paid" name="amount_paid" class="materialize-textarea">
+                            <input type="number" id="amount_paid" name="amount_paid" value="0" class="materialize-textarea" data-invoice="paidInvoice">
                             <label for="amount_paid">المبلغ المدفوع</label>
                         </div>
                     </div>
@@ -380,32 +380,16 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span><?php echo $prices[0]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span><b><?php echo $prices[0]['price']; ?></b></span>
+                                <span><b class="sum"><?php echo $prices[0]['price']; ?></b></span>
                                 <input type="hidden" value="<?php echo $prices[0]['price']; ?>" name="office_fare">
                             </div>
                         </div>
                     </div>
-                    <div class="modal-line">
+                    <div class="modal-line hide">
                         <div class="row m-0">
-                            <div class="col l10"><span>سعر التأشيرة</span> <strong>(اسم التأشيرة)</strong></div>
+                            <div class="col l10"><span>التأشيرة</span> <strong id="visaNameInvoice"></strong></div>
                             <div class="col l2">
-                                <span><b>7500</b></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-line">
-                        <div class="row m-0">
-                            <div class="col l10"><span><?php echo $prices[1]['service_name']; ?></span></div>
-                            <div class="col l2">
-                                <span><b></b></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-line">
-                        <div class="row m-0">
-                            <div class="col l10"><span><?php echo $prices[2]['service_name']; ?></span></div>
-                            <div class="col l2">
-                                <span></span>
+                                <span><b class="sum" id="visaPriceInvoice">0</b></span>
                             </div>
                         </div>
                     </div>
@@ -413,24 +397,40 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span><?php echo $prices[3]['price']; ?></span>
+                                <span><b class="sum"><?php echo $prices[3]['price']; ?></b></span>
                                 <input type="hidden" value="<?php echo $prices[3]['price']; ?>" name="net_paper">
                             </div>
                         </div>
                     </div>
-                    <div class="modal-line">
-                        <div class="row m-0">
-                            <div class="col l10"><span><?php echo $prices[5]['service_name']; ?></span></div>
-                            <div class="col l2">
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-line">
+                    <div class="modal-line hide">
                         <div class="row m-0">
                             <div class="col l10"><span><?php echo $prices[4]['service_name']; ?></span></div>
                             <div class="col l2">
-                                <span></span>
+                                <span class="sum" id="qualificationInvoice">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line hide">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[1]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span class="sum" id="hospitalInvoice">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line hide">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[5]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span class="sum" id="workInvoice">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-line hide">
+                        <div class="row m-0">
+                            <div class="col l10"><span><?php echo $prices[2]['service_name']; ?></span></div>
+                            <div class="col l2">
+                                <span class="sum" id="fingerprintInvoice">0</span>
                             </div>
                         </div>
                     </div>
@@ -439,8 +439,8 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span><strong>المجموع</strong></span></div>
                             <div class="col l2">
-                                <span><b>11750</b></span>
-                                <input type="hidden" value="11750" name="total">
+                                <span><b id="totalInvoice"></b></span>
+                                <input type="hidden" name="total">
                             </div>
                         </div>
                     </div>
@@ -448,7 +448,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span>المبلغ المدفوع</span></div>
                             <div class="col l2">
-                                <span>2000</span>
+                                <span id="paidInvoice"></span>
                             </div>
                         </div>
                     </div>
@@ -456,7 +456,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row m-0">
                             <div class="col l10"><span>المبلغ المتبقي</span></div>
                             <div class="col l2">
-                                <span>9750</span>
+                                <span id="restInvoice"></span>
                             </div>
                         </div>
                     </div>

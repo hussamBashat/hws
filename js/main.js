@@ -59,18 +59,17 @@
   }
 
   // Behavior After Write User Not Exist
-  let inputUserList = document.querySelector("#marketerList");
+  let inputUserList = document.querySelector("#marketerList"),
+      cartButton = document.querySelector(".cart-btn");
   if (inputUserList) {
     inputUserList.onkeyup = function () {
-      let myOptions = this.parentElement.nextElementSibling.options;
-      for (let i = 0; i < myOptions.length; i++) {
-        if (myOptions[i].value != this.value) {
-          this.classList.add("invalid");
-          document.querySelector(".cart-btn").disabled = true;
-        } else {
-          this.classList.remove("invalid");
-          document.querySelector(".cart-btn").disabled = false;
-        }
+      let myOption =  document.querySelector("#marketer option[value='" + this.value + "']");
+      if (myOption != null && myOption.value.length > 0) {
+        this.classList.remove("invalid");
+        cartButton.disabled = false;
+      } else {
+        this.classList.add("invalid");
+        cartButton.disabled = true;
       }
     }
   }
@@ -78,13 +77,23 @@
   // Show Visa Price After Select
   let visaList = document.querySelector("#visaList"),
       priceInput = document.querySelector("#price"),
-      orginlPrice = document.querySelector("#orginlPrice");
+      orginlPrice = document.querySelector("#orginlPrice"),
+      priceInvoice = document.querySelector("#visaPriceInvoice"),
+      visaName = document.querySelector("#visaNameInvoice");
   if (visaList) {
     visaList.onchange = function () {
       let option = this.options[this.selectedIndex];
       priceInput.focus();
       priceInput.value = option.dataset.price;
       orginlPrice.value = option.dataset.price;
+      visaName.innerHTML = '(' + option.value + ')';
+      priceInvoice.closest(".modal-line").classList.remove("hide");
+      priceInvoice.innerHTML = option.dataset.price;
+      priceInput.onkeyup = function () {
+        priceInvoice.innerHTML = this.value;
+        totalInvice();
+      }
+      totalInvice();
     }
   }
 
@@ -175,12 +184,25 @@
       workCheckbox.disabled = false;
     }
   }
+  
+  // For Amout Paid Only
+  let paidInput = document.querySelector("#amount_paid"),
+      paidInvoice = document.querySelector(`#${amount_paid.dataset.invoice}`);
+  paidInput.onkeyup = function () {
+    paidInvoice.innerHTML = this.value;
+    // Calc Invoice Items
+    totalInvice();
+  }
 
   // Remove Disabled After Select Checkbox
   let checkService = document.querySelectorAll(".input-field input[type='checkbox']"),
       dateInput = document.querySelector(".datepicker");
   for (let i = 0; i < checkService.length; i++) {
     checkService[i].onclick = function () {
+      // Invoice Show Hide Items Funtion
+      invoiceItems(checkService[i]);
+      // Calc Invoice Items
+      totalInvice();
       if (!checkService[i].closest(".input-field.and-date")) { // All Checkbox Expect Fingerprint Checkbox
         if (checkService[i].classList.contains("work-chekbox")) { // on Work Checkbox is checked
           workInput.disabled = !workInput.disabled;
@@ -206,6 +228,42 @@
       }
     }
   }
+
+  // Show / Hide Items In Invoice
+  function invoiceItems (selector) {
+    let invoicePrices = document.querySelector(`#${selector.dataset.invoice}`),
+        orginalPrice = selector.dataset.orginalprice;
+    if (selector.checked) {
+      invoicePrices.closest(".modal-line").classList.remove("hide");
+      invoicePrices.innerHTML = selector.closest(".input-field").nextElementSibling.children[0].value;
+      selector.closest(".input-field").nextElementSibling.children[0].onkeyup = function () {
+        invoicePrices.innerHTML = this.value;
+        // Calc Invoice Items
+        totalInvice();
+      }
+    } else {
+      invoicePrices.closest(".modal-line").classList.add("hide");
+      invoicePrices.innerHTML = 0;
+      selector.closest(".input-field").nextElementSibling.children[0].value = orginalPrice; // return Orginal Price
+    }
+  }
+
+  // Totla Invoice Calc
+  function totalInvice () {
+    let itemPrices = document.querySelectorAll("#invoice .sum"),
+        totlaElement = document.querySelector("#totalInvoice"),
+        rest = document.querySelector("#restInvoice"),
+        sum = 0;
+    for (let i = 0; i < itemPrices.length; i++) {
+      sum += parseInt(itemPrices[i].innerHTML);
+    }
+    totlaElement.innerHTML = sum;
+    totlaElement.parentElement.nextElementSibling.value = sum;
+    if (paidInput.value != 0) {
+      rest.innerHTML =  Math.abs(sum - parseInt(paidInput.value));
+    }
+  }
+  totalInvice();
 
   // Filter Table Show/Hide Visa || Services
   let filterTable = document.querySelectorAll(".filter-table .filter-item");
