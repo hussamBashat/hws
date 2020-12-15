@@ -107,8 +107,12 @@
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         elseif (isset($_POST['edit_phone'])) {
-            $stmt = $con->prepare("UPDATE transactions SET phone = ? WHERE id = ?");
-            $stmt->execute(array($_POST['mobile'], $_POST['id']));
+            $stm = $con->prepare("SELECT * FROM transactions WHERE phone = ? AND id != ?");
+            $stm->execute(array($_POST['mobile'], $_POST['id']));
+            if ($stm->rowCount() == 0) {
+                $stmt = $con->prepare("UPDATE transactions SET phone = ? WHERE id = ?");
+                $stmt->execute(array($_POST['mobile'], $_POST['id']));
+            }
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         elseif (isset($_POST['edit_whatsapp'])) {
