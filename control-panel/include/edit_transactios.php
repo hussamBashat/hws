@@ -165,6 +165,11 @@
             $stmt->execute(array((isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : 0), (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ""), $_POST['id'], $_POST['id']));
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
+        elseif (isset($_POST['change_marketer'])) {
+            $stmt = $con->prepare("UPDATE transactions SET marketer_id = ? WHERE id = ?");
+            $stmt->execute(array(substr($_POST['marketer_id'], 0, 1), $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
         
     }
     else{

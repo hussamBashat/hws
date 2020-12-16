@@ -66,10 +66,18 @@
       let myOption =  document.querySelector("#marketer option[value='" + this.value + "']");
       if (myOption != null && myOption.value.length > 0) {
         this.classList.remove("invalid");
-        cartButton.disabled = false;
+        if (this.classList.contains("show-page")) {
+          this.closest(".input-group").children[1].children[0].disabled = false;
+        } else {
+          cartButton.disabled = false;
+        }
       } else {
         this.classList.add("invalid");
-        cartButton.disabled = true;
+        if (this.classList.contains("show-page")) {
+          this.closest(".input-group").children[1].children[0].disabled = true;
+        } else {
+          cartButton.disabled = true;
+        }
       }
     }
   }
@@ -241,6 +249,24 @@
     }
   }
 
+  // Disabled / Enabled Inputs "qualtal" In Sohw Transactions Page
+  let superCheck = document.querySelectorAll(".checkchekbox");
+  if (superCheck) {
+    for (let i = 0; i < superCheck.length; i++) {
+      if (superCheck[i].checked == true) {
+        superCheck[i].closest(".input-field").nextElementSibling.children[0].disabled = false;
+        if (superCheck[i].classList.contains("fingerprint")) {
+          dateInput.disabled = false;
+        }
+      } else {
+        superCheck[i].closest(".input-field").nextElementSibling.children[0].disabled = true;
+        if (superCheck[i].classList.contains("fingerprint")) {
+          dateInput.disabled = true;
+        }
+      }
+    }
+  }
+
   // Show / Hide Items In Invoice
   function invoiceItems (selector) {
     let invoicePrices = document.querySelector(`#${selector.dataset.invoice}`),
@@ -272,7 +298,7 @@
       }
       totlaElement.innerHTML = sum;
       totlaElement.parentElement.nextElementSibling.value = sum;
-      if (paidInput.value != 0) {
+      if (paidInput.value >= 0) {
         rest.innerHTML =  Math.abs(sum - parseInt(paidInput.value));
       }
     }

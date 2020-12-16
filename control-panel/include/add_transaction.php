@@ -27,7 +27,7 @@
                 "zphone" => $_POST['mobile'],
                 "zwhats" => $_POST['whatsapp'],
                 "zvisa" => $_POST['visa'],
-                "zvprice" => $_POST['orginal_price'],
+                "zvprice" => (!empty($_POST['orginal_price']) ? $_POST['orginal_price']: 0),
                 "zmi" => (isset($_SESSION['user']) ? $_SESSION['user'] : substr($_POST['marketer_id'], 0, 1)),
                 "zpasspo" => $Files[7],
                 "zcard" => $Files[0],
@@ -39,7 +39,7 @@
                 "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ''),
                 "zfinger" => $Files[6],
                 "znote" => $_POST['notes'],
-                "zwork" => $_POST['work']
+                "zwork" => (!empty($_POST['work']) ? $_POST['work']: "")
             ));
     
             $stmt2 = $con->prepare("SELECT id FROM transactions ORDER BY id DESC LIMIT 1");
@@ -63,7 +63,7 @@
                 "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_p'] : 0),
                 "zhr" => (isset($_POST['hospetal_s']) && $_POST['hospetal_s'] == 'on' ? $_POST['hospetal_p'] : 0),
                 "zwc" => (isset($_POST['work_S']) && $_POST['work_S'] == 'on' ? $_POST['work_p'] : 0),
-                "zagp" => $_POST['price'],
+                "zagp" => (!empty($_POST['price']) ? $_POST['price']: 0),
                 "ztotal" => $_POST['total'],
                 "zap" => $_POST['amount_paid']
             ));
