@@ -172,15 +172,15 @@ if ($do == "transactions") {       // Transactions Page
                 <div class="row">
                     <p class="input-group-title">معلومات التواصل</p>
                     <div class="input-field col l4">
-                        <input type="tel" id="mobile" name="mobile" class="materialize-textarea" required>
+                        <input type="tel" id="mobile" name="mobile" class="validate" required>
                         <label for="mobile">رقم الموبايل</label>
                     </div>
                     <div class="input-field col l4">
-                        <input type="tel" id="whatsapp" name="whatsapp" class="materialize-textarea" >
+                        <input type="tel" id="whatsapp" name="whatsapp" class="validate">
                         <label for="whatsapp">رقم الواتساب</label>
                     </div>
                     <div class="input-field col l4">
-                        <input type="text" id="address" name="address" class="materialize-textarea" >
+                        <input type="text" id="address" name="address" class="validate">
                         <label for="address">العنوان الحالي</label>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ if ($do == "transactions") {       // Transactions Page
                         </select>
                     </div>
                     <div class="input-field col l6">
-                        <input type="number" id="price" name="price" value="" class="materialize-textarea">
+                        <input type="number" id="price" name="price" value="" class="validate">
                         <label for="price">السعر المتفق عليه</label>
                     </div>
                 </div> 
@@ -286,7 +286,7 @@ if ($do == "transactions") {       // Transactions Page
                         <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field col l6">
-                        <input type="text" id="work" name="work" class="materialize-textarea" data-select="work-chekbox">
+                        <input type="text" id="work" name="work" class="validate" data-select="work-chekbox">
                         <label for="work">عقد عمل (المسمى الوظيفي)</label>
                     </div>
                     <div class="input-field col l6">
@@ -306,7 +306,7 @@ if ($do == "transactions") {       // Transactions Page
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="number" id="qualifications_p" name="qualifications_p" disabled value="<?php echo $prices[4]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="qualifications_p" name="qualifications_p" disabled value="<?php echo $prices[4]['price']; ?>" class="validate">
                                 <label for="qualifications_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -320,7 +320,7 @@ if ($do == "transactions") {       // Transactions Page
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="number" id="hospetal_p" name="hospetal_p" disabled value="<?php echo $prices[1]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="hospetal_p" name="hospetal_p" disabled value="<?php echo $prices[1]['price']; ?>" class="validate">
                                 <label for="hospetal_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -334,7 +334,7 @@ if ($do == "transactions") {       // Transactions Page
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="number" id="work_p" name="work_p" data-file="work-input-file" disabled value="<?php echo $prices[5]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="work_p" name="work_p" data-file="work-input-file" disabled value="<?php echo $prices[5]['price']; ?>" class="validate">
                                 <label for="work_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -348,7 +348,7 @@ if ($do == "transactions") {       // Transactions Page
                                 </label>
                             </div>
                             <div class="input-field col l3">
-                                <input type="number" id="fingerprint_p" name="fingerprint_p" disabled value="<?php echo $prices[2]['price']; ?>" class="materialize-textarea">
+                                <input type="number" id="fingerprint_p" name="fingerprint_p" disabled value="<?php echo $prices[2]['price']; ?>" class="validate">
                                 <label for="fingerprint_p">سعر الخدمة</label>
                             </div>
                             <div class="input-field col l4">
@@ -362,7 +362,7 @@ if ($do == "transactions") {       // Transactions Page
                     <p class="input-group-title">أدخل المبلغ المدفوع</p>
                     <div class="col l6">
                         <div class="input-field col l6">
-                            <input type="number" id="amount_paid" name="amount_paid" value="0" class="materialize-textarea" data-invoice="paidInvoice">
+                            <input type="number" id="amount_paid" name="amount_paid" value="0" class="validate" data-invoice="paidInvoice">
                             <label for="amount_paid">المبلغ المدفوع</label>
                         </div>
                     </div>
@@ -1137,9 +1137,9 @@ if ($do == "transactions") {       // Transactions Page
                                             <div class="input-group hide">
                                                 <div class="input-field col s12">
                                                     <div class="row">
-                                                        <div class="input-field col l5">
+                                                        <div class="input-field and-date col l5">
                                                             <label class="label-check">
-                                                                <input type="checkbox" name="fingerprint_s"  class="fingerprint checkchekbox" data-file="finger-input-file" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>" <?php echo ($trans['fingerprint_reservation'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['fingerprint_img']) ? "disabled": ""); ?>>
+                                                                <input type="checkbox" name="fingerprint_s" class="fingerprint checkchekbox" data-file="finger-input-file" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>" <?php echo ($trans['fingerprint_reservation'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['fingerprint_img']) ? "disabled": ""); ?>>
                                                                 <span><?php echo $prices[2]['service_name']; ?></span>
                                                             </label>
                                                         </div>

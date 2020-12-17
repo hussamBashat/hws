@@ -70,7 +70,39 @@
             header("refresh:0;url=../admin/transactions.php");
         }
         else {
-            echo "رقم الموبايل موجود بالفعل";
+            ?>
+            <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            ">
+                <p style="
+                    margin: 0;
+                    padding: 1rem;
+                    font-size: 18px;
+                    font-family: tahoma, serif;
+                    color: #721c24;
+                    background-color: #f8d7da;
+                    border-color: #f5c6cb;
+                    border-radius: .25rem;
+                ">
+                    رقم الموبايل الذي أدخلته موجود بالفعل. 
+                    <span onclick="window.history.back()" style="
+                        cursor: pointer;
+                        padding: .5rem 1rem;
+                        border-radius: .25rem;
+                        background-color: #3f51b5;
+                        color: #fff;
+                    ">رجوع</span>
+                </p>
+            </div>
+            <?php
         }
     }
     else {

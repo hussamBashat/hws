@@ -98,9 +98,13 @@
       priceInvoice.closest(".modal-line").classList.remove("hide");
       priceInvoice.innerHTML = option.dataset.price;
       priceInput.onkeyup = function () {
-        priceInvoice.innerHTML = this.value;
-        totalInvice();
+        if (this.value != "" && this.value >= 0) {
+          priceInvoice.innerHTML = this.value;
+          // Calc Invoice Items
+          totalInvice();
+        }
       }
+      // Calc Invoice Items
       totalInvice();
     }
   }
@@ -275,9 +279,11 @@
       invoicePrices.closest(".modal-line").classList.remove("hide");
       invoicePrices.innerHTML = selector.closest(".input-field").nextElementSibling.children[0].value;
       selector.closest(".input-field").nextElementSibling.children[0].onkeyup = function () {
-        invoicePrices.innerHTML = this.value;
-        // Calc Invoice Items
-        totalInvice();
+        if (this.value != "" && this.value >= 0) {
+          invoicePrices.innerHTML = this.value;
+          // Calc Invoice Items
+          totalInvice();
+        }
       }
     } else {
       invoicePrices.closest(".modal-line").classList.add("hide");
@@ -298,7 +304,7 @@
       }
       totlaElement.innerHTML = sum;
       totlaElement.parentElement.nextElementSibling.value = sum;
-      if (paidInput.value >= 0) {
+      if (paidInput.value != "" && paidInput.value >= 0) {
         rest.innerHTML =  Math.abs(sum - parseInt(paidInput.value));
       }
     }
