@@ -66,7 +66,7 @@ if (isset($_SESSION['admin'])) {
           <div class="stat-box four z-depth-2">
             <div class="header">
               <i class="material-icons">local_offer</i>
-              <span><?php //echo countItems("id", "transactions"); ?>5 تأشيرة</span>
+              <span><?php echo countItems("id", "visas"); ?> تأشيرة</span>
             </div>
             <div class="footer flex-between">
               <a href="pricelist.php" class="custom-link flex-between"><i class="material-icons">table</i> عرض الجدول</a>

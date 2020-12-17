@@ -7,7 +7,7 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
-        $stmt = $con->prepare("SELECT * FROM users WHERE password = ? AND username = ? OR email = ?");
+        $stmt = $con->prepare("SELECT * FROM users WHERE password = ? AND Status = 1 AND username = ? OR email = ?");
         $stmt->execute(array($_POST['password'], $_POST['UOE'], $_POST['UOE']));
         if ($stmt->rowCount() > 0) {
             $data = $stmt->fetch();
