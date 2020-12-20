@@ -157,6 +157,8 @@
                 myCheck.disabled = false;
               }
             }
+          } else if (inputFile[i].classList.contains("photograph")) { // For Check Photograph File Dimensions
+            ValidateImgDimensions(inputFile[i]);
           } else {  // If Success File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
@@ -207,6 +209,25 @@
     }
   }
   
+  // Function To Validation Photograph Image Dimensions
+  const ValidateImgDimensions = (selector) => {
+    let img = new Image();
+    img.src = window.URL.createObjectURL(selector.files[0]);
+    img.onload = () => {
+      if (img.width === 150 && img.height === 200) {
+        console.log("Correct size");
+        selector.parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+        selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')";
+        selector.classList.add("is-success");
+      } else {
+        console.log("Incorrect size");
+        selector.parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+        selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = '<i class="material-icons">error</i> أبعاد الصورة غير مناسبة, أدخل صورة بأبعاد [200*150]';
+        selector.classList.remove("is-success");
+      }
+    }
+  }
+
   // For Amout Paid Only
   let paidInput = document.querySelector("#amount_paid");
   if (paidInput) {

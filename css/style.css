@@ -236,6 +236,7 @@ table td .btn:last-child{background-color:var(--gray)}
 .select-dropdown {color: var(--gray);}
 .select-dropdown li:first-of-type {display: none;}
 .text-label {padding: 10px; background-color: var(--white-gray);}
+.show-img-div {width: 60px!important;}
 .prwaz {padding: 2px; border: 3px solid var(--white-gray); cursor: pointer; transition: var(--transition);}
 .prwaz:hover {border-color: var(--main-color);}
 .modal-img {border: 3px solid #eee; object-fit: contain; object-position: bottom;}

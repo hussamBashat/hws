@@ -218,7 +218,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">person_outline</i></span>
-                            <input type="file" name="file1" class="input-file">
+                            <input type="file" name="file1" class="input-file photograph">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="صورة شخصية">
@@ -551,8 +551,8 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="col s12">
                             <div class="card-panel z-depth-1">
                                 <div class="row valign-wrapper m-0">
-                                    <div class="col s1 p-0">
-                                        <img src="<?php echo (!empty($trans['photograph_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['photograph_img'] : "../images/default/manager.svg"); ?>" data-target="personalImage" alt="Person Image" class="modal-trigger m-0 responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
+                                    <div class="col s1 p-0 show-img-div">
+                                        <img src="<?php echo (!empty($trans['photograph_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['photograph_img'] : "../images/default/manager.svg"); ?>" data-target="personalImage" alt="Person Image" class="modal-trigger m-0 p-0 responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل الصورة">
                                     </div>
                                     <!-- Personal Image Modal -->
                                     <div id="personalImage" class="modal">
@@ -569,7 +569,7 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">person_outline</i></span>
-                                                                <input type="file" name="file1" class="img-input input-file">
+                                                                <input type="file" name="file1" class="img-input input-file photograph">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة شخصية">
