@@ -105,6 +105,7 @@
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'marketers.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/marketers.php"><i class="material-icons">supervisor_account</i>المسوقين</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'transactions.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/transactions.php"><i class="material-icons">library_books</i>المعاملات</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'pricelist.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/pricelist.php"><i class="material-icons">monetization_on</i>قائمة الأسعار</a></li>
+        <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'filterlist.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/filterlist.php"><i class="material-icons">filter_list</i>الحالات</a></li>
         <li class="<?php echo (stripos($_SERVER['REQUEST_URI'], 'ref.php')) ? 'active' : ''; ?>"><a href="/hws/control-panel/admin/ref.php"><i class="material-icons">book</i>المرجع</a></li>
         <li><div class="divider"></div></li>
         <li><a href="/hws/include/logout.php"><i class="material-icons">logout</i>خروج</a></li>

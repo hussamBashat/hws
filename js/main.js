@@ -146,42 +146,23 @@
   if (inputFile) {
     for (let i = 0; i < inputFile.length; i++) {
       inputFile[i].onchange = function () {
-        let myCheck = document.querySelector(`.${inputFile[i].dataset.select}`);  // Data Attribute To Set Enabled, Disabled For Check box Services
         if (!inputFile[i].classList.contains("pdf")) {  // IF Images File
           if (!extinsion.includes(inputFile[i].files[0].type)) { // If Error File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
-            if (inputFile[i].dataset.select) {
-              myCheck.disabled = true;
-              if (inputFile[i].dataset.select == "fingerprint") { // To Fingerprint File Only
-                myCheck.disabled = false;
-              }
-            }
           } else if (inputFile[i].classList.contains("photograph")) { // For Check Photograph File Dimensions
             ValidateImgDimensions(inputFile[i]);
           } else {  // If Success File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
-            if (inputFile[i].dataset.select) {
-              myCheck.disabled = false;
-              if (inputFile[i].dataset.select == "fingerprint") {
-                myCheck.disabled = true;
-              }
-            }
           }
         } else {
           if (inputFile[i].files[0].type != "application/pdf") {  // If Not PDF File  -- Erorr -- 
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
-            if (inputFile[i].dataset.select) {
-              myCheck.disabled = true;
-            }
           } else {  // Success File It's PDF
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
-            if (inputFile[i].dataset.select) {
-              myCheck.disabled = false;
-            }
           }
         }
         // Submit Form If Allthings it's OK
@@ -196,18 +177,6 @@
     }
   }
 
-  // For Work Paper Only
-  let workInput = document.querySelector("#work");
-  if (workInput) {
-    let workCheckbox = document.querySelector(`.${workInput.dataset.select}`);
-    workInput.onkeyup = function () {
-      if (this.value != "") {
-        workCheckbox.disabled = true;
-      } else {
-        workCheckbox.disabled = false;
-      }
-    }
-  }
   
   // Function To Validation Photograph Image Dimensions
   const ValidateImgDimensions = (selector) => {
@@ -249,9 +218,6 @@
       // Calc Invoice Items
       totalInvice();
       if (!checkService[i].closest(".input-field.and-date")) { // All Checkbox Expect Fingerprint Checkbox
-        if (checkService[i].classList.contains("work-chekbox")) { // on Work Checkbox is checked
-          workInput.disabled = !workInput.disabled;
-        }
         if (checkService[i].closest(".input-field").nextElementSibling.children[0].disabled == true) {
           checkService[i].closest(".input-field").nextElementSibling.children[0].disabled = false;
           checkService[i].closest(".input-field").nextElementSibling.children[0].focus();
@@ -259,15 +225,12 @@
           checkService[i].closest(".input-field").nextElementSibling.children[0].disabled = true;
         }
       } else {  // Fingerprint Checkbox Only
-        let fingerInput = document.querySelector(`.${checkService[i].dataset.file}`);
         if (checkService[i].closest(".input-field").nextElementSibling.children[0].disabled == true) {
           checkService[i].closest(".input-field").nextElementSibling.children[0].disabled = false;
           checkService[i].closest(".input-field").nextElementSibling.children[0].focus();
-          fingerInput.disabled = true;  // For Input File Fingerprint
           dateInput.disabled = false;
         } else {
           checkService[i].closest(".input-field").nextElementSibling.children[0].disabled = true;
-          fingerInput.disabled = false;  // For Input File Fingerprint
           dateInput.disabled = true;
         }
       }

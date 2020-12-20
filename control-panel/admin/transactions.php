@@ -130,25 +130,40 @@ if ($do == "transactions") {       // Transactions Page
     <div class="container">
         <form method="post" action="../include/add_transaction.php" enctype="multipart/form-data" id="addTrans">
             <div class="row m-0">
-                <?php
-                    if (isset($_SESSION['admin'])) {?>
-                        <div class="row">
-                            <div class="input-field col l12">
-                                <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate" required>
-                                <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                <div class="row">
+                    <?php
+                        if (isset($_SESSION['admin'])) {?>
+                            <div class="col l6">
+                                <div class="input-field">
+                                    <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate" required>
+                                    <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                                </div>
+                                <datalist id="marketer">
+                                <?php
+                                    foreach ($users as $user) {?>
+                                        <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
+                                        <?php
+                                    }
+                                ?>
+                                </datalist>
                             </div>
-                            <datalist id="marketer">
                             <?php
-                                foreach ($users as $user) {?>
-                                    <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
-                                    <?php
-                                }
-                            ?>
-                            </datalist>
+                        }
+                    ?>
+                    <div class="col <?php echo (isset($_SESSION['admin']) ? "l6" : "l12") ?>">
+                        <div class="input-field">
+                            <select name="status" id="status">
+                                <option value="" selected>اختر الحالة</option>
+                                <?php
+                                    foreach ($visas as $visa) {?>
+                                        <option value="<?php echo $visa['visaname']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
                         </div>
-                        <?php
-                    }
-                ?>
+                    </div>
+                </div>
                 <h5>معلومات أساسية</h5>
                 <div class="row">
                     <p class="input-group-title">الاسم الكامل</p>
@@ -157,15 +172,15 @@ if ($do == "transactions") {       // Transactions Page
                         <label for="firstname">الاسم الأول</label>
                     </div>
                     <div class="input-field col l3">
-                        <input id="fathername" name="fathername" type="text" class="validate" required>
+                        <input id="fathername" name="fathername" type="text" class="validate">
                         <label for="fathername">اسم الأب</label>
                     </div>
                     <div class="input-field col l3">
-                        <input id="grandname" name="grandname" type="text" class="validate" required>
+                        <input id="grandname" name="grandname" type="text" class="validate">
                         <label for="grandname">اسم الجد</label>
                     </div>
                     <div class="input-field col l3">
-                        <input id="lastname" name="lastname" type="text" class="validate" required>
+                        <input id="lastname" name="lastname" type="text" class="validate">
                         <label for="lastname">الكنية</label>
                     </div>
                 </div>
@@ -228,7 +243,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">picture_as_pdf</i></span>
-                            <input type="file" name="file2" class="input-file pdf" data-select="qualifications">
+                            <input type="file" name="file2" class="input-file pdf">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="ملف المؤهلات العلمية">
@@ -258,7 +273,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file5" class="input-file" data-select="hospital">
+                            <input type="file" name="file5" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
@@ -268,7 +283,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="input-field file-field col l6">
                         <div class="btn">
                             <span><i class="material-icons">image</i></span>
-                            <input type="file" name="file6" class="input-file finger-input-file" data-select="fingerprint">
+                            <input type="file" name="file6" class="input-file">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="صورة بصمة">
@@ -285,9 +300,15 @@ if ($do == "transactions") {       // Transactions Page
                         </div>
                         <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
-                    <div class="input-field col l6">
-                        <input type="text" id="work" name="work" class="validate" data-select="work-chekbox">
-                        <label for="work">عقد عمل (المسمى الوظيفي)</label>
+                    <div class="input-field file-field col l6">
+                        <div class="btn">
+                            <span><i class="material-icons">image</i></span>
+                            <input type="file" name="file8" class="input-file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="صورة عقد عمل">
+                        </div>
+                        <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                     </div>
                     <div class="input-field col l6">
                         <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
@@ -301,7 +322,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="qualifications_s" class="qualifications" disabled data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>">
+                                    <input type="checkbox" name="qualifications_s" data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>">
                                     <span><?php echo $prices[4]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -315,7 +336,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="hospetal_s" class="hospital" disabled data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>">
+                                    <input type="checkbox" name="hospetal_s" data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>">
                                     <span><?php echo $prices[1]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -334,7 +355,7 @@ if ($do == "transactions") {       // Transactions Page
                                 </label>
                             </div>
                             <div class="input-field col l7">
-                                <input type="number" id="work_p" name="work_p" data-file="work-input-file" disabled value="<?php echo $prices[5]['price']; ?>" class="validate">
+                                <input type="number" id="work_p" name="work_p" disabled value="<?php echo $prices[5]['price']; ?>" class="validate">
                                 <label for="work_p">سعر الخدمة</label>
                             </div>
                         </div>
@@ -343,7 +364,7 @@ if ($do == "transactions") {       // Transactions Page
                         <div class="row">
                             <div class="input-field and-date col l5">
                                 <label class="label-check">
-                                    <input type="checkbox" name="fingerprint_s" class="fingerprint" data-file="finger-input-file" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>">
+                                    <input type="checkbox" name="fingerprint_s" class="fingerprint" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>">
                                     <span><?php echo $prices[2]['service_name']; ?></span>
                                 </label>
                             </div>
@@ -503,15 +524,15 @@ if ($do == "transactions") {       // Transactions Page
                 <form method="post" action="../include/edit_transactios.php" id="addTrans" enctype="multipart/form-data">
                     <input type="hidden" value="<?php echo $id; ?>" name="id">
                     <div class="row m-0">
-                        <?php
-                        if (isset($_SESSION['admin'])) {
-                            $stmt3 = $con->prepare("SELECT * FROM users WHERE id = ?");
-                            $stmt3->execute(array($trans['marketer_id']));
-                            $data = $stmt3->fetch();?>
                         <div class="col s12">
                             <div class="card-panel z-depth-1">
                                 <div class="row valign-wrapper m-0">
-                                    <div class="col s12">
+                                    <?php
+                                    if (isset($_SESSION['admin'])) {
+                                    $stmt3 = $con->prepare("SELECT * FROM users WHERE id = ?");
+                                    $stmt3->execute(array($trans['marketer_id']));
+                                    $data = $stmt3->fetch();?>
+                                    <div class="col l6">
                                         <div class="text-label flex-between">
                                             <div class="black-text">
                                                 <p>اسم المسوق: <span><?php echo $data['username']; ?></span></p>
@@ -519,11 +540,11 @@ if ($do == "transactions") {       // Transactions Page
                                             <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الرقم" data-position="bottom">تعديل</button>
                                         </div>
                                         <div class="input-group hide flex-between">
-                                            <div class="input-field col s9">
-                                                    <div class="col l10">
+                                            <div class="input-field col s7">
+                                                    <div class="col l12">
                                                         <div class="input-field col l12">
                                                             <input type="text" name="marketer_id" list="marketer" value="<?php echo $data['id']; ?> - <?php echo $data['username']; ?>" id="marketerList" autocomplete="off" class="validate show-page" required>
-                                                            <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                                                            <label for="marketerList">اختر المسوق</label>
                                                         </div>
                                                         <datalist id="marketer">
                                                         <?php
@@ -535,8 +556,38 @@ if ($do == "transactions") {       // Transactions Page
                                                         </datalist>
                                                     </div>
                                             </div>
-                                            <div class="col s3 left-align">
+                                            <div class="col s5 left-align">
                                                 <button type="submit" name="change_marketer" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
+                                    <div class="col <?php echo (isset($_SESSION['admin']) ? "l6" : "l12") ?>">
+                                        <div class="text-label flex-between">
+                                            <div class="black-text">
+                                                <p>اسم الحالة: <span><?php echo "اسم الحالة" ?></span></p>
+                                            </div>
+                                            <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الحالة" data-position="bottom">تعديل</button>
+                                        </div>
+                                        <div class="input-group hide flex-between">
+                                            <div class="col l7">
+                                                <div class="input-field">
+                                                    <select name="status" id="status">
+                                                        <option value="" selected>اختر الحالة</option>
+                                                        <?php
+                                                            foreach ($visas as $visa) {?>
+                                                                <option value="<?php echo $visa['visaname']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col s5 left-align">
+                                                <button type="submit" name="change_status" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                 <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                             </div>
                                         </div>
@@ -544,9 +595,6 @@ if ($do == "transactions") {       // Transactions Page
                                 </div>
                             </div>
                         </div>
-                        <?php
-                        }
-                        ?>
                         <!-- Full Name And Image -->
                         <div class="col s12">
                             <div class="card-panel z-depth-1">
@@ -597,15 +645,15 @@ if ($do == "transactions") {       // Transactions Page
                                                 <label for="firstname">الاسم الأول</label>
                                             </div>
                                             <div class="input-field col l3">
-                                                <input id="fathername" name="fathername" type="text" value="<?php echo $fullname[1]; ?>" class="validate" required>
+                                                <input id="fathername" name="fathername" type="text" value="<?php echo $fullname[1]; ?>" class="validate">
                                                 <label for="fathername">اسم الأب</label>
                                             </div>
                                             <div class="input-field col l3">
-                                                <input id="grandname" name="grandname" type="text" value="<?php echo $fullname[2]; ?>" class="validate" required>
+                                                <input id="grandname" name="grandname" type="text" value="<?php echo $fullname[2]; ?>" class="validate">
                                                 <label for="grandname">اسم الجد</label>
                                             </div>
                                             <div class="input-field col l3">
-                                                <input id="lastname" name="lastname" type="text" value="<?php echo $fullname[3]; ?>" class="validate" required>
+                                                <input id="lastname" name="lastname" type="text" value="<?php echo $fullname[3]; ?>" class="validate">
                                                 <label for="lastname">الكنية</label>
                                             </div>
                                             <div class="col s12">
@@ -779,7 +827,7 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">picture_as_pdf</i></span>
-                                                                <input type="file" name="file2" class="img-input input-file pdf" data-select="qualifications">
+                                                                <input type="file" name="file2" class="img-input input-file pdf">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="ملف المؤهلات العلمية">
@@ -887,7 +935,7 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file5" class="img-input input-file" data-select="hospital">
+                                                                <input type="file" name="file5" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
@@ -923,7 +971,7 @@ if ($do == "transactions") {       // Transactions Page
                                                         <div class="input-field file-field col l8 p-0">
                                                             <div class="btn">
                                                                 <span><i class="material-icons">image</i></span>
-                                                                <input type="file" name="file6" class="img-input input-file finger-input-file" data-select="fingerprint" <?php echo ($trans['fingerprint_reservation'] > 0 ? "disabled" : ""); ?>>
+                                                                <input type="file" name="file6" class="img-input input-file">
                                                             </div>
                                                             <div class="file-path-wrapper">
                                                                 <input class="file-path validate"  type="text" placeholder="صورة بصمة">
@@ -932,7 +980,7 @@ if ($do == "transactions") {       // Transactions Page
                                                             <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
                                                         </div>
                                                         <div class="col l4">
-                                                            <button type="submit" name="edit_fingerprint" class="btn main-dark waves-effect waves-light <?php echo ($trans['fingerprint_reservation'] > 0 ? "hide" : ""); ?>">حفظ</button>
+                                                            <button type="submit" name="edit_fingerprint" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                             <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
                                                         </div>
                                                     </div>
@@ -976,32 +1024,50 @@ if ($do == "transactions") {       // Transactions Page
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Work And Notes -->
-                        <div class="col s12">
-                            <div class="card-panel z-depth-1">
-                                <div class="row valign-wrapper m-0">
-                                    <div class="col s6">
-                                        <div class="text-label flex-between">
-                                            <div class="black-text">
-                                                <p>عقد عمل(المسمى الوظيفي): <span><?php echo $trans['work_contract']; ?></span></p>
-                                            </div>
-                                            <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل عقد العمل" data-position="bottom">تعديل</button>
-                                        </div>
-                                        <div class="input-group hide">
-                                            <div class="input-field col s12">
-                                                <input type="text" id="work" name="work" data-select="work-chekbox" value="<?php echo $trans['work_contract']; ?>" <?php echo ($trans['work_contract_service'] > 0 ? "disabled" : ""); ?> class="validate">
-                                                <label for="work">عقد عمل (المسمى الوظيفي)</label>
-                                            </div>
-                                            <div class="col s12">
-                                                <button type="submit" name="edit_work" class="btn main-dark waves-effect waves-light <?php echo ($trans['work_contract_service'] > 0 ? "hide" : ""); ?>">حفظ</button>
-                                                <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                                    <!-- Contract Image -->
+                                    <div class="col s1 p-0 file-type">
+                                        <img src="../images/default/contract.svg" data-target="contract" alt="Contract Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل عقد العمل">
+                                        <?php echo (!empty($trans['passport_img']) ? "<i class='material-icons'>check_circle</i>": ""); ?>
+                                    </div>
+                                    <!-- Contract Modal -->
+                                    <div id="contract" class="modal">
+                                        <div class="modal-content">
+                                            <div class="row p-0 m-0">
+                                                <div class="col l4">
+                                                    <img src="<?php echo (!empty($trans['work_contract']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['work_contract'] : "../images/default/contract.svg"); ?>" alt="Contract Image" class="responsive-img">
+                                                </div>
+                                                <div class="col l8 p-img">
+                                                    <!-- <h6>ملاحظات:</h6> -->
+                                                    <!-- <p></p> -->
+                                                    <div class="flex-between" style="margin-bottom:0">
+                                                        <div class="input-field file-field col l8 p-0">
+                                                            <div class="btn">
+                                                                <span><i class="material-icons">image</i></span>
+                                                                <input type="file" name="file8" class="img-input input-file">
+                                                            </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input class="file-path validate" type="text" placeholder="صورة عقد العمل">
+                                                                <input type="hidden" value="<?php echo $trans['work_contract']; ?>" name="contract_img">
+                                                            </div>
+                                                            <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                        </div>
+                                                        <div class="col l4">
+                                                            <button type="submit" name="edit_contract" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                                            <button type="button" class="btn modal-close bl-btn waves-effect waves-light">إلغاء</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col s6">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Notes -->
+                        <div class="col s12">
+                            <div class="card-panel z-depth-1">
+                                <div class="row valign-wrapper m-0">
+                                    <div class="col s12">
                                         <div class="text-label flex-between">
                                             <div class="black-text">
                                                 <p>ملاحظات: <span><?php echo $trans['note']; ?></span></p>
@@ -1042,18 +1108,18 @@ if ($do == "transactions") {       // Transactions Page
                                                     <div class="row">
                                                         <div class="input-field col l5">
                                                             <label class="label-check">
-                                                                <input type="checkbox" name="qualifications_s" class="qualifications checkchekbox" data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>" <?php echo ($trans['qualification'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['qualification_img']) ? "": "disabled"); ?>>
+                                                                <input type="checkbox" name="qualifications_s" class="qualifications checkchekbox" data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>" <?php echo ($trans['qualification'] > 0 ? "checked" : ""); ?>>
                                                                 <span><?php echo $prices[4]['service_name']; ?></span>
                                                             </label>
                                                         </div>
                                                         <div class="input-field col l7">
-                                                            <input type="number" id="qualifications_p" name="qualifications_p" value="<?php echo ($trans['qualification'] > 0 ? $trans['qualification'] :$prices[4]['price'] ); ?>" class="validate" >
+                                                            <input type="number" id="qualifications_p" name="qualifications_p" value="<?php echo ($trans['qualification'] > 0 ? $trans['qualification'] :$prices[4]['price'] ); ?>" class="validate">
                                                             <label for="qualifications_p">سعر الخدمة</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
-                                                    <button type="submit" name="edit_qualifications_p" class="btn main-dark waves-effect waves-light <?php echo (!empty($trans['qualification_img']) ? "": "hide"); ?>">حفظ</button>
+                                                    <button type="submit" name="edit_qualifications_p" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                     <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                                 </div>
                                             </div>
@@ -1073,7 +1139,7 @@ if ($do == "transactions") {       // Transactions Page
                                                     <div class="row">
                                                         <div class="input-field col l5">
                                                             <label class="label-check">
-                                                                <input type="checkbox" name="hospetal_s"  class="hospital checkchekbox" data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>" <?php echo ($trans['hospital_reservation'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['hospital_reservation_img']) ? "": "disabled"); ?>>
+                                                                <input type="checkbox" name="hospetal_s" class="hospital checkchekbox" data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>" <?php echo ($trans['hospital_reservation'] > 0 ? "checked" : ""); ?>>
                                                                 <span><?php echo $prices[1]['service_name']; ?></span>
                                                             </label>
                                                         </div>
@@ -1084,7 +1150,7 @@ if ($do == "transactions") {       // Transactions Page
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
-                                                    <button type="submit" name="edit_hospetal_p" class="btn main-dark waves-effect waves-light <?php echo (!empty($trans['hospital_reservation_img']) ? "": "hide"); ?>">حفظ</button>
+                                                    <button type="submit" name="edit_hospetal_p" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                     <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                                 </div>
                                             </div>
@@ -1108,18 +1174,18 @@ if ($do == "transactions") {       // Transactions Page
                                                     <div class="row">
                                                         <div class="input-field col l5">
                                                             <label class="label-check">
-                                                                <input type="checkbox" name="work_S" class="work-chekbox checkchekbox" data-invoice="workInvoice" data-orginalprice="<?php echo $prices[5]['price']; ?>" <?php echo ($trans['work_contract_service'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['work_contract']) ? "disabled": ""); ?>>
+                                                                <input type="checkbox" name="work_S" class="work-chekbox checkchekbox" data-invoice="workInvoice" data-orginalprice="<?php echo $prices[5]['price']; ?>" <?php echo ($trans['work_contract_service'] > 0 ? "checked" : ""); ?>>
                                                                 <span><?php echo $prices[5]['service_name']; ?></span>
                                                             </label>
                                                         </div>
                                                         <div class="input-field col l7">
-                                                            <input type="number" id="work_p" name="work_p" data-file="work-input-file" value="<?php echo ($trans['work_contract_service'] > 0 ? $trans['work_contract_service'] : $prices[5]['price']); ?>" class="validate">
+                                                            <input type="number" id="work_p" name="work_p" value="<?php echo ($trans['work_contract_service'] > 0 ? $trans['work_contract_service'] : $prices[5]['price']); ?>" class="validate">
                                                             <label for="work_p">سعر الخدمة</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
-                                                    <button type="submit" name="edit_work_p" class="btn main-dark waves-effect waves-light <?php echo (!empty($trans['work_contract']) ? "hide": ""); ?>">حفظ</button>
+                                                    <button type="submit" name="edit_work_p" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                     <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                                 </div>
                                             </div>
@@ -1139,7 +1205,7 @@ if ($do == "transactions") {       // Transactions Page
                                                     <div class="row">
                                                         <div class="input-field and-date col l5">
                                                             <label class="label-check">
-                                                                <input type="checkbox" name="fingerprint_s" class="fingerprint checkchekbox" data-file="finger-input-file" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>" <?php echo ($trans['fingerprint_reservation'] > 0 ? "checked" : ""); ?> <?php echo (!empty($trans['fingerprint_img']) ? "disabled": ""); ?>>
+                                                                <input type="checkbox" name="fingerprint_s" class="fingerprint checkchekbox" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>" <?php echo ($trans['fingerprint_reservation'] > 0 ? "checked" : ""); ?>>
                                                                 <span><?php echo $prices[2]['service_name']; ?></span>
                                                             </label>
                                                         </div>
@@ -1154,7 +1220,7 @@ if ($do == "transactions") {       // Transactions Page
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
-                                                    <button type="submit" name="edit_fingerprint_d" class="btn main-dark waves-effect waves-light <?php echo (!empty($trans['fingerprint_img']) ? "hide": ""); ?>">حفظ</button>
+                                                    <button type="submit" name="edit_fingerprint_d" class="btn main-dark waves-effect waves-light">حفظ</button>
                                                     <button type="button" class="btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                                                 </div>
                                             </div>
