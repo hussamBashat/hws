@@ -60,6 +60,7 @@
 
   // Behavior After Write User Not Exist
   let inputUserList = document.querySelector("#marketerList"),
+      statusSelect = document.querySelector("#status"),
       cartButton = document.querySelector(".cart-btn");
   if (inputUserList) {
     inputUserList.onkeyup = function () {
@@ -80,6 +81,23 @@
         }
       }
     }
+  }
+
+  // Select Transactions Status Behavior
+  if (statusSelect) {
+    statusSelect.onchange = function () {
+      emptyStatus();
+    }
+    function emptyStatus () {
+      if (statusSelect.value == "") {
+        statusSelect.closest(".select-wrapper").children[0].classList.add("invalid");
+        cartButton.disabled = true;
+      } else {
+        cartButton.disabled = false;
+        statusSelect.closest(".select-wrapper").children[0].classList.remove("invalid");
+      }
+    }
+    emptyStatus();
   }
 
   // Show Visa Price After Select

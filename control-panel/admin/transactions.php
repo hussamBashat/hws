@@ -150,7 +150,7 @@ if ($do == "transactions") {       // Transactions Page
                         }
                     ?>
                     <div class="col <?php echo (isset($_SESSION['admin']) ? "l6" : "l12") ?>">
-                        <div class="input-field">
+                        <div class="input-field validate">
                             <select name="status" id="status">
                                 <option value="" selected>اختر الحالة</option>
                                 <?php
@@ -573,7 +573,7 @@ if ($do == "transactions") {       // Transactions Page
                                         </div>
                                         <div class="input-group hide flex-between">
                                             <div class="col l7">
-                                                <div class="input-field">
+                                                <div class="input-field validate">
                                                     <select name="status" id="status">
                                                         <option value="">اختر الحالة</option>
                                                         <?php
