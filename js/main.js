@@ -111,8 +111,7 @@
 
   // Show Inputs Fields After Click Edit In Transactions Page
   let editBtn = document.querySelectorAll(".show-transactions .text-label .btn"),
-      cancelBtn = document.querySelectorAll(".show-transactions .input-group .cancel-btn"),
-      inputImg = document.querySelectorAll(".show-transactions .img-input");
+      cancelBtn = document.querySelectorAll(".show-transactions .input-group .cancel-btn");
   if (editBtn) {
     for (let i = 0; i < editBtn.length; i++) {
       editBtn[i].onclick = function () {
@@ -130,14 +129,6 @@
       }
     }
   }
-  // Show New Image On Change
-  if (inputImg) {
-    for (let i = 0; i < inputImg.length; i++) {
-      inputImg[i].onchange = function () {
-        inputImg[i].closest(".p-img").previousElementSibling.children[0].src = window.URL.createObjectURL(inputImg[i].files[0]);
-      }
-    }
-  }
 
   // Validation File On Change Input
   let myform = document.querySelector("#addTrans"),
@@ -150,9 +141,8 @@
           if (!extinsion.includes(inputFile[i].files[0].type)) { // If Error File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
-          } else if (inputFile[i].classList.contains("photograph")) { // For Check Photograph File Dimensions
-            ValidateImgDimensions(inputFile[i]);
           } else {  // If Success File
+            ValidateImgDimensions(inputFile[i]); // Show Preview Image And Validate Dimensions
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
           }
@@ -176,23 +166,25 @@
       }
     }
   }
-
   
   // Function To Validation Photograph Image Dimensions
   const ValidateImgDimensions = (selector) => {
     let img = new Image();
     img.src = window.URL.createObjectURL(selector.files[0]);
+    if (selector.classList.contains("img-input")) {
+      selector.closest(".p-img").previousElementSibling.children[0].src = window.URL.createObjectURL(selector.files[0]);
+    }
     img.onload = () => {
-      if (img.width === 150 && img.height === 200) {
-        console.log("Correct size");
-        selector.parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
-        selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')";
-        selector.classList.add("is-success");
-      } else {
-        console.log("Incorrect size");
-        selector.parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
-        selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = '<i class="material-icons">error</i> أبعاد الصورة غير مناسبة, أدخل صورة بأبعاد [200*150]';
-        selector.classList.remove("is-success");
+      if (selector.classList.contains("photograph")) {
+        if (img.width === 150 && img.height === 200) {
+          selector.parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+          selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')";
+          selector.classList.add("is-success");
+        } else {
+          selector.parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+          selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = '<i class="material-icons">error</i> أبعاد الصورة غير مناسبة, أدخل صورة بأبعاد [200*150]';
+          selector.classList.remove("is-success");
+        }
       }
     }
   }
