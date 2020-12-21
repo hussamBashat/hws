@@ -129,21 +129,6 @@ if ($do == "pricelist") {       // Price List Page
                         <label for="price">اكب السعر هنا</label>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <p class="input-group-title" style="margin-bottom: 1.5rem">حدد النوع هل هي تأشيرة أم خدمة؟</p>
-                    <div class="col s2">
-                        <label>
-                            <input name="type" type="radio" checked>
-                            <span>تأشيرة</span>
-                        </label>
-                    </div>
-                    <div class="col s2">
-                        <label>
-                            <input name="type" type="radio">
-                            <span>خدمة</span>
-                        </label>
-                    </div>
-                </div> -->
                 <div class="row" style="margin-top: 2rem">
                     <button type="submit" name="add_data" class="btn main-dark waves-effect waves-light">إضافة البيانات</button>
                 </div>
@@ -201,21 +186,6 @@ if ($do == "pricelist") {       // Price List Page
                                 <label for="price">اكب السعر هنا</label>
                             </div>
                         </div>
-                        <!-- <div class="row">
-                            <p class="input-group-title" style="margin-bottom: 1.5rem">حدد النوع هل هي تأشيرة أم خدمة؟</p>
-                            <div class="col s2">
-                                <label>
-                                    <input name="type" type="radio" checked>
-                                    <span>تأشيرة</span>
-                                </label>
-                            </div>
-                            <div class="col s2">
-                                <label>
-                                    <input name="type" type="radio">
-                                    <span>خدمة</span>
-                                </label>
-                            </div>
-                        </div> -->
                         <input type="hidden" value="<?php echo $type; ?>" name="type">
                         <input type="hidden" name="id" value="<?php echo $id;?>" >
                         <div class="row" style="margin-top: 2rem">

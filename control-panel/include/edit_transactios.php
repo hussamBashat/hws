@@ -130,14 +130,26 @@
             $stmt->execute(array($_POST['visa'], $_POST['price'], $_POST['total'], $_POST['id'], $_POST['id']));
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
-        elseif (isset($_POST['edit_work'])) {
-            $stmt = $con->prepare("UPDATE transactions SET work_contract = ? WHERE id = ?");
-            $stmt->execute(array($_POST['work'], $_POST['id']));
+        elseif (isset($_POST['edit_contract'])) {
+            if (!empty($_FILES['file8']['name'])) {
+                if (!empty($_POST['work_contract'])) {
+                    unlink("../../images/transactions/" . $_POST['id'] . "/" . $_POST['work_contract']);
+                }
+                $imagename = rand(0, 10000000) . "_" . $_FILES['file8']['name'];
+                move_uploaded_file($_FILES['file8']['tmp_name'], "../../images/transactions/" . $_POST['id'] . "/" . $imagename);
+                $stmt = $con->prepare("UPDATE transactions SET work_contract = ? WHERE id = ?");
+                $stmt->execute(array($imagename, $_POST['id']));
+            }
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         elseif (isset($_POST['edit_notes'])) {
             $stmt = $con->prepare("UPDATE transactions SET note = ? WHERE id = ?");
             $stmt->execute(array($_POST['notes'], $_POST['id']));
+            header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
+        }
+        elseif (isset($_POST['change_status'])) {
+            $stmt = $con->prepare("UPDATE transactions SET trans_status = ? WHERE id = ?");
+            $stmt->execute(array($_POST['status'], $_POST['id']));
             header("refresh:0;url=../admin/transactions.php?do=show&id=" . $_POST['id']);
         }
         elseif (isset($_POST['edit_amount_paid'])) {

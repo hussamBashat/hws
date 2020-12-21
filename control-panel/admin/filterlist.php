@@ -9,12 +9,8 @@ if (isset($_SESSION['admin'])) {
     $do = isset($_GET['do']) ? $_GET['do'] : 'filterlist';
     
 if ($do == "filterlist") {       // Filter List Page
-    $stmt = $con->prepare("SELECT * FROM static_price");
-    $stmt->execute();
-    $prices = $stmt->fetchAll();
-    $stmt1 = $con->prepare("SELECT * FROM visas");
+    $stmt1 = $con->prepare("SELECT * FROM trans_status");
     $stmt1->execute();
-    $visas = $stmt1->fetchAll();
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -34,7 +30,7 @@ if ($do == "filterlist") {       // Filter List Page
 <!-- Start Price List Show -->
 <section class="transactions">
     <div class="container">
-        <form method="post" action="../include/visa_operation.php">
+        <form method="post" action="../include/status_operation.php">
             <input type="hidden" name="id" id="btnId">
             <table class="striped highlight responsive-table">
                 <thead>
@@ -46,14 +42,25 @@ if ($do == "filterlist") {       // Filter List Page
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($visas as $visa) {?>
-                            <tr class="visa-tr <?php echo ($visa['status'] == 1 ? "ban tooltipped" : "") ?>" data-position="bottom" data-tooltip="متوقفة">
-                                <td><?php echo $visa['id']; ?></td>
-                                <td><?php echo $visa['visaname']; ?></td>
-                                <td class="flex-between">
-                                    <a href="?do=edit&id=<?php echo $visa['id']; ?>&type=visa" class="btn ed-btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
-                                    <button name="ben_visa" data-id="<?php echo $visa['id']; ?>" class="btn bl-btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="ايقاف / استئناف"><i class="material-icons">block</i></button>
-                                    <button name="del_visa" data-id="<?php echo $visa['id']; ?>" class="btn del-btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                        if ($stmt1->rowCount() > 0) {
+                            $trans_status = $stmt1->fetchAll();
+                            foreach ($trans_status as $statue) {?>
+                                <tr class="visa-tr <?php echo ($statue['status'] == 0 ? "ban tooltipped" : "") ?>" data-position="bottom" data-tooltip="متوقفة">
+                                    <td><?php echo $statue['id']; ?></td>
+                                    <td><?php echo $statue['statue_name']; ?></td>
+                                    <td class="flex-between">
+                                        <a href="?do=edit&id=<?php echo $statue['id']; ?>" class="btn ed-btn btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="تعديل"><i class="material-icons">edit</i></a>
+                                        <button name="ben_statue" data-id="<?php echo $statue['id']; ?>" class="btn bl-btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="ايقاف / استئناف"><i class="material-icons">block</i></button>
+                                        <button name="del_statue" data-id="<?php echo $statue['id']; ?>" class="btn del-btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        else {?>
+                            <tr>
+                                <td colspan="7" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد حالات حتى الآن
                                 </td>
                             </tr>
                             <?php
@@ -87,7 +94,7 @@ if ($do == "filterlist") {       // Filter List Page
 <!-- Start Filter List Add Form -->
 <section class="add-to-pricelist p-1">
     <div class="container">
-        <form method="post" action="../include/add_visa.php">
+        <form method="post" action="../include/add_trans_status.php">
             <div class="row m-0">
                 <div class="row">
                     <p class="input-group-title">اكتب وصف الحالة.</p>
@@ -97,7 +104,7 @@ if ($do == "filterlist") {       // Filter List Page
                     </div>
                 </div>
                 <div class="row" style="margin-top: 2rem">
-                    <button type="submit" name="add_data" class="btn main-dark waves-effect waves-light">إضافة البيانات</button>
+                    <button type="submit" name="add_status_data" class="btn main-dark waves-effect waves-light">إضافة البيانات</button>
                 </div>
             </div>
         </form>
@@ -106,18 +113,8 @@ if ($do == "filterlist") {       // Filter List Page
 <?php
 } elseif ($do == "edit") {   // Price List Edit Page
     $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
-    $type = isset($_GET['type']) ? $_GET['type'] : '';
-    if ($type == "service") {
-        $stmt1 = $con->prepare("SELECT * FROM static_price WHERE id = ?");
-        $stmt1->execute(array($id));
-    }
-    elseif ($type == "visa") {
-        $stmt1 = $con->prepare("SELECT * FROM visas WHERE id = ?");
-        $stmt1->execute(array($id));
-    }
-    else {
-        header('Location: ?do=filterlist');
-    }
+    $stmt1 = $con->prepare("SELECT * FROM trans_status WHERE id = ?");
+    $stmt1->execute(array($id));
     if ($stmt1->rowCount() > 0) {
         $row = $stmt1->fetch();
         ?>
@@ -140,17 +137,18 @@ if ($do == "filterlist") {       // Filter List Page
         <!-- Start Price List Edit Form -->
         <section class="add-to-pricelist p-1">
             <div class="container">
-                <form method="post" action="../include/add_visa.php">
+                <form method="post" action="../include/edit_status_data.php">
                     <div class="row m-0">
                         <div class="row">
                             <p class="input-group-title">اكتب وصف الحالة.</p>
                             <div class="input-field col l6">
-                                <input id="title" name="title" type="text" class="validate" required>
+                                <input type="hidden" name="id" value="<?php echo $id;?>" >
+                                <input id="title" name="title" type="text" value="<?php echo $row['statue_name']; ?>" class="validate" required>
                                 <label for="title">اكتب الوصف هنا</label>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 2rem">
-                            <button type="submit" name="add_data" class="btn main-dark waves-effect waves-light">تعديل البيانات</button>
+                            <button type="submit" name="edit_status_data" class="btn main-dark waves-effect waves-light">تعديل البيانات</button>
                         </div>
                     </div>
                 </form>
@@ -159,7 +157,7 @@ if ($do == "filterlist") {       // Filter List Page
         <?php
     }
     else {
-        header("refresh:0;url=?do=pricelist");
+        header("refresh:0;url=?do=filterlist");
     }
 }
 include "../include/footer.php";
