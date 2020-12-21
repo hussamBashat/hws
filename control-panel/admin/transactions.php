@@ -52,33 +52,196 @@ if ($do == "transactions") {       // Transactions Page
     <div class="container">
         <form method="post" action="../include/delete_transaction.php">
             <input type="hidden" name="id" id="btnId">
-            <table class="striped highlight responsive-table">
+            <!-- Table Options -->
+            <div class="table-option">
+                <div class="row">
+                    <div class="input-field col l2">
+                        <input type="text" name="search" id="search" autocomplete="off" class="validate">
+                        <label for="search"><i class="material-icons" style="vertical-align: bottom;">search</i> اكتب كلمة البحث</label>                        
+                    </div>
+                    <!-- Columns Modal -->
+                    <div class="col l2 center-align">
+                        <button data-target="columns" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="تخصيص الأعمدة"><i class="material-icons">view_column</i></button>
+                    </div>
+                    <!-- Filter Modal -->
+                    <div class="col l2">
+                        <button data-target="filter" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="فلترة متقدمة"><i class="material-icons">filter_list</i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Columns Modal -->
+            <div id="columns" class="modal table">
+                <div class="modal-content">
+                    <div class="modal-header center-align">
+                        <h6>تخصيص الأعمدة</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>اختيار الكل</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>الرقم التسلسلي</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>اسم المسوق</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>الحالة</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>الاسم</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>موبايل</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>واتساب</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>العنوان</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>التأشيرة</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>سعر التأشيرة</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>الملفات</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>الخدمات</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>المبلغ المدفوع</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>ملاحظات</span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <label class="label-check">
+                                <input type="checkbox" name="">
+                                <span>عمليات</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footre">
+                        <button name="change_status" class="btn main-dark waves-effect waves-light">حفظ</button>
+                        <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Filter Modal -->
+            <div id="filter" class="modal">
+                <div class="modal-content">
+                    Filter Modal
+                </div>
+            </div>
+            <table class="striped highlight responsive-table supernatural-table">
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>المسوق</th>
+                        <th>الحالة</th>
                         <th>الاسم</th>
                         <th>موبايل</th>
                         <th>واتساب</th>
                         <th>العنوان</th>
                         <th>التأشيرة</th>
+                        <th>سعر التأشيرة</th>
+                        <th>البطاقة</th>
+                        <th>الصورة</th>
+                        <th>المؤهلات العلمية</th>
+                        <th>الفيش الجنائي</th>
+                        <th>ورقة النت</th>
+                        <th>حجز مستشفى</th>
+                        <th>البصمة</th>
+                        <th>جواز السفر</th>
+                        <th>عقد عمل</th>
+                        <th>خدمة المؤهلات العلمية</th>
+                        <th>خدمة حجز المستشفى</th>
+                        <th>خدمة عقد عمل</th>
+                        <th>خدمة حجز بصمة</th>
+                        <th>المبلغ المدفوع</th>
+                        <th>ملاحظات</th>
                         <th>عمليات</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
-                        if ($stmt->rowCount() > 0) {
-                            $data = $stmt->fetchAll();
-                            foreach ($data as $value) {
-                                $fullname = explode("-", $value['fullname']);?>
+                        if (true) { // $stmt->rowCount() > 0
+                            // $data = $stmt->fetchAll();
+                            // foreach ($data as $value) {
+                            //     $fullname = explode("-", $value['fullname']);?>
                                 <tr>
-                                    <td><?php echo $value['id']; ?></td>
-                                    <td><?php echo $fullname[0] . $fullname[1] . $fullname[2] . $fullname[3]; ?></td>
-                                    <td><a class="custom-link" href="tel:<?php echo $value['phone']; ?>"><?php echo $value['phone']; ?></a></td>
-                                    <td><a href="https://wa.me/<?php echo $value['whatsapp']; ?>" class="custom-link" target="_blank"><?php echo $value['whatsapp']; ?></a></td>
-                                    <td><?php echo $value['address']; ?></td>
-                                    <td><?php echo $value['visa']; ?></td>
-                                    <td class="flex-between">
-                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض"><i class="material-icons">link</i></a>
+                                    <td>1</td>
+                                    <td>محمد أمين</td>
+                                    <td>جاهزة للتسليم</td>
+                                    <td>محمد أحمد حمد المحمود</td>
+                                    <td><a class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" href="tel:<?php// echo $value['phone']; ?>"><?php //echo $value['phone']; ?>اتصال</a></td>
+                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank"><?php //echo $value['whatsapp']; ?>مراسلة</a></td>
+                                    <td>مصر - القاهرة</td>
+                                    <td>التأشيرة الإضافية</td>
+                                    <td>6500</td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td>1200</td>
+                                    <td>1800</td>
+                                    <td>2100</td>
+                                    <td>100 / 22-12-2020</td>
+                                    <td>9500</td>
+                                    <td>لا تظهر أكثر من 35 حرف هنا ..</td>
+                                    <td>
+                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 6px;"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
                                                 <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
@@ -87,12 +250,48 @@ if ($do == "transactions") {       // Transactions Page
                                         ?>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>محمد أمين</td>
+                                    <td>جاهزة للتسليم</td>
+                                    <td>محمد أحمد حمد المحمود</td>
+                                    <td><a class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" href="tel:<?php// echo $value['phone']; ?>"><?php //echo $value['phone']; ?>اتصال</a></td>
+                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank"><?php //echo $value['whatsapp']; ?>مراسلة</a></td>
+                                    <td>مصر - القاهرة</td>
+                                    <td>التأشيرة الإضافية</td>
+                                    <td>6500</td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td>-</td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="material-icons done">check_circle</i></td>
+                                    <td>-</td>
+                                    <td>1800</td>
+                                    <td>2100</td>
+                                    <td>-</td>
+                                    <td>9500</td>
+                                    <td>ملاحظات هنا لنرى كيف سيكون</td>
+                                    <td>
+                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 6px;"><i class="material-icons">link</i></a>
+                                        <?php
+                                            if (isset($_SESSION['admin'])) {?>
+                                                <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                <?php
+                                            }
+                                        ?>
+                                    </td>
+                                </tr>
+
                                 <?php
-                            }
+                            // }
                         }
                         else {?>
                             <tr>
-                                <td colspan="7" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                <td colspan="25" class="center-align" style="color: var(--second-color); font-weight: 600;">
                                     <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات حتى الآن
                                 </td>
                             </tr>

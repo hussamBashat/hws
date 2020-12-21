@@ -289,6 +289,48 @@ table td .btn:last-child{background-color:var(--gray)}
 .invalied-file.show {top: -29px;right: 54px;}
 .invalied-file i {vertical-align: bottom;transform: translateY(3px);}
 
+.table-option .btn {margin-top: 24px; background-color: transparent; color: var(--gray);}
+.table-option .btn i {font-size: 24px;}
+
+.supernatural-table {
+    display: block;
+    max-width: 100%;
+    overflow-x: scroll;
+}
+.supernatural-table td {font-size: 14px; text-align: center;}
+.supernatural-table th, .supernatural-table tr, .supernatural-table td {
+    border: 1px solid #ececec;
+    border-collapse: collapse;
+}
+.supernatural-table th {
+    font-weight: 500;
+    text-align: center;
+    font-size: 15px;
+    background-color: #313652;
+    color: #fff;
+    border-color: #474b5f;
+}
+.supernatural-table td .done {color: #3d9a64;}
+
+.modal.table {width: 20rem;}
+.modal.table .modal-header {background-color: #313652;}
+.modal.table .modal-header h6 {letter-spacing: 0;}
+.modal.table .modal-body {
+    display: flex;
+    flex-flow: column;
+    margin: 1rem 0;
+    height: 260px;
+    overflow-y: scroll;
+}
+.modal.table .modal-body .column {
+    padding: 8px 10px; 
+    margin-bottom: 3px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: var(--transition);
+}
+.modal.table .modal-body .column:nth-child(odd) {box-shadow: 0 0 5px #eee;}
+.modal.table .modal-body .column:hover {border-color: #eee}
 
 
 @media (max-width:1199px){
