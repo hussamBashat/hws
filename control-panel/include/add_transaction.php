@@ -10,7 +10,7 @@
         if ($stm->rowCount() == 0) {
             $fullname = $_POST['firstname'] . " -" . $_POST['fathername'] . " -" . $_POST['grandname'] . " -" . $_POST['lastname'];
             $Files = array();
-            for ($i=0; $i < 8; $i++) { 
+            for ($i=0; $i < 9; $i++) { 
                 $file = "file" . $i;
                 if (!empty($_FILES[$file]['name'])) {
                     $Files[$i] = rand(0, 10000000) . "_" . $_FILES[$file]['name'];
@@ -19,8 +19,8 @@
                     $Files[$i] = "";
                 }
             }
-            $stmt = $con->prepare("INSERT INTO transactions(fullname, address, phone, whatsapp, visa, visa_price, marketer_id, passport_img, card_img, photograph_img, qualification_img, criminal_fisheye_img, netbook_paper_img, hospital_reservation_img, fingerprint_reservation_date, fingerprint_img, note, work_contract) 
-            VALUES (:zf, :za, :zphone, :zwhats, :zvisa, :zvprice, :zmi, :zpasspo, :zcard , :zphoto, :zqual, :zcf, :znp, :zhr, :zfr, :zfinger, :znote, :zwork)");
+            $stmt = $con->prepare("INSERT INTO transactions(fullname, address, phone, whatsapp, visa, visa_price, marketer_id, passport_img, card_img, photograph_img, qualification_img, criminal_fisheye_img, netbook_paper_img, hospital_reservation_img, fingerprint_reservation_date, fingerprint_img, note, work_contract, trans_status) 
+            VALUES (:zf, :za, :zphone, :zwhats, :zvisa, :zvprice, :zmi, :zpasspo, :zcard , :zphoto, :zqual, :zcf, :znp, :zhr, :zfr, :zfinger, :znote, :zwork, :zstatus)");
             $stmt->execute(array(
                 "zf" => $fullname,
                 "za" => $_POST['address'],
@@ -39,14 +39,15 @@
                 "zfr" => (isset($_POST['fingerprint_s']) && $_POST['fingerprint_s'] == 'on' ? $_POST['fingerprint_d'] : ''),
                 "zfinger" => $Files[6],
                 "znote" => $_POST['notes'],
-                "zwork" => (!empty($_POST['work']) ? $_POST['work']: "")
+                "zwork" => $Files[8],
+                "zstatus" => $_POST['status']
             ));
     
             $stmt2 = $con->prepare("SELECT id FROM transactions ORDER BY id DESC LIMIT 1");
             $stmt2->execute();
             $trans_id = $stmt2->fetchColumn();
             mkdir("../../images/transactions/" . $trans_id);
-            for ($i=0; $i < 8; $i++) { 
+            for ($i=0; $i < 9; $i++) { 
                 $file = "file" . $i;
                 if (!empty($_FILES[$file]['name'])) {
                     move_uploaded_file($_FILES[$file]['tmp_name'], "../../images/transactions/" . $trans_id . "/" . $Files[$i]);

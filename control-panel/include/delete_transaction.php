@@ -31,6 +31,9 @@
         if (!empty($row['fingerprint_img'])) {
             unlink("../../images/transactions/" . $_POST['id'] . "/" . $row['fingerprint_img']);
         }
+        if (!empty($row['work_contract'])) {
+            unlink("../../images/transactions/" . $_POST['id'] . "/" . $row['work_contract']);
+        }
         rmdir("../../images/transactions/" . $_POST['id']);
         $stmt1 = $con->prepare("DELETE FROM transactions WHERE id = ?");
         $stmt1->execute(array($_POST['id']));

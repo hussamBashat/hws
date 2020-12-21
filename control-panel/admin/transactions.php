@@ -17,6 +17,9 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
         $stmt2 = $con->prepare("SELECT * FROM users");
         $stmt2->execute();
         $users = $stmt2->fetchAll();
+        $st = $con->prepare("SELECT * FROM trans_status");
+        $st->execute();
+        $trans_status = $st->fetchAll();
     }
     
 if ($do == "transactions") {       // Transactions Page
@@ -104,10 +107,6 @@ if ($do == "transactions") {       // Transactions Page
 
 <?php
 } elseif ($do == "add") {   // Add Transactions
-    
-    // $stmt2 = $con->prepare("SELECT * FROM users");
-    // $stmt2->execute();
-    // $users = $stmt2->fetchAll();
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -155,8 +154,8 @@ if ($do == "transactions") {       // Transactions Page
                             <select name="status" id="status">
                                 <option value="" selected>اختر الحالة</option>
                                 <?php
-                                    foreach ($visas as $visa) {?>
-                                        <option value="<?php echo $visa['visaname']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
+                                    foreach ($trans_status as $status) {?>
+                                        <option value="<?php echo $status['statue_name']; ?>" <?php echo ($status['status'] == 0 ? "disabled" : ''); ?>><?php echo $status['statue_name']; ?></option>
                                         <?php
                                     }
                                 ?>
@@ -568,7 +567,7 @@ if ($do == "transactions") {       // Transactions Page
                                     <div class="col <?php echo (isset($_SESSION['admin']) ? "l6" : "l12") ?>">
                                         <div class="text-label flex-between">
                                             <div class="black-text">
-                                                <p>اسم الحالة: <span><?php echo "اسم الحالة" ?></span></p>
+                                                <p>اسم الحالة: <span><?php echo $trans['trans_status']; ?></span></p>
                                             </div>
                                             <button type="button" class="btn edit-text-btn tooltipped" data-tooltip="تعديل الحالة" data-position="bottom">تعديل</button>
                                         </div>
@@ -576,10 +575,10 @@ if ($do == "transactions") {       // Transactions Page
                                             <div class="col l7">
                                                 <div class="input-field">
                                                     <select name="status" id="status">
-                                                        <option value="" selected>اختر الحالة</option>
+                                                        <option value="">اختر الحالة</option>
                                                         <?php
-                                                            foreach ($visas as $visa) {?>
-                                                                <option value="<?php echo $visa['visaname']; ?>" <?php echo ($visa['status'] == 1 ? "disabled" : ''); ?>><?php echo $visa['visaname']; ?></option>
+                                                            foreach ($trans_status as $status) {?>
+                                                                <option value="<?php echo $status['statue_name']; ?>" <?php echo ($status['status'] == 0 ? "disabled" : ''); ?> <?php echo ($status['statue_name'] == $trans['trans_status'] ? "selected" : ""); ?>><?php echo $status['statue_name']; ?></option>
                                                                 <?php
                                                             }
                                                         ?>
@@ -1027,7 +1026,7 @@ if ($do == "transactions") {       // Transactions Page
                                     <!-- Contract Image -->
                                     <div class="col s1 p-0 file-type">
                                         <img src="../images/default/contract.svg" data-target="contract" alt="Contract Image" class="modal-trigger responsive-img prwaz tooltipped" data-position="bottom" data-tooltip="تعديل عقد العمل">
-                                        <?php echo (!empty($trans['passport_img']) ? "<i class='material-icons'>check_circle</i>": ""); ?>
+                                        <?php echo (!empty($trans['work_contract']) ? "<i class='material-icons'>check_circle</i>": ""); ?>
                                     </div>
                                     <!-- Contract Modal -->
                                     <div id="contract" class="modal">
