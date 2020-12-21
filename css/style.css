@@ -170,10 +170,12 @@ footer ul{line-height:1.8!important}
 .stat-box.tow{background-color:#d46200}
 .stat-box.three{background-color:#d40093}
 .stat-box.four{background-color: #00c410;}
+.stat-box.five{background-color: #9d00c4;}
 .stat-box.one .header{box-shadow:0 5px 5px #009aaf}
 .stat-box.tow .header{box-shadow:0 5px 5px #af5100}
 .stat-box.three .header{box-shadow:0 5px 5px #a50172}
 .stat-box.four .header{box-shadow:0 5px 5px #02a50e}
+.stat-box.five .header{box-shadow:0 5px 5px #7a0198}
 .stat-box:hover{box-shadow:none}
 .stat-box .header{display:flex;justify-content:center;align-items:flex-end;padding-bottom:.5rem}
 .stat-box .header .material-icons{font-size:4rem}
