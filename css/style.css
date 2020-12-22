@@ -331,6 +331,18 @@ table td .btn:last-child{background-color:var(--gray)}
 }
 .modal.table .modal-body .column:nth-child(odd) {box-shadow: 0 0 5px #eee;}
 .modal.table .modal-body .column:hover {border-color: #eee}
+.modal.table .modal-body .collapsible {box-shadow: none;}
+.modal.table .modal-body .collapsible li .arrow {color: var(--gray); transition: var(--transition);}
+.modal.table .modal-body .collapsible li.active .arrow {transform: rotateZ(-90deg);}
+.modal.table .modal-body .collapsible-header {
+    background: transparent;
+    border: 0;
+}
+.modal.table .modal-body .collapsible-body {
+    padding: 1rem;
+    padding-left: 0;
+    border: 0;
+}
 
 
 @media (max-width:1199px){

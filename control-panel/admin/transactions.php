@@ -78,7 +78,7 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="modal-body">
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="" id="checkAllColumns">
                                 <span>اختيار الكل</span>
                             </label>
                         </div>
@@ -136,18 +136,110 @@ if ($do == "transactions") {       // Transactions Page
                                 <span>سعر التأشيرة</span>
                             </label>
                         </div>
-                        <div class="column">
-                            <label class="label-check">
-                                <input type="checkbox" name="">
-                                <span>الملفات</span>
-                            </label>
-                        </div>
-                        <div class="column">
-                            <label class="label-check">
-                                <input type="checkbox" name="">
-                                <span>الخدمات</span>
-                            </label>
-                        </div>
+                        <ul class="column collapsible m-0" id="filesCollapsible">
+                            <li>
+                                <div class="collapsible-header flex-between p-0">
+                                    <label class="label-check m-0">
+                                        <input type="checkbox" name="" id="checkAllFiles">
+                                        <span>الملفات</span>
+                                    </label>
+                                    <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>صورة البطاقة</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>صورة شخصية</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>المؤهلات العلمية</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>الفيش الجنائي</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>ورقة النت</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>حجز مستشفى</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>البصمة</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>جواز السفر</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>عقد عمل</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="column collapsible m-0" id="servicesCollapsible">
+                            <li>
+                                <div class="collapsible-header flex-between p-0">
+                                    <label class="label-check m-0">
+                                        <input type="checkbox" name="" id="checkAllServices">
+                                        <span>الخدمات</span>
+                                    </label>
+                                    <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>المؤهلات العلمية</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>حجز مستشفى</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>عقد عمل</span>
+                                        </label>
+                                    </div>
+                                    <div class="column">
+                                        <label class="label-check">
+                                            <input type="checkbox" name="">
+                                            <span>حجز بصمة</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                         <div class="column">
                             <label class="label-check">
                                 <input type="checkbox" name="">

@@ -58,6 +58,32 @@
     };
   }
 
+  // Column Customize in Supernatural Table
+  let selectAll = document.querySelector("#checkAllColumns"),
+      allCheckboxes = document.querySelectorAll("#columns input[type='checkbox']:not(#checkAllColumns)"),
+      selectFilesCheckbox = document.querySelector("#checkAllFiles"),
+      allFilesCheckbox = document.querySelectorAll("#filesCollapsible input[type='checkbox']:not(#checkAllFiles)"),
+      selectServicesCheckbox = document.querySelector("#checkAllServices"),
+      allServicesCheckbox = document.querySelectorAll("#servicesCollapsible input[type='checkbox']:not(#checkAllServices)");
+
+  // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
+  function masterCheckbox (master, slave) {
+    master.onclick = function () {
+      if (this.checked == true) {
+        slave.forEach( function (slave) {
+          slave.checked = true;
+        });
+      } else {
+        slave.forEach( function (slave) {
+          slave.checked = false;
+        });
+      }
+    }
+  }
+  masterCheckbox(selectAll, allCheckboxes);
+  masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
+  masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
+
   // Behavior After Write User Not Exist
   let inputUserList = document.querySelector("#marketerList"),
       statusSelect = document.querySelector("#status"),
