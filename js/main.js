@@ -78,6 +78,11 @@
           slave.checked = false;
         });
       }
+      if (master.id == "checkAllFiles") {
+        slaveCheckbox(selectAll, allFilesCheckbox);
+      } else if (master.id == "checkAllServices") {
+        slaveCheckbox(selectAll, allServicesCheckbox);
+      }
     }
     slave.forEach( function (slave) {
       slave.onclick = function () {
@@ -101,7 +106,7 @@
       master.checked = false;
     } else {
       master.checked = true;
-    }      
+    }
   }
 
   // Behavior After Write User Not Exist
