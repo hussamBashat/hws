@@ -79,10 +79,30 @@
         });
       }
     }
+    slave.forEach( function (slave) {
+      slave.onclick = function () {
+        slaveCheckbox(selectAll, allCheckboxes);
+        slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
+        slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
+      }
+    });
   }
   masterCheckbox(selectAll, allCheckboxes);
   masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
   masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
+
+  // Checked/Unchecked Master Checkbox When Select All/Any Slave Checkboxes 
+  function slaveCheckbox (master, slave) {
+    let checkedState = [];
+    slave.forEach( function (slave) {
+      checkedState.push(slave.checked);
+    });
+    if (checkedState.includes(false)) {
+      master.checked = false;
+    } else {
+      master.checked = true;
+    }      
+  }
 
   // Behavior After Write User Not Exist
   let inputUserList = document.querySelector("#marketerList"),
