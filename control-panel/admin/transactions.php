@@ -312,8 +312,8 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>محمد أمين</td>
                                     <td>جاهزة للتسليم</td>
                                     <td>محمد أحمد حمد المحمود</td>
-                                    <td><a class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" href="tel:<?php// echo $value['phone']; ?>"><?php //echo $value['phone']; ?>اتصال</a></td>
-                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank"><?php //echo $value['whatsapp']; ?>مراسلة</a></td>
+                                    <td><a href="tel:<?php// echo $value['phone']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645">اتصال</a></td>
+                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank">مراسلة</a></td>
                                     <td>مصر - القاهرة</td>
                                     <td>التأشيرة الإضافية</td>
                                     <td>6500</td>
@@ -333,7 +333,7 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>9500</td>
                                     <td>لا تظهر أكثر من 35 حرف هنا ..</td>
                                     <td>
-                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 6px;"><i class="material-icons">link</i></a>
+                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
                                                 <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
@@ -347,8 +347,8 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>محمد أمين</td>
                                     <td>جاهزة للتسليم</td>
                                     <td>محمد أحمد حمد المحمود</td>
-                                    <td><a class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" href="tel:<?php// echo $value['phone']; ?>"><?php //echo $value['phone']; ?>اتصال</a></td>
-                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank"><?php //echo $value['whatsapp']; ?>مراسلة</a></td>
+                                    <td><a href="tel:<?php// echo $value['phone']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645">اتصال</a></td>
+                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank">مراسلة</a></td>
                                     <td>مصر - القاهرة</td>
                                     <td>التأشيرة الإضافية</td>
                                     <td>6500</td>
@@ -368,7 +368,7 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>9500</td>
                                     <td>ملاحظات هنا لنرى كيف سيكون</td>
                                     <td>
-                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 6px;"><i class="material-icons">link</i></a>
+                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
                                                 <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
@@ -383,7 +383,7 @@ if ($do == "transactions") {       // Transactions Page
                         }
                         else {?>
                             <tr>
-                                <td colspan="25" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                <td colspan="100%" class="center-align" style="color: var(--second-color); font-weight: 600;">
                                     <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات حتى الآن
                                 </td>
                             </tr>

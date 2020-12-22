@@ -66,46 +66,48 @@
       selectServicesCheckbox = document.querySelector("#checkAllServices"),
       allServicesCheckbox = document.querySelectorAll("#servicesCollapsible input[type='checkbox']:not(#checkAllServices)");
 
-  // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
-  function masterCheckbox (master, slave) {
-    master.onclick = function () {
-      if (this.checked == true) {
-        slave.forEach( function (slave) {
-          slave.checked = true;
-        });
-      } else {
-        slave.forEach( function (slave) {
-          slave.checked = false;
-        });
+  if (selectAll) {
+    // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
+    function masterCheckbox (master, slave) {
+      master.onclick = function () {
+        if (this.checked == true) {
+          slave.forEach( function (slave) {
+            slave.checked = true;
+          });
+        } else {
+          slave.forEach( function (slave) {
+            slave.checked = false;
+          });
+        }
+        if (master.id == "checkAllFiles") {
+          slaveCheckbox(selectAll, allFilesCheckbox);
+        } else if (master.id == "checkAllServices") {
+          slaveCheckbox(selectAll, allServicesCheckbox);
+        }
       }
-      if (master.id == "checkAllFiles") {
-        slaveCheckbox(selectAll, allFilesCheckbox);
-      } else if (master.id == "checkAllServices") {
-        slaveCheckbox(selectAll, allServicesCheckbox);
-      }
+      slave.forEach( function (slave) {
+        slave.onclick = function () {
+          slaveCheckbox(selectAll, allCheckboxes);
+          slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
+          slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
+        }
+      });
     }
-    slave.forEach( function (slave) {
-      slave.onclick = function () {
-        slaveCheckbox(selectAll, allCheckboxes);
-        slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
-        slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
-      }
-    });
-  }
-  masterCheckbox(selectAll, allCheckboxes);
-  masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
-  masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
+    masterCheckbox(selectAll, allCheckboxes);
+    masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
+    masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
 
-  // Checked/Unchecked Master Checkbox When Select All/Any Slave Checkboxes 
-  function slaveCheckbox (master, slave) {
-    let checkedState = [];
-    slave.forEach( function (slave) {
-      checkedState.push(slave.checked);
-    });
-    if (checkedState.includes(false)) {
-      master.checked = false;
-    } else {
-      master.checked = true;
+    // Checked/Unchecked Master Checkbox When Select All/Any Slave Checkboxes 
+    function slaveCheckbox (master, slave) {
+      let checkedState = [];
+      slave.forEach( function (slave) {
+        checkedState.push(slave.checked);
+      });
+      if (checkedState.includes(false)) {
+        master.checked = false;
+      } else {
+        master.checked = true;
+      }
     }
   }
 
