@@ -64,7 +64,8 @@
       selectFilesCheckbox = document.querySelector("#checkAllFiles"),
       allFilesCheckbox = document.querySelectorAll("#filesCollapsible input[type='checkbox']:not(#checkAllFiles)"),
       selectServicesCheckbox = document.querySelector("#checkAllServices"),
-      allServicesCheckbox = document.querySelectorAll("#servicesCollapsible input[type='checkbox']:not(#checkAllServices)");
+      allServicesCheckbox = document.querySelectorAll("#servicesCollapsible input[type='checkbox']:not(#checkAllServices)"),
+      colimnsStateBtn = document.querySelector("#sendColumnsState");
 
   if (selectAll) {
     // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
@@ -102,6 +103,7 @@
       let checkedState = [];
       slave.forEach( function (slave) {
         checkedState.push(slave.checked);
+        // console.log(checkedState);
       });
       if (checkedState.includes(false)) {
         master.checked = false;
@@ -109,6 +111,10 @@
         master.checked = true;
       }
     }
+
+    // Request To Send Columns States
+    
+
   }
 
   // Behavior After Write User Not Exist

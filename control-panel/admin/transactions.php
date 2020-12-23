@@ -260,7 +260,7 @@ if ($do == "transactions") {       // Transactions Page
                         </div>
                     </div>
                     <div class="modal-footre">
-                        <button name="change_status" class="btn main-dark waves-effect waves-light">حفظ</button>
+                        <button type="button" id="sendColumnsState" class="btn main-dark waves-effect waves-light">حفظ</button>
                         <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
                     </div>
                 </div>
