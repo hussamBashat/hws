@@ -78,61 +78,61 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="modal-body">
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="" id="checkAllColumns">
+                                <input type="checkbox" name="all" id="checkAllColumns">
                                 <span>اختيار الكل</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="id">
                                 <span>الرقم التسلسلي</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="marketer">
                                 <span>اسم المسوق</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="statue">
                                 <span>الحالة</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="name">
                                 <span>الاسم</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="phone">
                                 <span>موبايل</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="whatsapp">
                                 <span>واتساب</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="address">
                                 <span>العنوان</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="visa">
                                 <span>التأشيرة</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="price">
                                 <span>سعر التأشيرة</span>
                             </label>
                         </div>
@@ -140,7 +140,7 @@ if ($do == "transactions") {       // Transactions Page
                             <li>
                                 <div class="collapsible-header flex-between p-0">
                                     <label class="label-check m-0">
-                                        <input type="checkbox" name="" id="checkAllFiles">
+                                        <input type="checkbox" name="files" id="checkAllFiles">
                                         <span>الملفات</span>
                                     </label>
                                     <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
@@ -148,55 +148,55 @@ if ($do == "transactions") {       // Transactions Page
                                 <div class="collapsible-body">
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="card_img">
                                             <span>صورة البطاقة</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="photograph_img">
                                             <span>صورة شخصية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="qualification_img">
                                             <span>المؤهلات العلمية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="criminal_fisheye_img">
                                             <span>الفيش الجنائي</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="netbook_paper_img">
                                             <span>ورقة النت</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="hospital_reservation_img">
                                             <span>حجز مستشفى</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="fingerprint_img">
                                             <span>البصمة</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="passport_img">
                                             <span>جواز السفر</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="work_contract">
                                             <span>عقد عمل</span>
                                         </label>
                                     </div>
@@ -207,7 +207,7 @@ if ($do == "transactions") {       // Transactions Page
                             <li>
                                 <div class="collapsible-header flex-between p-0">
                                     <label class="label-check m-0">
-                                        <input type="checkbox" name="" id="checkAllServices">
+                                        <input type="checkbox" name="services" id="checkAllServices">
                                         <span>الخدمات</span>
                                     </label>
                                     <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
@@ -215,25 +215,25 @@ if ($do == "transactions") {       // Transactions Page
                                 <div class="collapsible-body">
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="ser_qualification">
                                             <span>المؤهلات العلمية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="ser_hospital">
                                             <span>حجز مستشفى</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="ser_work">
                                             <span>عقد عمل</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="">
+                                            <input type="checkbox" name="ser_fingerprint">
                                             <span>حجز بصمة</span>
                                         </label>
                                     </div>
@@ -242,13 +242,13 @@ if ($do == "transactions") {       // Transactions Page
                         </ul>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="amount_paid">
                                 <span>المبلغ المدفوع</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="nots">
                                 <span>ملاحظات</span>
                             </label>
                         </div>
@@ -333,10 +333,10 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>9500</td>
                                     <td>لا تظهر أكثر من 35 حرف هنا ..</td>
                                     <td>
-                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
+                                        <a href="?do=show&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
-                                                <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                <button name="transactionsdel" data-id="<?php //echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
                                                 <?php
                                             }
                                         ?>
@@ -368,10 +368,10 @@ if ($do == "transactions") {       // Transactions Page
                                     <td>9500</td>
                                     <td>ملاحظات هنا لنرى كيف سيكون</td>
                                     <td>
-                                        <a href="?do=show&id=<?php echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
+                                        <a href="?do=show&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
                                         <?php
                                             if (isset($_SESSION['admin'])) {?>
-                                                <button name="transactionsdel" data-id="<?php echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                <button name="transactionsdel" data-id="<?php //echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
                                                 <?php
                                             }
                                         ?>
