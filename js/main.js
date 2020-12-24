@@ -65,8 +65,10 @@
       allFilesCheckbox = document.querySelectorAll("#filesCollapsible input[type='checkbox']:not(#checkAllFiles)"),
       selectServicesCheckbox = document.querySelector("#checkAllServices"),
       allServicesCheckbox = document.querySelectorAll("#servicesCollapsible input[type='checkbox']:not(#checkAllServices)"),
-      colimnsStateBtn = document.querySelector("#sendColumnsState");
-
+      colimnsStateBtn = document.querySelector("#sendColumnsState"),
+      allFields = document.querySelectorAll("#columns input[type='checkbox']"),
+      fieldArr = [];
+   
   if (selectAll) {
     // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
     function masterCheckbox (master, slave) {
@@ -91,7 +93,7 @@
           slaveCheckbox(selectAll, allCheckboxes);
           slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
           slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
-        }
+       }
       });
     }
     masterCheckbox(selectAll, allCheckboxes);
@@ -103,7 +105,6 @@
       let checkedState = [];
       slave.forEach( function (slave) {
         checkedState.push(slave.checked);
-        // console.log(checkedState);
       });
       if (checkedState.includes(false)) {
         master.checked = false;
@@ -112,8 +113,15 @@
       }
     }
 
-    // Request To Send Columns States
-    
+    // Fill Checkboxes Names in Array
+    allFields.forEach( function (allFields) {
+      fieldArr.push(allFields.name);
+    });
+
+    // Send Request
+    colimnsStateBtn.onclick = function () {
+      console.log(fieldArr);
+    }
 
   }
 
