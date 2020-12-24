@@ -118,10 +118,20 @@
       fieldArr.push(allFields.name);
     });
 
-    // Send Request
+    // Send Request To Show Checked Coulmns
     colimnsStateBtn.onclick = function () {
       console.log(fieldArr);
+      fetch("./control-panel/transactions.php?display&choose_col")
+        .then(response => response.json())
+        .then(data => console.log(data));
     }
+    // Defualt State
+    function defaultColumns () {
+      fetch("./control-panel/transactions.php?display&defualt")
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+    defaultColumns();
 
   }
 
