@@ -120,16 +120,25 @@
 
     // Send Request To Show Checked Coulmns
     colimnsStateBtn.onclick = function () {
-      console.log(fieldArr);
-      fetch("./control-panel/transactions.php?display&choose_col")
-        .then(response => response.json())
-        .then(data => console.log(data));
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.responseText);
+        }
+      };
+      xhr.open("GET", `transactions.php?display&choose_col&${fieldArr}`, true);
+      xhr.send();
     }
     // Defualt State
     function defaultColumns () {
-      fetch("./control-panel/transactions.php?display&defualt")
-        .then(response => response.json())
-        .then(data => console.log(data));
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.responseText);
+        }
+      };
+      xhr.open("GET", "transactions.php?display&defualt", true);
+      xhr.send();
     }
     defaultColumns();
 
