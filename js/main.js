@@ -68,6 +68,12 @@
       colimnsStateBtn = document.querySelector("#sendColumnsState"),
       allFields = document.querySelectorAll("#columns input[type='checkbox']"),
       fieldArr = [];
+
+  // This Variables For Filter Checkboxes
+  let selectFilesCheckboxFilter = document.querySelector("#checkAllFilesF"),
+      allFilesCheckboxFilter = document.querySelectorAll("#filesCollapsibleF input[type='checkbox']:not(#checkAllFilesF)"),
+      selectServicesCheckboxFilter = document.querySelector("#checkAllServicesF"),
+      allServicesCheckboxFilter = document.querySelectorAll("#servicesCollapsibleF input[type='checkbox']:not(#checkAllServicesF)");
    
   if (selectAll) {
     // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
@@ -93,13 +99,19 @@
           slaveCheckbox(selectAll, allCheckboxes);
           slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
           slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
+          // For Filter Checkboxes
+          slaveCheckbox(selectFilesCheckboxFilter, allFilesCheckboxFilter);
+          slaveCheckbox(selectServicesCheckboxFilter, allServicesCheckboxFilter);
        }
       });
     }
     masterCheckbox(selectAll, allCheckboxes);
     masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
     masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
-
+    // For Filter Checkboces
+    masterCheckbox(selectFilesCheckboxFilter, allFilesCheckboxFilter);
+    masterCheckbox(selectServicesCheckboxFilter, allServicesCheckboxFilter);
+    
     // Checked/Unchecked Master Checkbox When Select All/Any Slave Checkboxes 
     function slaveCheckbox (master, slave) {
       let checkedState = [];
