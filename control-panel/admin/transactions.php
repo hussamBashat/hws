@@ -48,10 +48,6 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                 <!-- Table Options -->
                 <div class="table-option">
                     <div class="row">
-                        <div class="input-field col l2">
-                            <input type="text" name="search" id="search" autocomplete="off" class="validate">
-                            <label for="search"><i class="material-icons" style="vertical-align: bottom;">search</i> اكتب كلمة البحث</label>                        
-                        </div>
                         <!-- Columns Modal -->
                         <div class="col l2 center-align">
                             <button data-target="columns" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="تخصيص الأعمدة"><i class="material-icons">view_column</i></button>
@@ -64,362 +60,372 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                 </div>
                 <!-- Columns Modal -->
                 <div id="columns" class="modal table">
-                    <div class="modal-content">
-                        <div class="modal-header center-align">
-                            <h6>تخصيص الأعمدة</h6>
+                    <form action="" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header center-align">
+                                <h6>تخصيص الأعمدة</h6>
+                            </div>
+                            <div class="modal-body">
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="all" id="checkAllColumns" <?php echo ($_SESSION['all'] == "true" ? "checked" : ""); ?>>
+                                        <span>اختيار الكل</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk0" <?php echo ($_SESSION['chk0'] == "true" ? "checked" : ""); ?>>
+                                        <span>الرقم التسلسلي</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk1" <?php echo ($_SESSION['chk1'] == "true" ? "checked" : ""); ?>>
+                                        <span>اسم المسوق</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk2" <?php echo ($_SESSION['chk2'] == "true" ? "checked" : ""); ?>>
+                                        <span>الحالة</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk3" <?php echo ($_SESSION['chk3'] == "true" ? "checked" : ""); ?>>
+                                        <span>الاسم</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk4" <?php echo ($_SESSION['chk4'] == "true" ? "checked" : ""); ?>>
+                                        <span>موبايل</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk5" <?php echo ($_SESSION['chk5'] == "true" ? "checked" : ""); ?>>
+                                        <span>واتساب</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk6" <?php echo ($_SESSION['chk6'] == "true" ? "checked" : ""); ?>>
+                                        <span>العنوان</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk7" <?php echo ($_SESSION['chk7'] == "true" ? "checked" : ""); ?>>
+                                        <span>التأشيرة</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk8" <?php echo ($_SESSION['chk8'] == "true" ? "checked" : ""); ?>>
+                                        <span>سعر التأشيرة</span>
+                                    </label>
+                                </div>
+                                <ul class="column collapsible m-0" id="filesCollapsible">
+                                    <li>
+                                        <div class="collapsible-header flex-between p-0">
+                                            <label class="label-check m-0">
+                                                <input type="checkbox" name="chk25" id="checkAllFiles" <?php echo ($_SESSION['chk25'] == "true" ? "checked" : ""); ?>>
+                                                <span>الملفات</span>
+                                            </label>
+                                            <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk9" <?php echo ($_SESSION['chk9'] == "true" ? "checked" : ""); ?>>
+                                                    <span>صورة البطاقة</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk10" <?php echo ($_SESSION['chk10'] == "true" ? "checked" : ""); ?>>
+                                                    <span>صورة شخصية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk11" <?php echo ($_SESSION['chk11'] == "true" ? "checked" : ""); ?>>
+                                                    <span>المؤهلات العلمية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk12" <?php echo ($_SESSION['chk12'] == "true" ? "checked" : ""); ?>>
+                                                    <span>الفيش الجنائي</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk13" <?php echo ($_SESSION['chk13'] == "true" ? "checked" : ""); ?>>
+                                                    <span>ورقة النت</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk14" <?php echo ($_SESSION['chk14'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز مستشفى</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk15" <?php echo ($_SESSION['chk15'] == "true" ? "checked" : ""); ?>>
+                                                    <span>البصمة</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk16" <?php echo ($_SESSION['chk16'] == "true" ? "checked" : ""); ?>>
+                                                    <span>جواز السفر</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk17" <?php echo ($_SESSION['chk17'] == "true" ? "checked" : ""); ?>>
+                                                    <span>عقد عمل</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="column collapsible m-0" id="servicesCollapsible">
+                                    <li>
+                                        <div class="collapsible-header flex-between p-0">
+                                            <label class="label-check m-0">
+                                                <input type="checkbox" name="chk26" id="checkAllServices" <?php echo ($_SESSION['chk26'] == "true" ? "checked" : ""); ?>>
+                                                <span>الخدمات</span>
+                                            </label>
+                                            <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk18" <?php echo ($_SESSION['chk18'] == "true" ? "checked" : ""); ?>>
+                                                    <span>المؤهلات العلمية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk19" <?php echo ($_SESSION['chk19'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز مستشفى</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk20" <?php echo ($_SESSION['chk20'] == "true" ? "checked" : ""); ?>>
+                                                    <span>عقد عمل</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk21" <?php echo ($_SESSION['chk21'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز بصمة</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk22" <?php echo ($_SESSION['chk22'] == "true" ? "checked" : ""); ?>>
+                                        <span>المبلغ المدفوع</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk23" <?php echo ($_SESSION['chk23'] == "true" ? "checked" : ""); ?>>
+                                        <span>ملاحظات</span>
+                                    </label>
+                                </div>
+                                <div class="column">
+                                    <label class="label-check">
+                                        <input type="checkbox" name="chk24" <?php echo ($_SESSION['chk24'] == "true" ? "checked" : ""); ?>>
+                                        <span>عمليات</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footre">
+                                <button type="submit" name="choose_col" class="btn main-dark waves-effect waves-light">حفظ</button>
+                                <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="all" id="checkAllColumns" <?php echo ($_SESSION['all'] == "true" ? "checked" : ""); ?>>
-                                    <span>اختيار الكل</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk0" <?php echo ($_SESSION['chk0'] == "true" ? "checked" : ""); ?>>
-                                    <span>الرقم التسلسلي</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk1" <?php echo ($_SESSION['chk1'] == "true" ? "checked" : ""); ?>>
-                                    <span>اسم المسوق</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk2" <?php echo ($_SESSION['chk2'] == "true" ? "checked" : ""); ?>>
-                                    <span>الحالة</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk3" <?php echo ($_SESSION['chk3'] == "true" ? "checked" : ""); ?>>
-                                    <span>الاسم</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk4" <?php echo ($_SESSION['chk4'] == "true" ? "checked" : ""); ?>>
-                                    <span>موبايل</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk5" <?php echo ($_SESSION['chk5'] == "true" ? "checked" : ""); ?>>
-                                    <span>واتساب</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk6" <?php echo ($_SESSION['chk6'] == "true" ? "checked" : ""); ?>>
-                                    <span>العنوان</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk7" <?php echo ($_SESSION['chk7'] == "true" ? "checked" : ""); ?>>
-                                    <span>التأشيرة</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk8" <?php echo ($_SESSION['chk8'] == "true" ? "checked" : ""); ?>>
-                                    <span>سعر التأشيرة</span>
-                                </label>
-                            </div>
-                            <ul class="column collapsible m-0" id="filesCollapsible">
-                                <li>
-                                    <div class="collapsible-header flex-between p-0">
-                                        <label class="label-check m-0">
-                                            <input type="checkbox" name="chk25" id="checkAllFiles" <?php echo ($_SESSION['chk25'] == "true" ? "checked" : ""); ?>>
-                                            <span>الملفات</span>
-                                        </label>
-                                        <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk9" <?php echo ($_SESSION['chk9'] == "true" ? "checked" : ""); ?>>
-                                                <span>صورة البطاقة</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk10" <?php echo ($_SESSION['chk10'] == "true" ? "checked" : ""); ?>>
-                                                <span>صورة شخصية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk11" <?php echo ($_SESSION['chk11'] == "true" ? "checked" : ""); ?>>
-                                                <span>المؤهلات العلمية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk12" <?php echo ($_SESSION['chk12'] == "true" ? "checked" : ""); ?>>
-                                                <span>الفيش الجنائي</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk13" <?php echo ($_SESSION['chk13'] == "true" ? "checked" : ""); ?>>
-                                                <span>ورقة النت</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk14" <?php echo ($_SESSION['chk14'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز مستشفى</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk15" <?php echo ($_SESSION['chk15'] == "true" ? "checked" : ""); ?>>
-                                                <span>البصمة</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk16" <?php echo ($_SESSION['chk16'] == "true" ? "checked" : ""); ?>>
-                                                <span>جواز السفر</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk17" <?php echo ($_SESSION['chk17'] == "true" ? "checked" : ""); ?>>
-                                                <span>عقد عمل</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="column collapsible m-0" id="servicesCollapsible">
-                                <li>
-                                    <div class="collapsible-header flex-between p-0">
-                                        <label class="label-check m-0">
-                                            <input type="checkbox" name="chk26" id="checkAllServices" <?php echo ($_SESSION['chk26'] == "true" ? "checked" : ""); ?>>
-                                            <span>الخدمات</span>
-                                        </label>
-                                        <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk18" <?php echo ($_SESSION['chk18'] == "true" ? "checked" : ""); ?>>
-                                                <span>المؤهلات العلمية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk19" <?php echo ($_SESSION['chk19'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز مستشفى</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk20" <?php echo ($_SESSION['chk20'] == "true" ? "checked" : ""); ?>>
-                                                <span>عقد عمل</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk21" <?php echo ($_SESSION['chk21'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز بصمة</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk22" <?php echo ($_SESSION['chk22'] == "true" ? "checked" : ""); ?>>
-                                    <span>المبلغ المدفوع</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk23" <?php echo ($_SESSION['chk23'] == "true" ? "checked" : ""); ?>>
-                                    <span>ملاحظات</span>
-                                </label>
-                            </div>
-                            <div class="column">
-                                <label class="label-check">
-                                    <input type="checkbox" name="chk24" <?php echo ($_SESSION['chk24'] == "true" ? "checked" : ""); ?>>
-                                    <span>عمليات</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="modal-footre">
-                            <button type="button" id="sendColumnsState" class="btn main-dark waves-effect waves-light">حفظ</button>
-                            <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- Filter Modal -->
                 <div id="filters" class="modal table">
-                    <div class="modal-content">
-                        <div class="modal-header center-align">
-                            <h6>الفلترة المتقدمة</h6>
-                        </div>
-                        <div class="modal-body">
-                            <div class="filter effect">
-                                <div class="input-field m-0">
-                                    <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate">
-                                    <label for="marketerList">فلترة حسب المسوق</label>
-                                </div>
-                                <datalist id="marketer">
-                                <?php
-                                    foreach ($users as $user) {?>
-                                        <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
-                                        <?php
-                                    }
-                                ?>
-                                </datalist>
+                    <form action="" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header center-align">
+                                <h6>الفلترة المتقدمة</h6>
                             </div>
-                            <div class="filter effect">
-                                <select name="status" id="statusf">
-                                    <option value="">فلترة حسب الحالة</option>
+                            <div class="modal-body">
+                                <div class="filter effect">
+                                    <div class="input-field m-0 col l2">
+                                        <input type="text" name="search" id="search" autocomplete="off" class="validate">
+                                        <label for="search"><i class="material-icons" style="vertical-align: bottom;">search</i> اكتب كلمة البحث</label>                        
+                                    </div>
+                                </div>
+                                <div class="filter effect">
+                                    <div class="input-field m-0">
+                                        <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate">
+                                        <label for="marketerList">فلترة حسب المسوق</label>
+                                    </div>
+                                    <datalist id="marketer">
                                     <?php
-                                        foreach ($trans_status as $status) {?>
-                                            <option value="<?php echo $status['statue_name']; ?>"><?php echo $status['statue_name']; ?></option>
+                                        foreach ($users as $user) {?>
+                                            <option value="<?php echo $user['id']; ?> - <?php echo $user['username']; ?>">
                                             <?php
                                         }
                                     ?>
-                                </select>
+                                    </datalist>
+                                </div>
+                                <div class="filter effect">
+                                    <select name="status" id="statusf">
+                                        <option value="all">فلترة حسب الحالة</option>
+                                        <?php
+                                            foreach ($trans_status as $status) {?>
+                                                <option value="<?php echo $status['statue_name']; ?>"><?php echo $status['statue_name']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <ul class="filter collapsible m-0" id="filesCollapsibleF">
+                                    <li>
+                                        <div class="collapsible-header flex-between p-0">
+                                            <label class="label-check m-0">
+                                                <input type="checkbox" name="chk25" id="checkAllFilesF" <?php echo ($_SESSION['chk25'] == "true" ? "checked" : ""); ?>>
+                                                <span>فلترة الملفات</span>
+                                            </label>
+                                            <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk9" <?php echo ($_SESSION['chk9'] == "true" ? "checked" : ""); ?>>
+                                                    <span>صورة البطاقة</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk10" <?php echo ($_SESSION['chk10'] == "true" ? "checked" : ""); ?>>
+                                                    <span>صورة شخصية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk11" <?php echo ($_SESSION['chk11'] == "true" ? "checked" : ""); ?>>
+                                                    <span>المؤهلات العلمية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk12" <?php echo ($_SESSION['chk12'] == "true" ? "checked" : ""); ?>>
+                                                    <span>الفيش الجنائي</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk13" <?php echo ($_SESSION['chk13'] == "true" ? "checked" : ""); ?>>
+                                                    <span>ورقة النت</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk14" <?php echo ($_SESSION['chk14'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز مستشفى</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk15" <?php echo ($_SESSION['chk15'] == "true" ? "checked" : ""); ?>>
+                                                    <span>البصمة</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk16" <?php echo ($_SESSION['chk16'] == "true" ? "checked" : ""); ?>>
+                                                    <span>جواز السفر</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk17" <?php echo ($_SESSION['chk17'] == "true" ? "checked" : ""); ?>>
+                                                    <span>عقد عمل</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex-between" style="margin-top: .5rem">
+                                        <label>
+                                            <input name="fileStatus" type="radio" checked>
+                                            <span>تم إدخالها</span>
+                                        </label>
+                                        <label>
+                                            <input name="fileStatus" type="radio">
+                                            <span>غير مدخلة</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <ul class="filter collapsible m-0" id="servicesCollapsibleF">
+                                    <li>
+                                        <div class="collapsible-header flex-between p-0">
+                                            <label class="label-check m-0">
+                                                <input type="checkbox" name="chk26" id="checkAllServicesF" <?php echo ($_SESSION['chk26'] == "true" ? "checked" : ""); ?>>
+                                                <span>فلترة الخدمات</span>
+                                            </label>
+                                            <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk18" <?php echo ($_SESSION['chk18'] == "true" ? "checked" : ""); ?>>
+                                                    <span>المؤهلات العلمية</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk19" <?php echo ($_SESSION['chk19'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز مستشفى</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk20" <?php echo ($_SESSION['chk20'] == "true" ? "checked" : ""); ?>>
+                                                    <span>عقد عمل</span>
+                                                </label>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label-check">
+                                                    <input type="checkbox" name="chk21" <?php echo ($_SESSION['chk21'] == "true" ? "checked" : ""); ?>>
+                                                    <span>حجز بصمة</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex-between" style="margin-top: .5rem">
+                                        <label>
+                                            <input name="serviceStatus" type="radio" checked>
+                                            <span>تم بيعها</span>
+                                        </label>
+                                        <label>
+                                            <input name="serviceStatus" type="radio">
+                                            <span>غير مباعة</span>
+                                        </label>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="filter collapsible m-0" id="filesCollapsibleF">
-                                <li>
-                                    <div class="collapsible-header flex-between p-0">
-                                        <label class="label-check m-0">
-                                            <input type="checkbox" name="chk25" id="checkAllFilesF" <?php echo ($_SESSION['chk25'] == "true" ? "checked" : ""); ?>>
-                                            <span>فلترة الملفات</span>
-                                        </label>
-                                        <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk9" <?php echo ($_SESSION['chk9'] == "true" ? "checked" : ""); ?>>
-                                                <span>صورة البطاقة</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk10" <?php echo ($_SESSION['chk10'] == "true" ? "checked" : ""); ?>>
-                                                <span>صورة شخصية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk11" <?php echo ($_SESSION['chk11'] == "true" ? "checked" : ""); ?>>
-                                                <span>المؤهلات العلمية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk12" <?php echo ($_SESSION['chk12'] == "true" ? "checked" : ""); ?>>
-                                                <span>الفيش الجنائي</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk13" <?php echo ($_SESSION['chk13'] == "true" ? "checked" : ""); ?>>
-                                                <span>ورقة النت</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk14" <?php echo ($_SESSION['chk14'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز مستشفى</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk15" <?php echo ($_SESSION['chk15'] == "true" ? "checked" : ""); ?>>
-                                                <span>البصمة</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk16" <?php echo ($_SESSION['chk16'] == "true" ? "checked" : ""); ?>>
-                                                <span>جواز السفر</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk17" <?php echo ($_SESSION['chk17'] == "true" ? "checked" : ""); ?>>
-                                                <span>عقد عمل</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="flex-between" style="margin-top: .5rem">
-                                    <label>
-                                        <input name="fileStatus" type="radio" checked>
-                                        <span>تم إدخالها</span>
-                                    </label>
-                                    <label>
-                                        <input name="fileStatus" type="radio">
-                                        <span>غير مدخلة</span>
-                                    </label>
-                                </li>
-                            </ul>
-                            <ul class="filter collapsible m-0" id="servicesCollapsibleF">
-                                <li>
-                                    <div class="collapsible-header flex-between p-0">
-                                        <label class="label-check m-0">
-                                            <input type="checkbox" name="chk26" id="checkAllServicesF" <?php echo ($_SESSION['chk26'] == "true" ? "checked" : ""); ?>>
-                                            <span>فلترة الخدمات</span>
-                                        </label>
-                                        <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk18" <?php echo ($_SESSION['chk18'] == "true" ? "checked" : ""); ?>>
-                                                <span>المؤهلات العلمية</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk19" <?php echo ($_SESSION['chk19'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز مستشفى</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk20" <?php echo ($_SESSION['chk20'] == "true" ? "checked" : ""); ?>>
-                                                <span>عقد عمل</span>
-                                            </label>
-                                        </div>
-                                        <div class="column">
-                                            <label class="label-check">
-                                                <input type="checkbox" name="chk21" <?php echo ($_SESSION['chk21'] == "true" ? "checked" : ""); ?>>
-                                                <span>حجز بصمة</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="flex-between" style="margin-top: .5rem">
-                                    <label>
-                                        <input name="serviceStatus" type="radio" checked>
-                                        <span>تم بيعها</span>
-                                    </label>
-                                    <label>
-                                        <input name="serviceStatus" type="radio">
-                                        <span>غير مباعة</span>
-                                    </label>
-                                </li>
-                            </ul>
+                            <div class="modal-footre">
+                                <button type="submit" name="search&filter" class="btn main-dark waves-effect waves-light">فلترة</button>
+                                <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
+                            </div>
                         </div>
-                        <div class="modal-footre">
-                            <button type="button" id="filterBtn" class="btn main-dark waves-effect waves-light">فلترة</button>
-                            <button class="modal-close btn cancel-btn bl-btn waves-effect waves-light">إلغاء</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <table class="striped highlight responsive-table supernatural-table">
                     <thead>
@@ -451,7 +457,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <th>عمليات</th>
                         </tr>
                     </thead>
-                    <tbody id="data">
+                    <tbody>
                         
                     </tbody>
                 </table>
