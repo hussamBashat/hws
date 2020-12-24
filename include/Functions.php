@@ -23,6 +23,11 @@
         $_SESSION['username'] = $Rows[1];
         $_SESSION['email'] = $Rows[2];
         $_SESSION['password'] = $Rows[3];
+        $_SESSION['all'] = "true";
+        for ($i=0; $i < 27; $i++) { 
+            $chk = "chk" . $i;
+            $_SESSION[$chk] = "true";
+        }
     }
 
     if (isset($_COOKIE['admingeneral'])) {
@@ -31,5 +36,10 @@
       $_SESSION['username'] = $Rows[1];
       $_SESSION['email'] = $Rows[2];
       $_SESSION['password'] = $Rows[3];
+      $_SESSION['all'] = "true";
+      for ($i=0; $i < 27; $i++) { 
+          $chk = "chk" . $i;
+          $_SESSION[$chk] = "true";
+      }
   }
 

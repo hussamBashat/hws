@@ -146,15 +146,54 @@
       let xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
+          document.getElementById("data").innerHTML =this.responseText;
+          // <tr>
+          //   <td></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td><a href="tel:" class="custom-link tooltipped" data-position="bottom" data-tooltip="">اتصال</a></td>
+          //   <td><a href="https://wa.me/" class="custom-link tooltipped" data-position="bottom" data-tooltip="" target="_blank">مراسلة</a></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td><i class="material-icons done">check_circle</i></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td></td>
+          //   <td> / </td>
+          //   <td></td>
+          //   <td> ...</td>
+          //   <td>
+          //       <a href="?do=show&id=" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
+                
+          //       <button name="transactionsdel" data-id="" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                
+          //   </td>
+          // </tr>
+
+          // <tr>
+          //   <td colspan="100%" class="center-align" style="color: var(--second-color); font-weight: 600;">
+          //     <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات
+          //   </td>
+          // </tr>
         }
       };
-      xhr.open("GET", "transactions.php?display&defualt", true);
+      xhr.open("GET", "../include/trans_operation.php?display&defualt", true);
       xhr.send();
     }
     defaultColumns();
 
   }
+
 
   // Behavior After Write User Not Exist
   let inputUserList = document.querySelector("#marketerList"),
