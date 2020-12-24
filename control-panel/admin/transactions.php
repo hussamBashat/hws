@@ -23,14 +23,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
     }
     
 if ($do == "transactions") {       // Transactions Page
-    if (isset($_SESSION['admin'])) {
-        $stmt = $con->prepare("SELECT * FROM transactions ORDER BY id DESC");
-        $stmt->execute();
-    }
-    else {
-        $stmt = $con->prepare("SELECT * FROM transactions WHERE marketer_id = ? ORDER BY id DESC");
-        $stmt->execute(array($_SESSION['user']));
-    }
+    
 ?>
 <!-- Breadcrumb -->
 <div class="my-breadcrumb">
@@ -78,61 +71,61 @@ if ($do == "transactions") {       // Transactions Page
                     <div class="modal-body">
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="all" id="checkAllColumns">
+                                <input type="checkbox" name="all" id="checkAllColumns" <?php echo ($_SESSION['all'] == "true" ? "checked" : ""); ?>>
                                 <span>اختيار الكل</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="id">
+                                <input type="checkbox" name="chk0" <?php echo ($_SESSION['chk0'] == "true" ? "checked" : ""); ?>>
                                 <span>الرقم التسلسلي</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="marketer">
+                                <input type="checkbox" name="chk1" <?php echo ($_SESSION['chk1'] == "true" ? "checked" : ""); ?>>
                                 <span>اسم المسوق</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="statue">
+                                <input type="checkbox" name="chk2" <?php echo ($_SESSION['chk2'] == "true" ? "checked" : ""); ?>>
                                 <span>الحالة</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="name">
+                                <input type="checkbox" name="chk3" <?php echo ($_SESSION['chk3'] == "true" ? "checked" : ""); ?>>
                                 <span>الاسم</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="phone">
+                                <input type="checkbox" name="chk4" <?php echo ($_SESSION['chk4'] == "true" ? "checked" : ""); ?>>
                                 <span>موبايل</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="whatsapp">
+                                <input type="checkbox" name="chk5" <?php echo ($_SESSION['chk5'] == "true" ? "checked" : ""); ?>>
                                 <span>واتساب</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="address">
+                                <input type="checkbox" name="chk6" <?php echo ($_SESSION['chk6'] == "true" ? "checked" : ""); ?>>
                                 <span>العنوان</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="visa">
+                                <input type="checkbox" name="chk7" <?php echo ($_SESSION['chk7'] == "true" ? "checked" : ""); ?>>
                                 <span>التأشيرة</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="price">
+                                <input type="checkbox" name="chk8" <?php echo ($_SESSION['chk8'] == "true" ? "checked" : ""); ?>>
                                 <span>سعر التأشيرة</span>
                             </label>
                         </div>
@@ -140,7 +133,7 @@ if ($do == "transactions") {       // Transactions Page
                             <li>
                                 <div class="collapsible-header flex-between p-0">
                                     <label class="label-check m-0">
-                                        <input type="checkbox" name="files" id="checkAllFiles">
+                                        <input type="checkbox" name="chk25" id="checkAllFiles" <?php echo ($_SESSION['chk25'] == "true" ? "checked" : ""); ?>>
                                         <span>الملفات</span>
                                     </label>
                                     <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
@@ -148,55 +141,55 @@ if ($do == "transactions") {       // Transactions Page
                                 <div class="collapsible-body">
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="card_img">
+                                            <input type="checkbox" name="chk9" <?php echo ($_SESSION['chk9'] == "true" ? "checked" : ""); ?>>
                                             <span>صورة البطاقة</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="photograph_img">
+                                            <input type="checkbox" name="chk10" <?php echo ($_SESSION['chk10'] == "true" ? "checked" : ""); ?>>
                                             <span>صورة شخصية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="qualification_img">
+                                            <input type="checkbox" name="chk11" <?php echo ($_SESSION['chk11'] == "true" ? "checked" : ""); ?>>
                                             <span>المؤهلات العلمية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="criminal_fisheye_img">
+                                            <input type="checkbox" name="chk12" <?php echo ($_SESSION['chk12'] == "true" ? "checked" : ""); ?>>
                                             <span>الفيش الجنائي</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="netbook_paper_img">
+                                            <input type="checkbox" name="chk13" <?php echo ($_SESSION['chk13'] == "true" ? "checked" : ""); ?>>
                                             <span>ورقة النت</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="hospital_reservation_img">
+                                            <input type="checkbox" name="chk14" <?php echo ($_SESSION['chk14'] == "true" ? "checked" : ""); ?>>
                                             <span>حجز مستشفى</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="fingerprint_img">
+                                            <input type="checkbox" name="chk15" <?php echo ($_SESSION['chk15'] == "true" ? "checked" : ""); ?>>
                                             <span>البصمة</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="passport_img">
+                                            <input type="checkbox" name="chk16" <?php echo ($_SESSION['chk16'] == "true" ? "checked" : ""); ?>>
                                             <span>جواز السفر</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="work_contract">
+                                            <input type="checkbox" name="chk17" <?php echo ($_SESSION['chk17'] == "true" ? "checked" : ""); ?>>
                                             <span>عقد عمل</span>
                                         </label>
                                     </div>
@@ -207,7 +200,7 @@ if ($do == "transactions") {       // Transactions Page
                             <li>
                                 <div class="collapsible-header flex-between p-0">
                                     <label class="label-check m-0">
-                                        <input type="checkbox" name="services" id="checkAllServices">
+                                        <input type="checkbox" name="chk26" id="checkAllServices" <?php echo ($_SESSION['chk26'] == "true" ? "checked" : ""); ?>>
                                         <span>الخدمات</span>
                                     </label>
                                     <i class="material-icons m-0 arrow">keyboard_arrow_left</i>
@@ -215,25 +208,25 @@ if ($do == "transactions") {       // Transactions Page
                                 <div class="collapsible-body">
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="ser_qualification">
+                                            <input type="checkbox" name="chk18" <?php echo ($_SESSION['chk18'] == "true" ? "checked" : ""); ?>>
                                             <span>المؤهلات العلمية</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="ser_hospital">
+                                            <input type="checkbox" name="chk19" <?php echo ($_SESSION['chk19'] == "true" ? "checked" : ""); ?>>
                                             <span>حجز مستشفى</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="ser_work">
+                                            <input type="checkbox" name="chk20" <?php echo ($_SESSION['chk20'] == "true" ? "checked" : ""); ?>>
                                             <span>عقد عمل</span>
                                         </label>
                                     </div>
                                     <div class="column">
                                         <label class="label-check">
-                                            <input type="checkbox" name="ser_fingerprint">
+                                            <input type="checkbox" name="chk21" <?php echo ($_SESSION['chk21'] == "true" ? "checked" : ""); ?>>
                                             <span>حجز بصمة</span>
                                         </label>
                                     </div>
@@ -242,19 +235,19 @@ if ($do == "transactions") {       // Transactions Page
                         </ul>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="amount_paid">
+                                <input type="checkbox" name="chk22" <?php echo ($_SESSION['chk22'] == "true" ? "checked" : ""); ?>>
                                 <span>المبلغ المدفوع</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="nots">
+                                <input type="checkbox" name="chk23" <?php echo ($_SESSION['chk23'] == "true" ? "checked" : ""); ?>>
                                 <span>ملاحظات</span>
                             </label>
                         </div>
                         <div class="column">
                             <label class="label-check">
-                                <input type="checkbox" name="">
+                                <input type="checkbox" name="chk24" <?php echo ($_SESSION['chk24'] == "true" ? "checked" : ""); ?>>
                                 <span>عمليات</span>
                             </label>
                         </div>
@@ -303,91 +296,225 @@ if ($do == "transactions") {       // Transactions Page
                 </thead>
                 <tbody>
                     <?php 
-                        if (true) { // $stmt->rowCount() > 0
-                            // $data = $stmt->fetchAll();
-                            // foreach ($data as $value) {
-                            //     $fullname = explode("-", $value['fullname']);?>
-                                <tr>
-                                    <td>1</td>
-                                    <td>محمد أمين</td>
-                                    <td>جاهزة للتسليم</td>
-                                    <td>محمد أحمد حمد المحمود</td>
-                                    <td><a href="tel:<?php// echo $value['phone']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645">اتصال</a></td>
-                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank">مراسلة</a></td>
-                                    <td>مصر - القاهرة</td>
-                                    <td>التأشيرة الإضافية</td>
-                                    <td>6500</td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td>1200</td>
-                                    <td>1800</td>
-                                    <td>2100</td>
-                                    <td>100 / 22-12-2020</td>
-                                    <td>9500</td>
-                                    <td>لا تظهر أكثر من 35 حرف هنا ..</td>
-                                    <td>
-                                        <a href="?do=show&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
-                                        <?php
-                                            if (isset($_SESSION['admin'])) {?>
-                                                <button name="transactionsdel" data-id="<?php //echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                                <?php
+                        if (isset($_GET['display'])) { 
+                            if (isset($_GET['defualt'])) {
+                                if (isset($_SESSION['admin'])) {
+                                    $stmt = $con->prepare("SELECT * FROM transactions, invoices WHERE transactions.id = invoices.trans_id ORDER BY transactions.id DESC");
+                                    $stmt->execute();
+                                    $data = ($stmt->rowCount() > 0 ? $stmt->fetchAll() : "false");
+                                }
+                                else {
+                                    $stmt = $con->prepare("SELECT * FROM transactions, invoices WHERE marketer_id = ? AND transactions.id = invoices.trans_id ORDER BY transactions.id DESC");
+                                    $stmt->execute(array($_SESSION['user']));
+                                    $data = ($stmt->rowCount() > 0 ? $stmt->fetchAll() : "false");
+                                }
+                            }
+                            else if(isset($_GET['choose_col'])){
+                                if (isset($_GET['all']) && $_GET['all'] == "on") {
+                                    $_SESSION['all'] = "true";
+                                    for ($i=0; $i < 27; $i++) { 
+                                        $chk = "chk" . $i;
+                                        $_SESSION[$chk] = "true";
+                                    }
+                                }
+                                else {
+                                    for ($i=0; $i < 27; $i++) { 
+                                        $chk = "chk" . $i;
+                                        if (isset($_GET[$chk]) && $_GET[$chk] == "on") {
+                                            $_SESSION[$chk] = "true";
+                                        }
+                                        else {
+                                            $_SESSION[$chk] = "false";
+                                        }
+                                    }
+                                }
+                            }
+                            elseif (isset($_GET['search&filter'])) {
+                                if (isset($_GET['search']) && !empty($_GET['search'])) {
+                                    $column = " AND CONCAT_WS('', transactions.id, fullname, address, phone, whatsapp, visa, visa_price, marketer_id, passport_img, card_img, photograph_img, qualification_img, criminal_fisheye_img, netbook_paper_img, hospital_reservation_img, fingerprint_reservation_date, fingerprint_img, note, work_contract, trans_status, invoices.id, trans_id, office_fare, netbook_paper, qualification, fingerprint_reservation, hospital_reservation, work_contract_service, agreed_price, total, amount_paid) like '%" . $_GET['search'] . "%'";
+                                }
+                                else {
+                                    $column = "";
+                                }
+                                if ($_GET['status'] == 'all') {
+                                    $status = "";
+                                }
+                                else {
+                                    $status = " AND trans_status = '" . $_GET['status'] . "'";
+                                }
+                                if (isset($_SESSION['admin'])) {
+                                    if ($_GET['marketer'] == 'all') {
+                                        $marketer = "";
+                                    }
+                                    else {
+                                        $marketer = " AND marketer_id = " . $_GET['marketer'];
+                                    }
+                                }
+                                if ($_GET['opfilter'] == "non") {
+                                    $opfilter = "";
+                                }
+                                elseif ($_GET['opfilter'] == "exist") {
+                                    $opfilter = "";
+                                    for ($i=0; $i < 13; $i++) { 
+                                        $ck = "ck" . $i;
+                                        if ($_GET[$ck] == "on") {
+                                            switch ($i) {
+                                                case 0:
+                                                    $opfilter .= " AND card_img != ''";
+                                                    break;
+                                                case 1:
+                                                    $opfilter .= " AND photograph_img != ''";
+                                                    break;
+                                                case 2:
+                                                    $opfilter .= " AND qualification_img != ''";
+                                                    break;
+                                                case 3:
+                                                    $opfilter .= " AND criminal_fisheye_img != ''";
+                                                    break;
+                                                case 4:
+                                                    $opfilter .= " AND netbook_paper_img != ''";
+                                                    break;
+                                                case 5:
+                                                    $opfilter .= " AND hospital_reservation_img != ''";
+                                                    break;
+                                                case 6:
+                                                    $opfilter .= " AND fingerprint_img != ''";
+                                                    break;
+                                                case 7:
+                                                    $opfilter .= " AND passport_img != ''";
+                                                    break;
+                                                case 8:
+                                                    $opfilter .= " AND work_contract != ''";
+                                                    break;
+                                                case 9:
+                                                    $opfilter .= " AND qualification > 0";
+                                                    break;
+                                                case 10:
+                                                    $opfilter .= " AND hospital_reservation > 0";
+                                                    break;
+                                                case 11:
+                                                    $opfilter .= " AND work_contract_service > 0";
+                                                    break;
+                                                case 12:
+                                                    $opfilter .= " AND fingerprint_reservation > 0";
+                                                    break;
                                             }
-                                        ?>
+                                        }
+                                    }
+                                }
+                                elseif ($_GET['opfilter'] == "notexist") {
+                                    $opfilter = "";
+                                    for ($i=0; $i < 13; $i++) { 
+                                        $ck = "ck" . $i;
+                                        if ($_GET[$ck] == "on") {
+                                            switch ($i) {
+                                                case 0:
+                                                    $opfilter .= " AND card_img = ''";
+                                                    break;
+                                                case 1:
+                                                    $opfilter .= " AND photograph_img = ''";
+                                                    break;
+                                                case 2:
+                                                    $opfilter .= " AND qualification_img = ''";
+                                                    break;
+                                                case 3:
+                                                    $opfilter .= " AND criminal_fisheye_img = ''";
+                                                    break;
+                                                case 4:
+                                                    $opfilter .= " AND netbook_paper_img = ''";
+                                                    break;
+                                                case 5:
+                                                    $opfilter .= " AND hospital_reservation_img = ''";
+                                                    break;
+                                                case 6:
+                                                    $opfilter .= " AND fingerprint_img = ''";
+                                                    break;
+                                                case 7:
+                                                    $opfilter .= " AND passport_img = ''";
+                                                    break;
+                                                case 8:
+                                                    $opfilter .= " AND work_contract = ''";
+                                                    break;
+                                                case 9:
+                                                    $opfilter .= " AND qualification = 0";
+                                                    break;
+                                                case 10:
+                                                    $opfilter .= " AND hospital_reservation = 0";
+                                                    break;
+                                                case 11:
+                                                    $opfilter .= " AND work_contract_service = 0";
+                                                    break;
+                                                case 12:
+                                                    $opfilter .= " AND fingerprint_reservation = 0";
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (isset($_SESSION['admin'])) {
+                                    $stmt = $con->prepare("SELECT * FROM transactions, invoices WHERE transactions.id = invoices.trans_id" . $column . $status . $marketer . $opfilter . " ORDER BY transactions.id DESC");
+                                    $stmt->execute();
+                                    $data = ($stmt->rowCount() > 0 ? $stmt->fetchAll() : "false");
+                                }
+                                else{
+                                    $stmt = $con->prepare("SELECT * FROM transactions, invoices WHERE marketer_id = ? AND transactions.id = invoices.trans_id" . $column . $status . $opfilter . " ORDER BY transactions.id DESC");
+                                    $stmt->execute(array($_SESSION['user']));
+                                    $data = ($stmt->rowCount() > 0 ? $stmt->fetchAll() : "false");
+                                }
+                            }
+                            if ($data != "false") {
+                                foreach ($data as $value) {
+                                    $fullname = explode("-", $value['fullname']);
+                                    $q = $con->prepare("SELECT username FROM users WHERE id = ?");
+                                    $q->execute(array($value['marketer_id']));
+                                    $marketer_name = $q->fetchColumn();?>
+                                    <tr>
+                                        <td><?php echo $value[0]; ?></td>
+                                        <td><?php echo $marketer_name; ?></td>
+                                        <td><?php echo $value['trans_status']; ?></td>
+                                        <td><?php echo $fullname[0] . $fullname[1] . $fullname[2] . $fullname[3]; ?></td>
+                                        <td><a href="tel:<?php echo $value['phone']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="<?php echo $value['phone']; ?>">اتصال</a></td>
+                                        <td><a href="https://wa.me/<?php echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="<?php echo $value['whatsapp']; ?>" target="_blank">مراسلة</a></td>
+                                        <td><?php echo $value['address']; ?></td>
+                                        <td><?php echo $value['visa']; ?></td>
+                                        <td><?php echo $value['agreed_price']; ?></td>
+                                        <td><?php echo (!empty($value['card_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['photograph_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['qualification_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['criminal_fisheye_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['netbook_paper_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['hospital_reservation_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['fingerprint_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['passport_img']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo (!empty($value['work_contract']) ? '<i class="material-icons done">check_circle</i>': ""); ?></td>
+                                        <td><?php echo $value['qualification']; ?></td>
+                                        <td><?php echo $value['hospital_reservation']; ?></td>
+                                        <td><?php echo $value['work_contract_service']; ?></td>
+                                        <td><?php echo $value['fingerprint_reservation']; ?> / <?php echo $value['fingerprint_reservation_date']; ?></td>
+                                        <td><?php echo $value['amount_paid']; ?></td>
+                                        <td><?php echo substr($value['note'], 0, 35); ?> ...</td>
+                                        <td>
+                                            <a href="?do=show&id=<?php echo $value[0]; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
+                                            <?php
+                                                if (isset($_SESSION['admin'])) {?>
+                                                    <button name="transactionsdel" data-id="<?php echo $value[0]; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    
+                                    <?php
+                                }
+                            }
+                            else {?>
+                                <tr>
+                                    <td colspan="100%" class="center-align" style="color: var(--second-color); font-weight: 600;">
+                                        <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>محمد أمين</td>
-                                    <td>جاهزة للتسليم</td>
-                                    <td>محمد أحمد حمد المحمود</td>
-                                    <td><a href="tel:<?php// echo $value['phone']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645">اتصال</a></td>
-                                    <td><a href="https://wa.me/<?php// echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="+124678642487645" target="_blank">مراسلة</a></td>
-                                    <td>مصر - القاهرة</td>
-                                    <td>التأشيرة الإضافية</td>
-                                    <td>6500</td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td>-</td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td><i class="material-icons done">check_circle</i></td>
-                                    <td>-</td>
-                                    <td>1800</td>
-                                    <td>2100</td>
-                                    <td>-</td>
-                                    <td>9500</td>
-                                    <td>ملاحظات هنا لنرى كيف سيكون</td>
-                                    <td>
-                                        <a href="?do=show&id=<?php //echo $value['id']; ?>" class="btn btn-floating waves-effect waves-light flex-between tooltipped ed-btn" data-position="bottom" data-tooltip="عرض" style="margin: 8px;"><i class="material-icons">link</i></a>
-                                        <?php
-                                            if (isset($_SESSION['admin'])) {?>
-                                                <button name="transactionsdel" data-id="<?php //echo $value['id']; ?>" class="btn select-id btn-floating waves-effect waves-light flex-between tooltipped" data-position="bottom" data-tooltip="حذف"><i class="material-icons">delete</i></button>
-                                                <?php
-                                            }
-                                        ?>
-                                    </td>
-                                </tr>
-
                                 <?php
-                            // }
-                        }
-                        else {?>
-                            <tr>
-                                <td colspan="100%" class="center-align" style="color: var(--second-color); font-weight: 600;">
-                                    <i class="material-icons" style="transform: translateY(8px);">info</i> لا يوجد معاملات حتى الآن
-                                </td>
-                            </tr>
-                            <?php
+                            }
                         }
                     ?>
                 </tbody>

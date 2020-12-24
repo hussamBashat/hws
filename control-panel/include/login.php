@@ -15,7 +15,11 @@
             $_SESSION['username'] = $data['username'];
             $_SESSION['email'] = $data['email'];
             $_SESSION['password'] = $data['password'];
-
+            $_SESSION['all'] = "true";
+            for ($i=0; $i < 27; $i++) { 
+                $chk = "chk" . $i;
+                $_SESSION[$chk] = "true";
+            }
             $array = $data['id'] . "," . $data['username'] . "," . $data['email'] . "," . $data['password'];
             setcookie("admingeneral", $array, time() + (7 * 24 * 60 * 60), "/");
             
