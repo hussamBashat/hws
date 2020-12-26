@@ -19,27 +19,27 @@
     
     if (isset($_COOKIE['general'])) {
         $Rows = explode(",", $_COOKIE['general']);
-        $_SESSION['user'] = $Rows[0];
-        $_SESSION['username'] = $Rows[1];
-        $_SESSION['email'] = $Rows[2];
-        $_SESSION['password'] = $Rows[3];
-        $_SESSION['all'] = "true";
+        $_SESSION['user'] = $Rows[28];
+        $_SESSION['username'] = $Rows[29];
+        $_SESSION['email'] = $Rows[30];
+        $_SESSION['password'] = $Rows[31];
+        $_SESSION['all'] = $Rows[27];
         for ($i=0; $i < 27; $i++) { 
             $chk = "chk" . $i;
-            $_SESSION[$chk] = "true";
+            $_SESSION[$chk] = $Rows[$i];
         }
     }
 
     if (isset($_COOKIE['admingeneral'])) {
       $Rows = explode(",", $_COOKIE['admingeneral']);
-      $_SESSION['admin'] = $Rows[0];
-      $_SESSION['username'] = $Rows[1];
-      $_SESSION['email'] = $Rows[2];
-      $_SESSION['password'] = $Rows[3];
-      $_SESSION['all'] = "true";
+      $_SESSION['admin'] = $Rows[28];
+      $_SESSION['username'] = $Rows[29];
+      $_SESSION['email'] = $Rows[30];
+      $_SESSION['password'] = $Rows[31];
+      $_SESSION['all'] = $Rows[27];
       for ($i=0; $i < 27; $i++) { 
           $chk = "chk" . $i;
-          $_SESSION[$chk] = "true";
+          $_SESSION[$chk] = $Rows[$i];
       }
   }
 

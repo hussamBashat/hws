@@ -11,6 +11,7 @@
         $stmt->execute(array($_POST['password'], $_POST['UOE'], $_POST['UOE']));
         if ($stmt->rowCount() > 0) {
             $data = $stmt->fetch();
+            $array = "";
             $_SESSION['user'] = $data['id'];
             $_SESSION['username'] = $data['username'];
             $_SESSION['email'] = $data['email'];
@@ -19,8 +20,9 @@
             for ($i=0; $i < 27; $i++) { 
                 $chk = "chk" . $i;
                 $_SESSION[$chk] = "true";
+                $array .= $_SESSION[$chk] . ",";
             }
-            $array = $data['id'] . "," . $data['username'] . "," . $data['email'] . "," . $data['password'];
+            $array .= $_SESSION['all'] . "," . $data['id'] . "," . $data['username'] . "," . $data['email'] . "," . $data['password'];
             setcookie("general", $array, time() + (7 * 24 * 60 * 60), "/");
             
             if (isset($_POST['remmamber']) && $_POST['remmamber'] == 'on') {
