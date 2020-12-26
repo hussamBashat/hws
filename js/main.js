@@ -73,6 +73,38 @@
       allServicesCheckboxFilter = document.querySelectorAll("#servicesCollapsibleF input[type='checkbox']:not(#checkAllServicesF)");
    
   if (selectAll) {
+    // ---------- For 'Check All' Checkbox ----------- 
+    // Select All Checkbox Behavior
+    selectAll.onclick = function () {
+      if (this.checked == true) {
+        allCheckboxes.forEach(function (allCheckboxes) {
+          allCheckboxes.checked = true;
+        });
+      } else {
+        allCheckboxes.forEach(function (allCheckboxes) {
+          allCheckboxes.checked = false;
+        });
+      }
+    }
+    // 'Select All' Checkbox State When Childs Checked/Unchecked
+    function childCheckboxes () {
+      let checkedState = [];
+      allCheckboxes.forEach(function (allCheckboxes) {
+      checkedState.push(allCheckboxes.checked);
+        if (checkedState.includes(false)) {
+          selectAll.checked = false;
+        } else {
+          selectAll.checked = true;
+        }
+      });
+    }
+    // Call childCheckboxes For All Childrens
+    allCheckboxes.forEach( function(allCheckboxes) {
+      allCheckboxes.onchange = function () {
+        childCheckboxes();
+      }
+    });
+    // ---------- For 'Others' Checkboxes ----------- 
     // Checked/Unchecked All Slave Checkboxes When Select Master Checkbox 
     function masterCheckbox (master, slave) {
       master.onclick = function () {
@@ -85,15 +117,9 @@
             slave.checked = false;
           });
         }
-        if (master.id == "checkAllFiles") {
-          slaveCheckbox(selectAll, allFilesCheckbox);
-        } else if (master.id == "checkAllServices") {
-          slaveCheckbox(selectAll, allServicesCheckbox);
-        }
       }
       slave.forEach( function (slave) {
         slave.onclick = function () {
-          slaveCheckbox(selectAll, allCheckboxes);
           slaveCheckbox(selectFilesCheckbox, allFilesCheckbox);
           slaveCheckbox(selectServicesCheckbox, allServicesCheckbox);
           // For Filter Checkboxes
@@ -102,13 +128,11 @@
        }
       });
     }
-    masterCheckbox(selectAll, allCheckboxes);
     masterCheckbox(selectFilesCheckbox, allFilesCheckbox);
     masterCheckbox(selectServicesCheckbox, allServicesCheckbox);
     // For Filter Checkboces
     masterCheckbox(selectFilesCheckboxFilter, allFilesCheckboxFilter);
     masterCheckbox(selectServicesCheckboxFilter, allServicesCheckboxFilter);
-    
     // Checked/Unchecked Master Checkbox When Select All/Any Slave Checkboxes 
     function slaveCheckbox (master, slave) {
       let checkedState = [];
@@ -168,27 +192,32 @@
   // Show Visa Price After Select
   let visaList = document.querySelector("#visaList"),
       priceInput = document.querySelector("#price"),
-      orginlPrice = document.querySelector("#orginlPrice"),
-      priceInvoice = document.querySelector("#visaPriceInvoice"),
-      visaName = document.querySelector("#visaNameInvoice");
+      orginlPrice = document.querySelector("#orginlPrice");
+      // priceInvoice = document.querySelector("#visaPriceInvoice"),
+      // visaName = document.querySelector("#visaNameInvoice");
   if (visaList) {
     visaList.onchange = function () {
       let option = this.options[this.selectedIndex];
       priceInput.focus();
       priceInput.value = option.dataset.price;
       orginlPrice.value = option.dataset.price;
-      visaName.innerHTML = '(' + option.value + ')';
-      priceInvoice.closest(".modal-line").classList.remove("hide");
-      priceInvoice.innerHTML = option.dataset.price;
-      priceInput.onkeyup = function () {
-        if (this.value != "" && this.value >= 0) {
-          priceInvoice.innerHTML = this.value;
-          // Calc Invoice Items
-          totalInvice();
-        }
-      }
+      /*
+          *****************************************************
+          This Code Commented Becouse Visa Removed From Invoice
+          *****************************************************
+      */
+      // visaName.innerHTML = '(' + option.value + ')';
+      // priceInvoice.closest(".modal-line").classList.remove("hide");
+      // priceInvoice.innerHTML = option.dataset.price;
+      // priceInput.onkeyup = function () {
+      //   if (this.value != "" && this.value >= 0) {
+      //     priceInvoice.innerHTML = this.value;
+      //     // Calc Invoice Items
+      //     totalInvice();
+      //   }
+      // }
       // Calc Invoice Items
-      totalInvice();
+      // totalInvice();
     }
   }
 

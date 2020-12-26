@@ -48,7 +48,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
             <div class="table-option">
                 <div class="row">
                     <!-- Columns Modal -->
-                    <div class="col l2 center-align">
+                    <div class="col l2">
                         <button data-target="columns" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="تخصيص الأعمدة"><i class="material-icons">view_column</i></button>
                     </div>
                     <!-- Filter Modal -->
@@ -433,7 +433,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
             </div>
             <form method="post" action="../include/delete_transaction.php">
                 <input type="hidden" name="id" id="btnId">
-                <table class="striped highlight responsive-table supernatural-table">
+                <table class="striped highlight responsive-table supernatural-table table-block">
                     <thead>
                         <tr>
                             <?php 
@@ -858,7 +858,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
     <div class="container">
     <div class="top-bar flex-between">
         <h1>إضافة معاملة جديدة</h1>
-        <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
+        <a href="?do=transactions" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></a>
         <p>يمكنك إضافة معاملة جديدة من هنا, جميع الحقول التالية مطلوبة.</p>
     </div>
     </div>
@@ -1146,14 +1146,14 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-line hide">
+                        <!-- <div class="modal-line hide">
                             <div class="row m-0">
                                 <div class="col l10"><span>التأشيرة</span> <strong id="visaNameInvoice"></strong></div>
                                 <div class="col l2">
                                     <span><b class="sum" id="visaPriceInvoice">0</b></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="modal-line">
                             <div class="row m-0">
                                 <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>
@@ -1251,7 +1251,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
             <div class="container">
             <div class="top-bar flex-between">
                 <h1>عرض المعاملة</h1>
-                <span onclick="window.history.back()" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></span>
+                <a href="?do=transactions" class="custom-link flex-between">رجوع <i class="material-icons">keyboard_arrow_left</i></a>
                 <p>يمكنك من هنا عرض وتعديل معلومات المعاملة, اختر ما تريد تعديله أولاً ثم قم بتعديل البيانات بالشكل المناسب</p>
             </div>
             </div>
@@ -2013,14 +2013,14 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-line <?php echo (!empty($trans['visa']) ? "" : "hide"); ?>">
+                                <!-- <div class="modal-line <?php// echo (!empty($trans['visa']) ? "" : "hide"); ?>">
                                     <div class="row m-0">
-                                        <div class="col l10"><span>التأشيرة</span> <strong id="visaNameInvoice">(<?php echo $trans['visa']; ?>)</strong></div>
+                                        <div class="col l10"><span>التأشيرة</span> <strong id="visaNameInvoice">(<?php// echo $trans['visa']; ?>)</strong></div>
                                         <div class="col l2">
-                                            <span><b class="sum" id="visaPriceInvoice"><?php echo $trans['agreed_price']; ?></b></span>
+                                            <span><b class="sum" id="visaPriceInvoice"><?php// echo $trans['agreed_price']; ?></b></span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="modal-line">
                                     <div class="row m-0">
                                         <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>

@@ -291,11 +291,10 @@ table td .btn:last-child{background-color:var(--gray)}
 
 .table-option .btn {margin-top: 24px; background-color: transparent; color: var(--gray);}
 .table-option .btn i {font-size: 24px;}
-
+.table-block {display: block;}
 .supernatural-table {
-    display: block;
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .supernatural-table td {font-size: 14px; text-align: center;}
 .supernatural-table th, .supernatural-table tr, .supernatural-table td {
