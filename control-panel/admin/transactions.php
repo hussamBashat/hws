@@ -431,9 +431,18 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     </div>
                 </form>
             </div>
+            <?php
+            $j = 0;
+            for ($i=0; $i < 25; $i++) { 
+                $chk = "chk" . $i;
+                if($_SESSION[$chk] == "true"){
+                    $j += 1;
+                }
+            }
+            ?>
             <form method="post" action="../include/delete_transaction.php">
                 <input type="hidden" name="id" id="btnId">
-                <table class="striped highlight responsive-table supernatural-table table-block">
+                <table class="striped highlight responsive-table <?php echo ($j >= 8 ? "supernatural-table" : ""); ?> <?php echo ($j >= 16 ? "table-block" : ""); ?> ">
                     <thead>
                         <tr>
                             <?php 
@@ -717,7 +726,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                         }
                                         if($_SESSION['chk5'] == "true") {
                                             ?>
-                                            <td><a href="https://wa.me/<?php echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="<?php echo $value['whatsapp']; ?>" target="_blank">مراسلة</a></td>
+                                            <td><a href="https://wa.me/<?php echo $value['whatsapp']; ?>" class="custom-link tooltipped" data-position="bottom" data-tooltip="<?php echo $value['whatsapp']; ?>" target="_blank"><?php echo (!empty($value['whatsapp']) ? "مراسلة" : "" ); ?></a></td>
                                             <?php
                                         }
                                         if($_SESSION['chk6'] == "true") {
@@ -732,7 +741,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                         }
                                         if($_SESSION['chk8'] == "true") {
                                             ?>
-                                            <td><?php echo $value['agreed_price']; ?></td>
+                                            <td><?php echo ($value['agreed_price'] > 0 ? $value['agreed_price'] : ""); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk9'] == "true") {
@@ -782,32 +791,32 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                         }
                                         if($_SESSION['chk18'] == "true") {
                                             ?>
-                                            <td><?php echo $value['qualification']; ?></td>
+                                            <td><?php echo ($value['qualification'] > 0 ? $value['qualification'] : ""); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk19'] == "true") {
                                             ?>
-                                            <td><?php echo $value['hospital_reservation']; ?></td>
+                                            <td><?php echo ($value['hospital_reservation'] > 0 ? $value['hospital_reservation'] : ""); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk20'] == "true") {
                                             ?>
-                                            <td><?php echo $value['work_contract_service']; ?></td>
+                                            <td><?php echo ($value['work_contract_service'] > 0 ? $value['work_contract_service'] : ""); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk21'] == "true") {
                                             ?>
-                                            <td><?php echo $value['fingerprint_reservation']; ?> / <?php echo $value['fingerprint_reservation_date']; ?></td>
+                                            <td><?php echo ($value['fingerprint_reservation'] > 0 ? $value['fingerprint_reservation'] : ""); ?> / <?php echo $value['fingerprint_reservation_date']; ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk22'] == "true") {
                                             ?>
-                                            <td><?php echo $value['amount_paid']; ?></td>
+                                            <td><?php echo ($value['amount_paid'] > 0 ? $value['amount_paid'] : ""); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk23'] == "true") {
                                             ?>
-                                            <td><?php echo substr($value['note'], 0, 35); ?> ...</td>
+                                            <td><?php echo substr($value['note'], 0, 35); ?></td>
                                             <?php
                                         }
                                         if($_SESSION['chk24'] == "true") {
