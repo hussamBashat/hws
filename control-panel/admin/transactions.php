@@ -879,10 +879,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     <div class="row">
                         <?php
                             if (isset($_SESSION['admin'])) {?>
-                                <div class="col l6">
+                                <div class="col s12 m6">
                                     <div class="input-field">
                                         <input type="text" name="marketer_id" list="marketer" id="marketerList" autocomplete="off" class="validate" required>
-                                        <label for="marketerList">اختر المسوق (يمكنك البحث عن اسم أو رقم المسوق مباشرة)</label>
+                                        <label for="marketerList">اختر المسوق</label>
                                     </div>
                                     <datalist id="marketer">
                                     <?php
@@ -896,7 +896,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                 <?php
                             }
                         ?>
-                        <div class="col <?php echo (isset($_SESSION['admin']) ? "l6" : "l12") ?>">
+                        <div class="col s12 <?php echo (isset($_SESSION['admin']) ? "m6" : "m12") ?>">
                             <div class="input-field validate">
                                 <select name="status" id="status">
                                     <option value="" selected>اختر الحالة</option>
@@ -913,34 +913,34 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     <h5>معلومات أساسية</h5>
                     <div class="row">
                         <p class="input-group-title">الاسم الكامل</p>
-                        <div class="input-field col l3">
+                        <div class="input-field col s12 m6 l3">
                             <input id="firstname" name="firstname" type="text" class="validate" required>
                             <label for="firstname">الاسم الأول</label>
                         </div>
-                        <div class="input-field col l3">
+                        <div class="input-field col s12 m6 l3">
                             <input id="fathername" name="fathername" type="text" class="validate">
                             <label for="fathername">اسم الأب</label>
                         </div>
-                        <div class="input-field col l3">
+                        <div class="input-field col s12 m6 l3">
                             <input id="grandname" name="grandname" type="text" class="validate">
                             <label for="grandname">اسم الجد</label>
                         </div>
-                        <div class="input-field col l3">
+                        <div class="input-field col s12 m6 l3">
                             <input id="lastname" name="lastname" type="text" class="validate">
                             <label for="lastname">الكنية</label>
                         </div>
                     </div>
                     <div class="row">
                         <p class="input-group-title">معلومات التواصل</p>
-                        <div class="input-field col l4">
+                        <div class="input-field col s12 m6 l4">
                             <input type="tel" id="mobile" name="mobile" class="validate" required>
                             <label for="mobile">رقم الموبايل</label>
                         </div>
-                        <div class="input-field col l4">
+                        <div class="input-field col s12 m6 l4">
                             <input type="tel" id="whatsapp" name="whatsapp" class="validate">
                             <label for="whatsapp">رقم الواتساب</label>
                         </div>
-                        <div class="input-field col l4">
+                        <div class="input-field col s12 m6 l4">
                             <input type="text" id="address" name="address" class="validate">
                             <label for="address">العنوان الحالي</label>
                         </div>
@@ -948,7 +948,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     <h5 class="m-0">معلومات التأشيرة</h5>
                     <div class="row">
                         <p class="input-group-title">معلومات التأشيرة</p>
-                        <div class="input-field col l6">
+                        <div class="input-field col s12 m6">
                             <select name="visa" id="visaList">
                                 <option value="" selected>اختر التأشيرة</option>
                                 <?php
@@ -959,14 +959,14 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="input-field col l6">
+                        <div class="input-field col s12 m6">
                             <input type="number" id="price" name="price" value="" class="validate">
                             <label for="price">السعر المتفق عليه</label>
                         </div>
                     </div> 
                     <div class="row">
                         <p class="input-group-title">الملفات المطلوبة</p>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">payment</i></span>
                                 <input type="file" name="file0" class="input-file">
@@ -976,7 +976,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">person_outline</i></span>
                                 <input type="file" name="file1" class="input-file photograph">
@@ -986,7 +986,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">picture_as_pdf</i></span>
                                 <input type="file" name="file2" class="input-file pdf">
@@ -996,7 +996,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> يجب أن ينتهي هذا الملف بإمتداد 'PDF' حصراً</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file3" class="input-file">
@@ -1006,7 +1006,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file4" class="input-file">
@@ -1016,7 +1016,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file5" class="input-file">
@@ -1026,7 +1026,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file6" class="input-file">
@@ -1036,7 +1036,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file7" class="input-file">
@@ -1046,7 +1046,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field file-field col l6">
+                        <div class="input-field file-field col s12 m6">
                             <div class="btn">
                                 <span><i class="material-icons">image</i></span>
                                 <input type="file" name="file8" class="input-file">
@@ -1056,7 +1056,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             </div>
                             <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
-                        <div class="input-field col l6">
+                        <div class="input-field col s12 m6">
                             <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
                             <label for="notes">ملاحظات ..</label>
                         </div>
@@ -1064,61 +1064,61 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     <div class="row">
                         <h5>خدمات التوثيق</h5>
                         <p class="input-group-title">اختر الخدمات التي تريد توثيقها عن طريق تفعيل الخيار بجانب كل خدمة.</p>
-                        <div class="col l6">
-                            <div class="row">
-                                <div class="input-field col l5">
+                        <div class="col s12 l6">
+                            <div class="row mb-0">
+                                <div class="input-field col s12 m4 l5">
                                     <label class="label-check">
                                         <input type="checkbox" name="qualifications_s" data-invoice="qualificationInvoice" data-orginalprice="<?php echo $prices[4]['price']; ?>">
                                         <span><?php echo $prices[4]['service_name']; ?></span>
                                     </label>
                                 </div>
-                                <div class="input-field col l7">
+                                <div class="input-field margin-mobaile col s12 m8 l7">
                                     <input type="number" id="qualifications_p" name="qualifications_p" disabled value="<?php echo $prices[4]['price']; ?>" class="validate">
                                     <label for="qualifications_p">سعر الخدمة</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l6">
-                            <div class="row">
-                                <div class="input-field col l5">
+                        <div class="col s12 l6">
+                            <div class="row mb-0">
+                                <div class="input-field col s12 m4 l5">
                                     <label class="label-check">
                                         <input type="checkbox" name="hospetal_s" data-invoice="hospitalInvoice" data-orginalprice="<?php echo $prices[1]['price']; ?>">
                                         <span><?php echo $prices[1]['service_name']; ?></span>
                                     </label>
                                 </div>
-                                <div class="input-field col l7">
+                                <div class="input-field margin-mobaile col s12 m8 l7">
                                     <input type="number" id="hospetal_p" name="hospetal_p" disabled value="<?php echo $prices[1]['price']; ?>" class="validate">
                                     <label for="hospetal_p">سعر الخدمة</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l6">
-                            <div class="row">
-                                <div class="input-field col l5">
+                        <div class="col s12 l6">
+                            <div class="row mb-0">
+                                <div class="input-field col s12 m4 l5">
                                     <label class="label-check">
                                         <input type="checkbox" name="work_S" class="work-chekbox" data-invoice="workInvoice" data-orginalprice="<?php echo $prices[5]['price']; ?>">
                                         <span><?php echo $prices[5]['service_name']; ?></span>
                                     </label>
                                 </div>
-                                <div class="input-field col l7">
+                                <div class="input-field margin-mobaile col s12 m8 l7">
                                     <input type="number" id="work_p" name="work_p" disabled value="<?php echo $prices[5]['price']; ?>" class="validate">
                                     <label for="work_p">سعر الخدمة</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l6">
-                            <div class="row">
-                                <div class="input-field and-date col l5">
+                        <div class="col s12 l6">
+                            <div class="row mb-0">
+                                <div class="input-field and-date col s12 m4 l5">
                                     <label class="label-check">
                                         <input type="checkbox" name="fingerprint_s" class="fingerprint" data-invoice="fingerprintInvoice" data-orginalprice="<?php echo $prices[2]['price']; ?>">
                                         <span><?php echo $prices[2]['service_name']; ?></span>
                                     </label>
                                 </div>
-                                <div class="input-field col l3">
+                                <div class="input-field margin-mobaile col s6 m5 l3">
                                     <input type="number" id="fingerprint_p" name="fingerprint_p" disabled value="<?php echo $prices[2]['price']; ?>" class="validate">
                                     <label for="fingerprint_p">سعر الخدمة</label>
                                 </div>
-                                <div class="input-field col l4">
+                                <div class="input-field margin-mobaile col s6 m3 l4">
                                     <input type="text" class="datepicker" id="fingerprint_d" name="fingerprint_d" disabled required>
                                     <label for="fingerprint_d">تاريخ الحجز</label>
                                 </div>
@@ -1127,8 +1127,8 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                     </div>
                     <div class="row">
                         <p class="input-group-title">أدخل المبلغ المدفوع</p>
-                        <div class="col l6">
-                            <div class="input-field col l6">
+                        <div class="row">
+                            <div class="input-field col s12 m4">
                                 <input type="number" id="amount_paid" name="amount_paid" value="0" class="validate" data-invoice="paidInvoice">
                                 <label for="amount_paid">المبلغ المدفوع</label>
                             </div>
@@ -1148,8 +1148,8 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                         </div>
                         <div class="modal-line">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[0]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[0]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span><b class="sum"><?php echo $prices[0]['price']; ?></b></span>
                                     <input type="hidden" value="<?php echo $prices[0]['price']; ?>" name="office_fare">
                                 </div>
@@ -1157,16 +1157,16 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                         </div>
                         <!-- <div class="modal-line hide">
                             <div class="row m-0">
-                                <div class="col l10"><span>التأشيرة</span> <strong id="visaNameInvoice"></strong></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span>التأشيرة</span> <strong id="visaNameInvoice"></strong></div>
+                                <div class="col s3 p-0 left-align">
                                     <span><b class="sum" id="visaPriceInvoice">0</b></span>
                                 </div>
                             </div>
                         </div> -->
                         <div class="modal-line">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[3]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[3]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span><b class="sum"><?php echo $prices[3]['price']; ?></b></span>
                                     <input type="hidden" value="<?php echo $prices[3]['price']; ?>" name="net_paper">
                                 </div>
@@ -1174,32 +1174,32 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                         </div>
                         <div class="modal-line hide">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[4]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[4]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span class="sum" id="qualificationInvoice">0</span>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-line hide">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[1]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[1]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span class="sum" id="hospitalInvoice">0</span>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-line hide">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[5]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[5]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span class="sum" id="workInvoice">0</span>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-line hide">
                             <div class="row m-0">
-                                <div class="col l10"><span><?php echo $prices[2]['service_name']; ?></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><?php echo $prices[2]['service_name']; ?></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span class="sum" id="fingerprintInvoice">0</span>
                                 </div>
                             </div>
@@ -1207,8 +1207,8 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                         <div class="divider"></div>
                         <div class="modal-line">
                             <div class="row m-0">
-                                <div class="col l10"><span><strong>المجموع</strong></span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span><strong>المجموع</strong></span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span><b id="totalInvoice"></b></span>
                                     <input type="hidden" name="total">
                                 </div>
@@ -1216,16 +1216,16 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                         </div>
                         <div class="modal-line">
                             <div class="row m-0">
-                                <div class="col l10"><span>المبلغ المدفوع</span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span>المبلغ المدفوع</span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span id="paidInvoice"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-line">
                             <div class="row m-0">
-                                <div class="col l10"><span>المبلغ المتبقي</span></div>
-                                <div class="col l2">
+                                <div class="col s9 p-0"><span>المبلغ المتبقي</span></div>
+                                <div class="col s3 p-0 left-align">
                                     <span id="restInvoice"></span>
                                 </div>
                             </div>

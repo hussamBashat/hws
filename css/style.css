@@ -209,7 +209,7 @@ table td .btn:last-child{background-color:var(--gray)}
 }
 .modal {overflow: unset; max-height: 100%;}
 .cart-modal {
-    width: 36rem;
+    width: 30rem;
     top: 5% !important;
 }
 .modal-header {
@@ -229,6 +229,7 @@ table td .btn:last-child{background-color:var(--gray)}
 .cart-modal .modal-line:hover {
     background-color: #eee;
 }
+.cart-modal .modal-content .row.center-align {margin: 1rem 0 0;}
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
     background-color: var(--main-color);
 }
@@ -273,8 +274,8 @@ table td .btn:last-child{background-color:var(--gray)}
 .invalied-file {
     position: absolute;
     top: -11px;
-    right: 73px;
-    width: calc(100% - 17.5%);
+    right: 68px;
+    width: calc(100% - 17%);
     padding: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -346,6 +347,9 @@ table td .btn:last-child{background-color:var(--gray)}
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
 }
+@media (max-width:1024px){
+    .invalied-file {width: calc(100% - 20%);}
+}
 @media (max-width:991px){
 nav .brand-logo{left:0;transform:translateX(0)}
 table td.flex-between{display:flex}
@@ -356,6 +360,7 @@ table td.flex-between{display:flex}
 .row.filter form>div.flex-between{flex-flow:column}
 .row.filter form>div.flex-between .input-field.custom{width:90%}
 .row.filter form>div.flex-between .btn-floating{border-radius:.25rem;width:150px}
+.invalied-file {width: calc(100% - 24%);}
 }
 @media (max-width :767px) and (min-width:575px){
 .row-header{position:relative}
@@ -367,6 +372,13 @@ table td.flex-between{display:flex}
 .remove-on-small-only{display:none}
 .nav-wrapper>ul{float:none!important;display:flex!important;flex-flow:column;width:21.4rem;height:100vh;padding:.5rem 1.5rem;position:fixed;left:-100%;top:56px;z-index:9999;background-color:var(--main-color);border-top:1px solid #6d76a5;transition:var(--transition)}
 .nav-wrapper>ul.slide-open{left:0}
+.margin-mobaile {margin-top: 4rem; margin-bottom: 0;}
+.mb-0 {margin-bottom: 0;}
+.invalied-file {top: -14px; right: 70px; width: calc(100% - 14%);}
+.cart-modal {width: 24rem;}
+}
+@media (max-width:520px){
+.invalied-file {top: -32px; right: 70px; width: calc(100% - 25%);}
 }
 @media (max-width:575px){
 h1{font-size:3rem}
@@ -381,4 +393,6 @@ h2{font-size:2.5rem}
 .search-job .card{padding:2rem}
 .subcribe form{width:100%}
 .row.filter form>div.flex-between .btn-floating{border-radius:50%;width:50px}
+.cart-modal {width: 20rem;}
+.cart-modal h5 {font-size: 20px;}
 }
