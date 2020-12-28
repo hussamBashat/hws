@@ -245,11 +245,11 @@
   // Validation File On Change Input
   let myform = document.querySelector("#addTrans"),
       inputFile = document.querySelectorAll(".input-file"),
-      extinsion = ["image/png", "image/jpg","image/jpeg"];
+      extinsion = ["image/png", "image/jpg","image/jpeg", "application/pdf"];
   if (inputFile) {
     for (let i = 0; i < inputFile.length; i++) {
       inputFile[i].onchange = function () {
-        if (!inputFile[i].classList.contains("pdf")) {  // IF Images File
+        if (!inputFile[i].classList.contains("pdf") && !inputFile[i].classList.contains("photograph")) {  // IF Not Qulification File And Not Photograph Image
           if (!extinsion.includes(inputFile[i].files[0].type)) { // If Error File
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
@@ -258,12 +258,25 @@
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
             inputFile[i].classList.add("is-success");
           }
-        } else {
+        } else if (inputFile[i].classList.contains("pdf")) {  // If This is Qulification File
           if (inputFile[i].files[0].type != "application/pdf") {  // If Not PDF File  -- Erorr -- 
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
             inputFile[i].classList.remove("is-success");
           } else {  // Success File It's PDF
+            ValidateImgDimensions(inputFile[i]);
             inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+            inputFile[i].classList.add("is-success");
+          }
+        } else if (inputFile[i].classList.contains("photograph")) { // If This Potograph Image
+          let photoExt = ["image/png", "image/jpg","image/jpeg"];
+          ValidateImgDimensions(inputFile[i]);
+          if (!photoExt.includes(inputFile[i].files[0].type)) {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG)";
+            inputFile[i].classList.remove("is-success");
+          } else {
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
+            inputFile[i].parentElement.nextElementSibling.nextElementSibling.innerHTML = "";
             inputFile[i].classList.add("is-success");
           }
         }
@@ -290,7 +303,7 @@
       if (selector.classList.contains("photograph")) {
         if (img.width === 150 && img.height === 200) {
           selector.parentElement.nextElementSibling.nextElementSibling.classList.add("hide");
-          selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')";
+          selector.parentElement.nextElementSibling.nextElementSibling.innerHTML = "<i class='material-icons'>error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG)";
           selector.classList.add("is-success");
         } else {
           selector.parentElement.nextElementSibling.nextElementSibling.classList.remove("hide");
@@ -298,8 +311,30 @@
           selector.classList.remove("is-success");
         }
       }
+      iframeStyles();
     }
   }
+
+
+  // Iframe For Image Responsive And Zoom
+  let imgFrame = document.querySelectorAll(".modal-content iframe");
+  function iframeStyles () {
+    imgFrame.forEach(function (imgFrame) {
+      let img = imgFrame.contentWindow.document.querySelector("img");
+      if (img) {
+        img.style.cssText = "width: 100%; height: auto; cursor: pointer";
+        img.setAttribute('title', 'فتح الصورة');
+        img.onclick = function () {
+          let newUrl = this.getAttribute('src');
+          window.open(newUrl);
+        }
+      }
+    });
+  }
+  if (imgFrame) {
+    iframeStyles();
+  }
+
 
   // For Amout Paid Only
   let paidInput = document.querySelector("#amount_paid");

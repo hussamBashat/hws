@@ -252,10 +252,6 @@ table td .btn:last-child{background-color:var(--gray)}
 }
 .filter-table {margin-bottom: 2rem;transform: translateY(-10px);}
 .modal-content iframe {border: 0;}
-.modal-content iframe img {
-    max-width: 100%;
-    height: auto;
-}
 .valign-wrapper > .col img {margin-right: .3rem;}
 .file-type {position: relative;}
 .file-type .material-icons {

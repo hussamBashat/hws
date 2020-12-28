@@ -48,11 +48,11 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
             <div class="table-option">
                 <div class="row">
                     <!-- Columns Modal -->
-                    <div class="col l2">
+                    <div class="col l2 p-0">
                         <button data-target="columns" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="تخصيص الأعمدة"><i class="material-icons">view_column</i></button>
                     </div>
                     <!-- Filter Modal -->
-                    <div class="col l2">
+                    <div class="col l2 p-0">
                         <button data-target="filters" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="فلترة متقدمة"><i class="material-icons">filter_list</i></button>
                     </div>
                 </div>
@@ -266,7 +266,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="filter effect">
                                 <div class="input-field m-0 col l2">
                                     <input type="text" name="search" id="search" autocomplete="off" class="validate">
-                                    <label for="search"><i class="material-icons" style="vertical-align: bottom;">search</i> اكتب كلمة البحث</label>                        
+                                    <label for="search" style="right: 0"><i class="material-icons" style="vertical-align: bottom;">search</i> اكتب كلمة البحث</label>                        
                                 </div>
                             </div>
                             <?php
@@ -974,7 +974,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة عن البطاقة الشخصية">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -984,7 +984,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة شخصية">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1004,7 +1004,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate"  type="text" placeholder="صورة عن الفيش الجنائي">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1014,7 +1014,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate"  type="text" placeholder="صورة عن ورقة النت">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1024,7 +1024,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1034,7 +1034,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة بصمة">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1044,7 +1044,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field file-field col l6">
                             <div class="btn">
@@ -1054,7 +1054,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="صورة عقد عمل">
                             </div>
-                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                            <p class="invalied-file hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                         </div>
                         <div class="input-field col l6">
                             <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
@@ -1369,7 +1369,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة شخصية">
                                                                     <input type="hidden" value="<?php echo $trans['photograph_img']; ?>" name="photograph_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_person_img" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1522,7 +1522,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['card_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['card_img'] : "../images/default/card.svg"); ?>" alt="ID Card Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['card_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['card_img'] : ""); ?>" width="200" height="200" title="ID Card Image" style="
+                                                        background-image: url('../images/default/card.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <h6>ملاحظات:</h6>
@@ -1537,7 +1540,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة عن البطاقة الشخصية">
                                                                     <input type="hidden" value="<?php echo $trans['card_img']; ?>" name="card_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_id_card" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1600,7 +1603,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['criminal_fisheye_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['criminal_fisheye_img'] : "../images/default/warning.svg"); ?>" alt="Criminal Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['criminal_fisheye_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['criminal_fisheye_img'] : ""); ?>" width="200" height="200" title="Criminal Image" style="
+                                                        background-image: url('../images/default/warning.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1615,7 +1621,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة عن الفيش الجنائي">
                                                                     <input type="hidden" value="<?php echo $trans['criminal_fisheye_img']; ?>" name="criminal_fisheye_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_criminal" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1636,7 +1642,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['netbook_paper_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['netbook_paper_img'] : "../images/default/document.svg"); ?>" alt="Net Paper Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['netbook_paper_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['netbook_paper_img'] : ""); ?>" width="200" height="200" title="Net Paper Image" style="
+                                                        background-image: url('../images/default/document.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1651,7 +1660,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة عن ورقة النت">
                                                                     <input type="hidden" value="<?php echo $trans['netbook_paper_img']; ?>" name="netbook_paper_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_net_paper" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1672,7 +1681,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['hospital_reservation_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['hospital_reservation_img'] : "../images/default/medical-report.svg"); ?>" alt="Hospital Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['hospital_reservation_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['hospital_reservation_img'] : ""); ?>" width="200" height="200" title="Hospital Image" style="
+                                                        background-image: url('../images/default/medical-report.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1687,7 +1699,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة عن حجز مستشفى">
                                                                     <input type="hidden" value="<?php echo $trans['hospital_reservation_img']; ?>" name="hospital_reservation_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_hospital" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1708,7 +1720,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['fingerprint_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['fingerprint_img'] : "../images/default/search.svg"); ?>" alt="Fingerprint Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['fingerprint_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['fingerprint_img'] : ""); ?>" width="200" height="200" title="Fingerprint Image" style="
+                                                        background-image: url('../images/default/search.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1723,7 +1738,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate"  type="text" placeholder="صورة بصمة">
                                                                     <input type="hidden" value="<?php echo $trans['fingerprint_img']; ?>" name="fingerprint_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_fingerprint" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1744,7 +1759,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['passport_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['passport_img'] : "../images/default/passport.svg"); ?>" alt="Passport Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['passport_img']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['passport_img'] : ""); ?>" width="200" height="200" title="Passport Image" style="
+                                                        background-image: url('../images/default/passport.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1759,7 +1777,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة جواز السفر">
                                                                     <input type="hidden" value="<?php echo $trans['passport_img']; ?>" name="passport_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_passport" class="btn main-dark waves-effect waves-light">حفظ</button>
@@ -1780,7 +1798,10 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                             <div class="modal-content">
                                                 <div class="row p-0 m-0">
                                                     <div class="col l4">
-                                                        <img src="<?php echo (!empty($trans['work_contract']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['work_contract'] : "../images/default/contract.svg"); ?>" alt="Contract Image" class="responsive-img">
+                                                        <iframe src="<?php echo (!empty($trans['work_contract']) ? "../../images/transactions/" . $trans['trans_id'] . "/" . $trans['work_contract'] : ""); ?>" width="200" height="200" title="Contract Image" style="
+                                                        background-image: url('../images/default/contract.svg');
+                                                        background-size: cover;
+                                                        "></iframe>
                                                     </div>
                                                     <div class="col l8 p-img">
                                                         <!-- <h6>ملاحظات:</h6> -->
@@ -1795,7 +1816,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
                                                                     <input class="file-path validate" type="text" placeholder="صورة عقد العمل">
                                                                     <input type="hidden" value="<?php echo $trans['work_contract']; ?>" name="contract_img">
                                                                 </div>
-                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي 'JPG' 'JPEG' 'PNG')</p>
+                                                                <p class="invalied-file show hide"><i class="material-icons">error</i> ملف غير صالح (الامتدادات المسموحة هي JPG, JPEG, PNG, PDF)</p>
                                                             </div>
                                                             <div class="col l4">
                                                                 <button type="submit" name="edit_contract" class="btn main-dark waves-effect waves-light">حفظ</button>
