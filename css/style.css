@@ -251,7 +251,7 @@ table td .btn:last-child{background-color:var(--gray)}
     font-size: 12px;
     padding: 5px
 }
-.filter-table {margin-bottom: 2rem;transform: translateY(-10px);}
+.filter-table {margin-bottom: 3rem;transform: translateY(-10px);}
 .modal-content iframe {border: 0;}
 .valign-wrapper > .col img {margin-right: .3rem;}
 .file-type {position: relative;}
@@ -342,7 +342,7 @@ table td .btn:last-child{background-color:var(--gray)}
     padding-left: 0;
     border: 0;
 }
-
+.file-type img {min-width: 75px;width: 75px;max-width: 75px;}
 
 @media (max-width:1199px){
 .header-text{transform:translateY(0)}
@@ -353,6 +353,7 @@ table td .btn:last-child{background-color:var(--gray)}
 @media (max-width:991px){
 nav .brand-logo{left:0;transform:translateX(0)}
 table td.flex-between{display:flex}
+.file-type .material-icons {left: 0;}
 }
 @media (max-width:767px){
 .search-job{background-position:center}
@@ -361,6 +362,15 @@ table td.flex-between{display:flex}
 .row.filter form>div.flex-between .input-field.custom{width:90%}
 .row.filter form>div.flex-between .btn-floating{border-radius:.25rem;width:150px}
 .invalied-file {width: calc(100% - 24%);}
+.valign-wrapper.column-flow {flex-flow: column;}
+.valign-wrapper.column-flow > div:not(:last-child) {margin-bottom: .5rem;}
+.valign-wrapper.column-wrap {flex-wrap: wrap;}
+.valign-wrapper .file-type {margin-bottom: 1rem;}
+.my-wrapper .card-panel {margin-bottom: 0;}
+.my-wrapper .card-panel:first-child {margin-top: 0;}
+.file-type .material-icons {left: 22px;}
+.input-btn.column-flow{flex-flow: column;display: flex}
+.center-mobile{text-align: center;}
 }
 @media (max-width :767px) and (min-width:575px){
 .row-header{position:relative}
@@ -376,6 +386,7 @@ table td.flex-between{display:flex}
 .mb-0 {margin-bottom: 0;}
 .invalied-file {top: -14px; right: 70px; width: calc(100% - 14%);}
 .cart-modal {width: 24rem;}
+.file-type .material-icons {left: 65px;}
 }
 @media (max-width:520px){
 .invalied-file {top: -32px; right: 70px; width: calc(100% - 25%);}
@@ -387,6 +398,13 @@ h2{font-size:2.5rem}
 .add-user form{width:100%}
 .top-bar h1{flex:0 0 100%}
 .top-bar .btn,.top-bar a,.top-bar span{order:3}
+.input-group.column-flow {flex-flow: column;}
+.show-transactions .card-panel {padding: 10px;}
+.show-transactions .card-panel > .row.valign-wrapper > div,
+.show-transactions .my-wrapper {padding: 0;}
+.show-transactions .show-img-div {margin-left: 5px!important;}
+.remove-space {margin: 0; padding-top: 0!important;}
+.modal-preview.column-flow{flex-flow: column;display: flex}
 }
 @media (max-width:400px){
 .search-job{background-position:92%}
@@ -395,4 +413,8 @@ h2{font-size:2.5rem}
 .row.filter form>div.flex-between .btn-floating{border-radius:50%;width:50px}
 .cart-modal {width: 20rem;}
 .cart-modal h5 {font-size: 20px;}
+.file-type .material-icons {left: 30px;}
+}
+@media (max-width:320px){
+.file-type .material-icons {left: 12px;}
 }

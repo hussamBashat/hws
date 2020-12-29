@@ -37,13 +37,13 @@ if ($do == "pricelist") {       // Price List Page
         <form method="post" action="../include/visa_operation.php">
             <input type="hidden" name="id" id="btnId">
             <div class="row filter-table">
-                <div class="input-field col l2">
+                <div class="input-field col s6 m4 l3">
                     <label class="label-check">
                         <input type="checkbox" class="filter-item" checked data-type="service-tr">
                         <span>عرض الخدمات</span>
                     </label>
                 </div>
-                <div class="input-field col l2">
+                <div class="input-field col s6 m4 l3">
                     <label class="label-check">
                         <input type="checkbox" class="filter-item" checked data-type="visa-tr">
                         <span>عرض التأشيرات</span>
