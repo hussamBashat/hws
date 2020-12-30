@@ -1242,7 +1242,8 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
     <?php
     } elseif ($do == "show") {   // Show Transactions
         $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
-        $stmt2 = $con->prepare("SELECT * FROM transactions, invoices WHERE transactions.id = ? AND transactions.id = invoices.trans_id");
+        $marketer = (isset($_SESSION['user']) ? " AND marketer_id = " . $_SESSION['user'] : "");
+        $stmt2 = $con->prepare("SELECT * FROM transactions, invoices WHERE transactions.id = ? " . $marketer . " AND transactions.id = invoices.trans_id");
         $stmt2->execute(array($id));
         if ($stmt2->rowCount() > 0) {
             $trans = $stmt2->fetch();
