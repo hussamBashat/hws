@@ -32,6 +32,11 @@ table td,table th{text-align:right}
 .file-field .file-path-wrapper {padding-right: 10px;padding-left: 0;}
 @media (max-width:991px){
 nav .brand-logo{left:auto;right:0}
+table thead {float: right !important;}
+table thead {border: 0!important;}
+table thead tr {padding: 0!important;}
+table thead tr th {border-radius: 0;} 
+table tbody tr td {text-align: right !important;}
 }
 @media (max-width :767px) and (min-width:575px){
 .row-header .col:last-of-type img{left:auto;right:13%}

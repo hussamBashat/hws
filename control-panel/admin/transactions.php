@@ -48,11 +48,11 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
             <div class="table-option">
                 <div class="row">
                     <!-- Columns Modal -->
-                    <div class="col l2 p-0">
+                    <div class="col s4 l2 p-0">
                         <button data-target="columns" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="تخصيص الأعمدة"><i class="material-icons">view_column</i></button>
                     </div>
                     <!-- Filter Modal -->
-                    <div class="col l2 p-0">
+                    <div class="col s4 l2 p-0">
                         <button data-target="filters" class="btn waves-effect waves-light modal-trigger tooltipped" data-position="top" data-tooltip="فلترة متقدمة"><i class="material-icons">filter_list</i></button>
                     </div>
                 </div>

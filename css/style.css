@@ -293,7 +293,7 @@ table td .btn:last-child{background-color:var(--gray)}
     max-width: 100%;
     overflow-x: auto;
 }
-.supernatural-table td {font-size: 14px; text-align: center;}
+.supernatural-table td {text-align: center;}
 .supernatural-table th, .supernatural-table tr, .supernatural-table td {
     border: 1px solid #ececec;
     border-collapse: collapse;
@@ -354,6 +354,7 @@ table td .btn:last-child{background-color:var(--gray)}
 nav .brand-logo{left:0;transform:translateX(0)}
 table td.flex-between{display:flex}
 .file-type .material-icons {left: 0;}
+.transactions table tbody tr td:last-child {display: flex; align-items: center;}
 }
 @media (max-width:767px){
 .search-job{background-position:center}
